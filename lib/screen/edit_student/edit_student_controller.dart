@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/utils.dart';
-import 'package:uuid/uuid.dart';
 
-class AddStudentController extends GetxController {
+class EditStudentController extends GetxController {
   final lastNameController = TextEditingController();
   final firstNameController = TextEditingController();
   final adressNameController = TextEditingController();
   final costNameController = TextEditingController();
   final noteNameController = TextEditingController();
 
-  
+  late String id;
+
+  var student = StudentModel();
 
   String selectCategory = '';
-
   String selectVideo = '';
 
   @override
   void onInit() {
-    selectCategory = listCategory.first;
-    selectVideo = listVideo.first;
+    student = Get.arguments as StudentModel;
+    id = student.id;
+    lastNameController.text = student.lastName;
+    firstNameController.text = student.firstName;
+    adressNameController.text = student.adress;
+    costNameController.text = student.cost.toStringAsFixed(0);
+    noteNameController.text = student.note;
+    selectCategory = student.category;
+    selectVideo = student.video;
+    update();
     super.onInit();
   }
 
@@ -34,6 +41,16 @@ class AddStudentController extends GetxController {
     costNameController.dispose();
     noteNameController.dispose();
     super.onClose();
+  }
+
+  onChangeCategory(String item) {
+    selectCategory = item;
+    update();
+  }
+
+  onChangeVideo(String item) {
+    selectVideo = item;
+    update();
   }
 
   onSave() async {
@@ -51,7 +68,7 @@ class AddStudentController extends GetxController {
       cost = double.tryParse(costNameController.text.trim())!;
     }
     final student = StudentModel(
-      id: const Uuid().v1(),
+      id: id,
       firstName: firstNameController.text.trim(),
       lastName: lastNameController.text.trim(),
       adress: adressNameController.text.trim(),
@@ -61,16 +78,6 @@ class AddStudentController extends GetxController {
       note: noteNameController.text.trim(),
     );
     await DB.insert(StudentModel.nameTable, student);
-    Get.back();
-  }
-
-  onChangeCategory(String item) {
-    selectCategory = item;
-    update();
-  }
-
-  onChangeVideo(String item) {
-    selectVideo = item;
-    update();
+    Get.back(result: true);
   }
 }

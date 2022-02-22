@@ -17,7 +17,7 @@ class StudentScreen extends StatelessWidget {
       body: GetBuilder<StudentController>(
         builder: (_) => ListView.separated(
           physics: const BouncingScrollPhysics(),
-          // padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           itemCount: ctrl.listStudent.length + 1,
           separatorBuilder: (_, __) => const Divider(
             color: MAIN_COLOR,
@@ -50,10 +50,18 @@ class StudentScreen extends StatelessWidget {
     return Slidable(
       actionPane: const SlidableStrechActionPane(),
       actionExtentRatio: 0.25,
+      actions: [
+        IconSlideAction(
+          color: EDIT_FON_COLOR,
+          foregroundColor: SLIDE_ICON_COLOR,
+          icon: Icons.edit,
+          onTap: () => ctrl.gotoEditStudent(item),
+        ),
+      ],
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,
-          foregroundColor: DEL_ICON_COLOR,
+          foregroundColor: SLIDE_ICON_COLOR,
           icon: Icons.delete,
           onTap: () => ctrl.deleteStudent(i),
         ),
@@ -120,7 +128,7 @@ class StudentScreen extends StatelessWidget {
             // ),
           ),
         ),
-        onTap: () => ctrl.gotoStudentDetail(item),
+        onTap: () => ctrl.gotoDetailStudent(item),
         splashColor: MAIN_COLOR.withOpacity(0.1),
       ),
       // ),

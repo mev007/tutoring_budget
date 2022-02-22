@@ -123,7 +123,7 @@ class LessonsScreen extends StatelessWidget {
       (st) => st.id == item.idStudent,
       orElse: () {
         log('>>> Error: No search STUDENT ${item.idStudent}');
-        return StudentModel(firstName: '⚠️⁉️ Інформація відсутня ⁉️⚠️', adress: 'Запис про учня був видалений');
+        return StudentModel(firstName: '!!! Інформація відсутня !!!', adress: 'Запис про учня був видалений');
       },
     );
 
@@ -133,7 +133,7 @@ class LessonsScreen extends StatelessWidget {
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,
-          foregroundColor: DEL_ICON_COLOR,
+          foregroundColor: SLIDE_ICON_COLOR,
           icon: Icons.delete,
           onTap: () => ctrl.deleteLesson(i),
         ),

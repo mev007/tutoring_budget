@@ -5,6 +5,10 @@ import 'package:tutoring_budget/screen/add_student/add_student_controller.dart';
 import 'package:tutoring_budget/screen/add_student/add_student_screen.dart';
 import 'package:tutoring_budget/screen/board/board_controller.dart';
 import 'package:tutoring_budget/screen/board/board_screen.dart';
+import 'package:tutoring_budget/screen/detail_student/detail_student_controller.dart';
+import 'package:tutoring_budget/screen/detail_student/detail_student_screen.dart';
+import 'package:tutoring_budget/screen/edit_student/edit_student_controller.dart';
+import 'package:tutoring_budget/screen/edit_student/edit_student_screen.dart';
 
 import 'app_routes.dart';
 
@@ -30,6 +34,20 @@ class AppPages {
       page: () => AddLessonScreen(),
       binding: BindingsBuilder(() =>
           Get.lazyPut<AddLessonController>(() => AddLessonController())),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: AppRoutes.EDIT_STUDENT,
+      page: () => const EditStudentScreen(),
+      binding: BindingsBuilder(() =>
+          Get.lazyPut<EditStudentController>(() => EditStudentController())),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: AppRoutes.DETAIL_STUDENT,
+      page: () => const DetailStudentScreen(),
+      binding: BindingsBuilder(() =>
+          Get.lazyPut<DetailStudentController>(() => DetailStudentController())),
       transition: Transition.cupertino,
     ),
     // GetPage(

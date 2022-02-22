@@ -87,13 +87,25 @@ abstract class DB {
 
   /// Вибірка з [table] по полю [columnDate] даних за заданий період дати
   /// з [firstDay]  по [lastDay]
-  static Future<List<Map<String, dynamic>>?> queryDate(String table,
+  static Future<List<Map<String, dynamic>>?> queryDateBetween(String table,
       String columnDate, DateTime firstDay, DateTime lastDay) async {
     try {
       final firstInt = Utils.integerFromDateTime(firstDay);
       final lastInt = Utils.integerFromDateTime(lastDay);
       final sqlString =
           "SELECT * FROM $table WHERE $columnDate BETWEEN $firstInt AND $lastInt";
+      final response = await _db?.rawQuery(sqlString);
+      return response;
+    } catch (e) {
+      log('Error query: ${e.toString()}');
+    }
+  }
+
+  /// Вибірка з [table] по полю [columnDate] даних по заданому параметру [id]
+  static Future<List<Map<String, dynamic>>?> queryDateOnId(
+      String table, String columnDate, String id) async {
+    try {
+      final sqlString = "SELECT * FROM $table WHERE $columnDate=\"$id\"";
       final response = await _db?.rawQuery(sqlString);
       return response;
     } catch (e) {

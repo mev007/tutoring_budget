@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/screen/edit_student/edit_student_controller.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
 
-import 'add_student_controller.dart';
-
-class AddStudentScreen extends StatelessWidget {
-  const AddStudentScreen({Key? key}) : super(key: key);
+class EditStudentScreen extends StatelessWidget {
+  const EditStudentScreen({Key? key}) : super(key: key);
 
   final border = const OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -21,11 +20,11 @@ class AddStudentScreen extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('AddStudentScreen'.tr,
+          title: Text('EditStudentScreen'.tr,
               maxLines: 2, textAlign: TextAlign.center),
           actions: [Utils.changeLocateBtt()],
         ),
-        body: GetBuilder<AddStudentController>(
+        body: GetBuilder<EditStudentController>(
           builder: (ctrl) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -92,7 +91,7 @@ class AddStudentScreen extends StatelessWidget {
   }
 
   //# =================================
-  Widget _buildCategory(AddStudentController ctrl) {
+  Widget _buildCategory(EditStudentController ctrl) {
     return Container(
       height: 55,
       decoration: BoxDecoration(
@@ -120,7 +119,7 @@ class AddStudentScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildVideo(AddStudentController ctrl) {
+  Widget _buildVideo(EditStudentController ctrl) {
     return Container(
       height: 55,
       decoration: BoxDecoration(

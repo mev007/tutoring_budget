@@ -18,7 +18,7 @@ class LessonsController extends GetxController {
 
   /// Отримання списку модельок уроків
   Future getListLessons() async {
-    final response = await DB.queryDate(
+    final response = await DB.queryDateBetween(
       LessonsModel.nameTable,
       'dateTime',
       DateTime(selDay.year, selDay.month, selDay.day, 0, 0),

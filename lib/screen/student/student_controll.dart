@@ -6,7 +6,6 @@ import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
 
 class StudentController extends GetxController {
-
   /// Список студенітв
   List<StudentModel> listStudent = <StudentModel>[].obs;
 
@@ -48,10 +47,13 @@ class StudentController extends GetxController {
   }
 
   ///Перехід до StudentDetailScreen
-  gotoStudentDetail(StudentModel item) async {
-    // final isReloadTest =
-    //     await Get.toNamed(AppRoutes.TEACHER_TEST_DETAIL, arguments: item);
-    // if (isReloadTest != null && isReloadTest) getListTests();
+  gotoEditStudent(StudentModel item) {
+    Get.toNamed(AppRoutes.EDIT_STUDENT, arguments: item)?.then((result) async {
+      final isReloadStudent = result as bool?;
+      if (isReloadStudent != null && isReloadStudent) {
+        await getListStudent();
+      }
+    });
   }
 
   /// Перехід до AddStudentScreen
@@ -60,5 +62,8 @@ class StudentController extends GetxController {
         ?.then((_) async => await getListStudent());
   }
 
-  
+  /// Детальніше про студента
+  gotoDetailStudent(item) {
+    Get.toNamed(AppRoutes.DETAIL_STUDENT, arguments: item);
+  }
 }
