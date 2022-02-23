@@ -23,6 +23,7 @@ class AddStudentScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('AddStudentScreen'.tr,
               maxLines: 2, textAlign: TextAlign.center),
+          centerTitle: true,
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<AddStudentController>(

@@ -14,6 +14,7 @@ class DetailStudentScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('DetailStudentScreen'.tr,
             maxLines: 2, textAlign: TextAlign.center),
+        centerTitle: true,
         actions: [Utils.changeLocateBtt()],
       ),
       body: GetBuilder<DetailStudentController>(
@@ -40,7 +41,7 @@ class DetailStudentScreen extends StatelessWidget {
                       trailing: SizedBox(
                         width: 40,
                         child: CircleAvatar(
-                          backgroundColor: ICON_COLOR,
+                          backgroundColor: ADD_COLOR,
                           child: Text(item.cost.toStringAsFixed(0),
                               style: const TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),

@@ -2,6 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/screen/finance/finance_screen.dart';
 import 'package:tutoring_budget/screen/lessons/lessons_screen.dart';
 import 'package:tutoring_budget/screen/student/student_screen.dart';
 import 'package:tutoring_budget/utils.dart';
@@ -27,7 +28,7 @@ class BoardScreen extends StatelessWidget {
               index: ctrl.tabIndex,
               children: [
                 LessonsScreen(),
-                LessonsScreen(),
+                FinanceScreen(),
                 StudentScreen(),
               ],
             ),
