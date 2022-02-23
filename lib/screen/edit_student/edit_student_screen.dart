@@ -22,7 +22,6 @@ class EditStudentScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('EditStudentScreen'.tr,
               maxLines: 2, textAlign: TextAlign.center),
-          centerTitle: true,
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<EditStudentController>(

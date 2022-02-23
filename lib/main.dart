@@ -45,4 +45,3 @@ class MyApp extends StatelessWidget {
 
 
 
-//  android:roundIcon="@mipmap/ic_launcher_round"

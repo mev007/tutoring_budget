@@ -37,7 +37,6 @@ class AddLessonScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('AddLessonScreen'.tr,
               maxLines: 2, textAlign: TextAlign.center),
-          centerTitle: true,
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<AddLessonController>(
