@@ -31,10 +31,11 @@ class MyApp extends StatelessWidget {
       translations: Messages(),
       locale: const Locale('uk', 'UA'), //Get.deviceLocale,
       fallbackLocale: const Locale('uk', 'UA'),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      // const [
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      // ],
       supportedLocales: const [
         Locale('en', ''),
         Locale('uk', 'UA'),
