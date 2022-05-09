@@ -117,8 +117,8 @@ class LessonsScreen extends StatelessWidget {
 
   /// Елемент списка ЗАНЯТЬ студентів
   Widget _buildItem(int i, LessonsModel item) {
-    final ddd = ctrl.listLessons;
-    final sss = Get.find<StudentController>().listStudent;
+    // final ddd = ctrl.listLessons;
+    // final sss = Get.find<StudentController>().listStudent;
     final itemStudent = Get.find<StudentController>().listStudent.firstWhere(
       (st) => st.id == item.idStudent,
       orElse: () {

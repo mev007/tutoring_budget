@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:tutoring_budget/screen/add_finance/add_finance_controller.dart';
+import 'package:tutoring_budget/screen/add_finance/add_finance_screen.dart';
 import 'package:tutoring_budget/screen/add_lesson/add_lesson_controller.dart';
 import 'package:tutoring_budget/screen/add_lesson/add_lesson_screen.dart';
 import 'package:tutoring_budget/screen/add_student/add_student_controller.dart';
@@ -27,6 +29,13 @@ class AppPages {
       page: () => const AddStudentScreen(),
       binding: BindingsBuilder(() =>
           Get.lazyPut<AddStudentController>(() => AddStudentController())),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: AppRoutes.ADD_FINANCE,
+      page: () => AddFinanceScreen(),
+      binding: BindingsBuilder(() =>
+          Get.lazyPut<AddFinanceController>(() => AddFinanceController())),
       transition: Transition.cupertino,
     ),
     GetPage(
