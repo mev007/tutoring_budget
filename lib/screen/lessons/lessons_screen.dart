@@ -1,22 +1,15 @@
-import 'dart:developer';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:tutoring_budget/constants/constants.dart';
-import 'package:tutoring_budget/models/lessons_model.dart';
-import 'package:tutoring_budget/models/student_model.dart';
-import 'package:tutoring_budget/screen/student/student_controll.dart';
-import 'package:tutoring_budget/utils.dart';
 
 import 'lessons_controller.dart';
+import 'views/item_lesson.dart';
 
 class LessonsScreen extends StatelessWidget {
   LessonsScreen({Key? key}) : super(key: key);
   final LessonsController ctrl = Get.put(LessonsController());
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +38,7 @@ class LessonsScreen extends StatelessWidget {
                   // if (i == ctrl.listLessons.length) {
                   //   return const SizedBox(height: 100);
                   // }
-                  return _buildItem(i, ctrl.listLessons[i]);
+                  return ItemLesson(i: i);
                 },
               ),
               const SizedBox(height: 100),
@@ -114,96 +107,6 @@ class LessonsScreen extends StatelessWidget {
       onFormatChanged: (format) => ctrl.onFormatChanged(format),
     );
   }
-
-  /// Елемент списка ЗАНЯТЬ студентів
-  Widget _buildItem(int i, LessonsModel item) {
-    // final ddd = ctrl.listLessons;
-    // final sss = Get.find<StudentController>().listStudent;
-    final itemStudent = Get.find<StudentController>().listStudent.firstWhere(
-      (st) => st.id == item.idStudent,
-      orElse: () {
-        log('>>> Error: No search STUDENT ${item.idStudent}');
-        return StudentModel(firstName: '!!! Інформація відсутня !!!', adress: 'Запис про учня був видалений');
-      },
-    );
-
-    return Slidable(
-      actionPane: const SlidableStrechActionPane(),
-      actionExtentRatio: 0.25,
-      secondaryActions: [
-        IconSlideAction(
-          color: DEL_FON_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
-          icon: Icons.delete,
-          onTap: () => ctrl.deleteLesson(i),
-        ),
-      ],
-
-      //
-      child: InkWell(
-        child: SizedBox(
-          height: 90,
-          child: ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-            leading: CircleAvatar(
-              backgroundColor: ADD_COLOR,
-              child: Text(Utils.getTime(item.dateTime),
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.bold)),
-              foregroundColor: Colors.white,
-              radius: 25,
-            ),
-            minVerticalPadding: 10,
-            title: Row(
-              children: [
-                Expanded(
-                  child: AutoSizeText(
-                    '${itemStudent.firstName} ${itemStudent.lastName}',
-                    maxLines: 1,
-                    minFontSize: 10,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                AutoSizeText(
-                  item.cost.toStringAsFixed(2) + '₴',
-                  maxLines: 1,
-                  minFontSize: 10,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                AutoSizeText(itemStudent.adress,
-                    minFontSize: 10,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AutoSizeText(itemStudent.category,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
-                    AutoSizeText(itemStudent.video,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
-                  ],
-                ),
-                AutoSizeText(itemStudent.note,
-                    minFontSize: 12,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
-              ],
-            ),
-          ),
-        ),
-        onTap: () {}, //=> ctrl.gotoTeacherTestDetail(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
-      ),
-      // ),
-    );
-  }
 }
+
+

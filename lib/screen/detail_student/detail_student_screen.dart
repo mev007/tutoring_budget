@@ -10,60 +10,84 @@ class DetailStudentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('DetailStudentScreen'.tr,
-            maxLines: 2, textAlign: TextAlign.center),
-        actions: [Utils.changeLocateBtt()],
-      ),
-      body: GetBuilder<DetailStudentController>(
-        builder: (ctrl) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+    return GetBuilder<DetailStudentController>(
+      builder: (ctrl) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('DetailStudentScreen'.tr,
+                maxLines: 2, textAlign: TextAlign.center),
+            actions: [
+              Utils.changeLocateBtt(),
+              _buildFilter(),
+            ],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 _buildInfoStudent(),
-                ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: ctrl.listLessons.length,
-                  separatorBuilder: (_, __) =>
-                      const Divider(color: MAIN_COLOR, height: 1),
-                  itemBuilder: (_, i) {
-                    final item = ctrl.listLessons[i];
-                    final isFuture = Utils.integerFromDateTime(item.dateTime) >=
-                        Utils.integerFromDateTime(DateTime.now());
-                    return ListTile(
-                      leading: isFuture
-                          ? const Icon(Icons.update, color: EDIT_FON_COLOR)
-                          : const Icon(Icons.done_all, color: Colors.green),
-                      trailing: SizedBox(
-                        width: 40,
-                        child: CircleAvatar(
-                          backgroundColor: ICON_COLOR,
-                          child: Text(item.cost.toStringAsFixed(0),
-                              style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold)),
-                          foregroundColor: Colors.white,
+                Expanded(
+                  child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: ctrl.listLessonsFilter.length,
+                    separatorBuilder: (_, __) =>
+                        const Divider(color: MAIN_COLOR, height: 1),
+                    itemBuilder: (_, i) {
+                      final item = ctrl.listLessonsFilter[i];
+                      final isFuture =
+                          Utils.integerFromDateTime(item.dateTime) >=
+                              Utils.integerFromDateTime(DateTime.now());
+                      return ListTile(
+                        leading: isFuture
+                            ? const Icon(Icons.update, color: EDIT_FON_COLOR)
+                            : const Icon(Icons.done_all, color: Colors.green),
+                        trailing: SizedBox(
+                          width: 40,
+                          child: CircleAvatar(
+                            backgroundColor:
+                                item.balance < 0 ? DEL_FON_COLOR : GREEN_COLOR,
+                            child: Text(item.cost.toStringAsFixed(0),
+                                style: const TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.bold)),
+                            foregroundColor: Colors.white,
+                          ),
                         ),
-                      ),
-                      title: Text(Utils.getDateTime(item.dateTime)),
-                    );
-                  },
+                        title: Text(Utils.getDateTime(item.dateTime)),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
   //#  ===============   ДОДАТКОВІ МЕТОДИ   =================
+  /// Кнопка фільтрування списку
+  Widget _buildFilter() {
+    final ctrl = Get.find<DetailStudentController>();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: FloatingActionButton(
+        tooltip: 'Фільтр для списку'.tr,
+        backgroundColor: ICON_COLOR,
+        child: Icon(
+          ctrl.isFilter
+              ? Icons.filter_alt_outlined
+              : Icons.filter_alt_off_outlined,
+          color: Colors.white,
+        ),
+        onPressed: () => ctrl.onPressFilter(),
+      ),
+    );
+  }
+
   /// Інформація про УЧНЯ
   Widget _buildInfoStudent() {
     final ctrl = Get.find<DetailStudentController>();
-
     return Card(
       elevation: 5.0,
       shape: const RoundedRectangleBorder(
@@ -75,69 +99,122 @@ class DetailStudentScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AutoSizeText('${ctrl.student.firstName} ${ctrl.student.lastName}',
-                textAlign: TextAlign.center,
-                style: STYLE_PARAM,
-                minFontSize: 10,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis),
-            const SizedBox(height: 10),
             Row(
               children: [
                 SizedBox(
                   width: 50,
-                  child: CircleAvatar(
-                    backgroundColor: ICON_COLOR,
-                    child: Text(ctrl.student.cost.toStringAsFixed(0),
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold)),
-                    foregroundColor: Colors.white,
+                  child: Column(
+                    children: [
+                      AutoSizeText(ctrl.student.category,
+                          textAlign: TextAlign.center,
+                          minFontSize: 10,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis),
+                      CircleAvatar(
+                        backgroundColor: ICON_COLOR,
+                        child: Text(ctrl.student.cost.toStringAsFixed(0),
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold)),
+                        foregroundColor: Colors.white,
+                      ),
+                      AutoSizeText(ctrl.student.video,
+                          textAlign: TextAlign.center,
+                          minFontSize: 10,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis),
+                    ],
                   ),
                 ),
                 Expanded(
                   child: Column(
                     children: [
-                      AutoSizeText(ctrl.student.adress,
+                      AutoSizeText(
+                          '${ctrl.student.firstName} ${ctrl.student.lastName}',
                           textAlign: TextAlign.center,
+                          style: STYLE_PARAM,
                           minFontSize: 10,
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          AutoSizeText(ctrl.student.category,
+                      const SizedBox(height: 5),
+                      ctrl.student.adress.isEmpty
+                          ? const SizedBox.shrink()
+                          : AutoSizeText(ctrl.student.adress,
                               textAlign: TextAlign.center,
                               minFontSize: 10,
-                              maxLines: 1,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis),
-                          AutoSizeText(ctrl.student.video,
-                              textAlign: TextAlign.center,
-                              minFontSize: 10,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
+                      ctrl.student.adress.isEmpty
+                          ? const SizedBox.shrink()
+                          : const SizedBox(height: 5),
+                      _buildSum(),
+                      _buildNote(ctrl),
                     ],
                   ),
                 ),
               ],
             ),
-            ctrl.student.note.isEmpty
-                ? const SizedBox.square()
-                : Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      AutoSizeText(ctrl.student.note,
-                          textAlign: TextAlign.center,
-                          minFontSize: 10,
-                          maxLines: 5,
-                          overflow: TextOverflow.ellipsis),
-                    ],
-                  ),
           ],
         ),
       ),
     );
   }
+
+  Widget _buildNote(DetailStudentController ctrl) {
+    return ctrl.student.note.isEmpty
+        ? const SizedBox.square()
+        : Column(
+            children: [
+              const SizedBox(height: 5),
+              AutoSizeText(ctrl.student.note,
+                  textAlign: TextAlign.center,
+                  minFontSize: 10,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis),
+            ],
+          );
+  }
+
+  Widget _buildSum() {
+    final ctrl = Get.find<DetailStudentController>();
+    return Obx(() => Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+                ctrl.sumF.value.toStringAsFixed(0) +
+                    ' - ' +
+                    ctrl.sumL.value.toStringAsFixed(0) +
+                    ' = ',
+                style: const TextStyle(color: ADD_COLOR)),
+            Text(
+              ctrl.sum.value.toStringAsFixed(0),
+              style: TextStyle(
+                  color: ctrl.sum.value < 0 ? DEL_FON_COLOR : GREEN_COLOR,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ));
+  }
+
+  /* Widget _buildSum() {
+    final ctrl = Get.find<DetailStudentController>();
+    return Obx(() => Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              ctrl.sumF.value.toStringAsFixed(0),
+              style: TextStyle(color: ADD_COLOR),
+            ),
+            Text(
+              ctrl.sumF.value.toStringAsFixed(0),
+              style: TextStyle(color: ADD_COLOR),
+            ),
+            Text('-'),
+            Text(ctrl.sumL.value.toStringAsFixed(0),
+              style: TextStyle(color: ADD_COLOR),),
+            Text('='),
+            Text(ctrl.sum.value.toStringAsFixed(0),
+              style: TextStyle(color: GREEN_COLOR),),
+          ],
+        ));
+  } */
 }

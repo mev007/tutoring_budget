@@ -9,11 +9,6 @@ import 'package:tutoring_budget/widgets/BuildTextField.dart';
 class EditStudentScreen extends StatelessWidget {
   const EditStudentScreen({Key? key}) : super(key: key);
 
-  final border = const OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(15)),
-    borderSide: BorderSide(color: MAIN_COLOR, width: 1),
-  );
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -103,11 +98,11 @@ class EditStudentScreen extends StatelessWidget {
           labelText: 'Категорія навчання'.tr,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.cast_for_education, color: MAIN_COLOR),
-          border: border,
-          focusedBorder: border,
-          enabledBorder: border,
-          errorBorder: border,
-          disabledBorder: border,
+          border: BORDER_DROPDOWN,
+          focusedBorder: BORDER_DROPDOWN,
+          enabledBorder: BORDER_DROPDOWN,
+          errorBorder: BORDER_DROPDOWN,
+          disabledBorder: BORDER_DROPDOWN,
           contentPadding: const EdgeInsets.fromLTRB(0, 15, 5, 15),
         ),
         items: listCategory
@@ -131,11 +126,11 @@ class EditStudentScreen extends StatelessWidget {
           labelText: 'Програма спілкування'.tr,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.personal_video, color: MAIN_COLOR),
-          border: border,
-          focusedBorder: border,
-          enabledBorder: border,
-          errorBorder: border,
-          disabledBorder: border,
+          border: BORDER_DROPDOWN,
+          focusedBorder: BORDER_DROPDOWN,
+          enabledBorder: BORDER_DROPDOWN,
+          errorBorder: BORDER_DROPDOWN,
+          disabledBorder: BORDER_DROPDOWN,
           contentPadding: const EdgeInsets.fromLTRB(0, 15, 5, 15),
         ),
         items: listVideo

@@ -9,12 +9,14 @@ class LessonsModel implements Model {
   final DateTime dateTime;
   final String idStudent;
   final double cost;
+  double balance; // Для відображення зелени/червоним кольором.
 
   LessonsModel({
     required this.id,
     required this.dateTime,
     required this.idStudent,
     required this.cost,
+    this.balance = 0,
   });
 
   factory LessonsModel.fromMap(Map<String, dynamic> map) => LessonsModel(

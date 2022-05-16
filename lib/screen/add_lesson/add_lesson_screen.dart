@@ -10,23 +10,9 @@ import 'package:tutoring_budget/widgets/BuildTextField.dart';
 import 'add_lesson_controller.dart';
 
 class AddLessonScreen extends StatelessWidget {
-  AddLessonScreen({Key? key}) : super(key: key);
+  const AddLessonScreen({Key? key}) : super(key: key);
 
-  final border = const OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(15)),
-    borderSide: BorderSide(color: MAIN_COLOR, width: 1),
-  );
-
-  final outlinedBttStyle = OutlinedButton.styleFrom(
-    alignment: Alignment.centerLeft,
-    side: const BorderSide(color: MAIN_COLOR),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    padding: const EdgeInsets.all(15),
-    backgroundColor: const Color.fromRGBO(216, 216, 216, 0.25),
-  );
-
-  final styleTextDT = const TextStyle(
-      color: MAIN_COLOR, fontSize: 16, fontWeight: FontWeight.normal);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -104,11 +90,11 @@ class AddLessonScreen extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.grey),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
-          border: border,
-          focusedBorder: border,
-          enabledBorder: border,
-          errorBorder: border,
-          disabledBorder: border,
+          border: BORDER_DROPDOWN,
+          focusedBorder: BORDER_DROPDOWN,
+          enabledBorder: BORDER_DROPDOWN,
+          errorBorder: BORDER_DROPDOWN,
+          disabledBorder: BORDER_DROPDOWN,
           contentPadding: const EdgeInsets.fromLTRB(0, 20, 5, 15),
         ),
         items: Get.find<StudentController>()
@@ -146,8 +132,8 @@ class AddLessonScreen extends StatelessWidget {
       },
       icon: const Icon(Icons.event_note, color: MAIN_COLOR),
       label: Obx(
-          () => Text(Utils.getDate(ctrl.selDate.value), style: styleTextDT)),
-      style: outlinedBttStyle,
+          () => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
+      style: OUTLINED_BTT_STYLE,
     );
   }
 
@@ -165,8 +151,8 @@ class AddLessonScreen extends StatelessWidget {
       },
       icon: const Icon(Icons.watch_later_outlined, color: MAIN_COLOR),
       label: Obx(() =>
-          Text(Utils.getTimeString(ctrl.selTime.value), style: styleTextDT)),
-      style: outlinedBttStyle,
+          Text(Utils.getTimeString(ctrl.selTime.value), style: STYLE_DATE)),
+      style: OUTLINED_BTT_STYLE,
     );
   }
 
@@ -232,7 +218,7 @@ class AddLessonScreen extends StatelessWidget {
                     },
                     child: Obx(() => Text(
                         Utils.getDate(ctrl.fromDateTime.value),
-                        style: styleTextDT)),
+                        style: STYLE_DATE)),
                     style: outlinedBttStyle,
                   ),
                   const SizedBox(width: 20),
@@ -249,7 +235,7 @@ class AddLessonScreen extends StatelessWidget {
                       if (picked != null) ctrl.toDateTime.value = picked;
                     },
                     child: Obx(() => Text(Utils.getDate(ctrl.toDateTime.value),
-                        style: styleTextDT)),
+                        style: STYLE_DATE)),
                     style: outlinedBttStyle,
                   ),
                 ],

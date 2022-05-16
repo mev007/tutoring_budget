@@ -113,6 +113,71 @@ abstract class DB {
     }
   }
 
+  /// Вибірка з STUDENT списку [id] по полях [category] [video]
+  static Future<List<Map<String, Object?>>>? selectIdStudent(
+    String? category,
+    String? video,
+  ) {
+    String sqlString = "SELECT * FROM Student";
+    if (category != null && video != null) {
+      sqlString += ' WHERE category="$category" AND video="$video"';
+    } else if (category == null && video != null) {
+      sqlString += ' WHERE video="$video"';
+    } else if (category != null && video == null) {
+      sqlString += ' WHERE category="$category"';
+    } else {
+      return null;
+    }
+    try {
+      log('SQL = $sqlString');
+      final response = _db?.rawQuery(sqlString);
+      return response;
+    } catch (e) {
+      log('Error query: ${e.toString()}');
+    }
+    return null;
+  }
+
+  /// Вибірка із бд [Finances або Lesson] проплати по заданому idStudent за заданий період
+  static Future<List<Map<String, Object?>>>? totalPayment(String table,
+      {List<String>? listIdStudent, DateTime? fromDate, DateTime? toDate}) {
+    final fromDateInt = Utils.integerFromDateTime(fromDate);
+    final toDateInt = Utils.integerFromDateTime(toDate);
+    String sqlString = "SELECT * FROM $table WHERE ";
+
+    if (listIdStudent != null && listIdStudent.isNotEmpty) {
+      var param = '"${listIdStudent[0]}"';
+      for (var i = 1; i < listIdStudent.length; i++) {
+        param += ', "${listIdStudent[i]}"';
+      }
+      sqlString += '(idStudent IN ($param))';
+      if (fromDate != null || toDate != null) {
+        sqlString += " AND ";
+      }
+    }
+
+    if (fromDate == null && toDate != null) {
+      sqlString += "(dateTime<=\"$toDateInt\")";
+    } else if (fromDate != null && toDate == null) {
+      sqlString += "(dateTime>=\"$fromDateInt\")";
+    } else if (fromDate != null && toDate != null) {
+      sqlString += "(dateTime BETWEEN $fromDateInt AND $toDateInt)";
+    } else if (listIdStudent == null) {
+      sqlString = "SELECT * FROM $table";
+    } else if (listIdStudent.isEmpty) {
+      return null;
+    }
+
+    try {
+      log('SQL = $sqlString');
+      final response = _db?.rawQuery(sqlString);
+      return response;
+    } catch (e) {
+      log('Error query: ${e.toString()}');
+    }
+    return null;
+  }
+
 /*
   ///Очищає все та вставляє дані в таблицю City
   static Future<void> insertCity(City? city) async {

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import 'constants/constants.dart';
-
 class Utils {
   ///01.01.2021 15:00
   static String getDateTime(DateTime? dateTime) {
@@ -113,5 +111,11 @@ class Utils {
   static DateTime integerToDateTime(int number) =>
       DateTime.fromMillisecondsSinceEpoch(number);
 
-  static int integerFromDateTime(DateTime dt) => dt.millisecondsSinceEpoch;
+  static int integerFromDateTime(DateTime? dt) {
+    if (dt == null) {
+      return 0;
+    } else {
+      return dt.millisecondsSinceEpoch;
+    }
+  }
 }

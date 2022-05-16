@@ -4,10 +4,18 @@ import 'package:tutoring_budget/constants/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
+import 'package:tutoring_budget/utils.dart';
 
 class FinanceController extends GetxController {
   /// Список проплат
   List<FinanceModel> listFinance = <FinanceModel>[].obs;
+  List<String>? listStudentFilter;
+  DateTime? fromDate;
+  DateTime? toDate;
+  var sum = 0.0;
+
+  String titleCategorVideo = '';
+  String titleDate = '';
 
   @override
   onInit() async {
@@ -17,10 +25,23 @@ class FinanceController extends GetxController {
 
   /// Отримання списку модельок проплат
   Future getListFinance() async {
-    final response = await DB.query(FinanceModel.nameTable);
-    if (response == null) return;
-    listFinance = response.map((e) => FinanceModel.fromMap(e)).toList();
-    // listFinance.sort((a, b) => -a.firstName.compareTo(b.firstName));
+    // final response = await DB.query(FinanceModel.nameTable);
+    final response = await DB.totalPayment(
+      'Finances',
+      listIdStudent: listStudentFilter,
+      fromDate: fromDate,
+      toDate: toDate,
+    );
+    if (response == null) {
+      listFinance = [];
+    } else {
+      listFinance = response.map((e) => FinanceModel.fromMap(e)).toList();
+      // listFinance.sort((a, b) => -a.firstName.compareTo(b.firstName));
+    }
+    sum = 0.0;
+    for (var item in listFinance) {
+      sum += item.sum;
+    }
     update();
   }
 
@@ -50,5 +71,18 @@ class FinanceController extends GetxController {
         update();
       },
     );
+  }
+
+  /// Отримання проплат по заданому idStudent за заданий період
+  Future<List<FinanceModel>?> totalPayment(
+      {String? idStudent, DateTime? fromDateTime, DateTime? toDateTime}) async {
+    final response = await DB.totalPayment(
+      'Finances',
+      listIdStudent: idStudent == null ? null : [idStudent],
+      fromDate: fromDateTime,
+      toDate: toDateTime,
+    );
+    if (response == null) return null;
+    return response.map((e) => FinanceModel.fromMap(e)).toList();
   }
 }

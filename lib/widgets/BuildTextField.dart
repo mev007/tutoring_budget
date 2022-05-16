@@ -25,11 +25,6 @@ class BuildTextField extends StatelessWidget {
     this.contentPadding,
     this.textAlign = TextAlign.left,
   }) : super(key: key);
-
-  final border = const OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(15)),
-    borderSide: BorderSide(color: MAIN_COLOR, width: 1),
-  );
   @override
   Widget build(BuildContext context) {
     final prIcon =
@@ -52,11 +47,11 @@ class BuildTextField extends StatelessWidget {
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           labelStyle: const TextStyle(color: Colors.grey),
           prefixIcon: prIcon,
-          border: border,
-          focusedBorder: border,
-          enabledBorder: border,
-          errorBorder: border,
-          disabledBorder: border,
+          border: BORDER_DROPDOWN,
+          focusedBorder: BORDER_DROPDOWN,
+          enabledBorder: BORDER_DROPDOWN,
+          errorBorder: BORDER_DROPDOWN,
+          disabledBorder: BORDER_DROPDOWN,
           contentPadding: contentPadding,
         ),
         maxLines: maxLines,
