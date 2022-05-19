@@ -5,7 +5,9 @@ import 'model.dart';
 class FinanceModel implements Model {
   static String nameTable = 'Finances';
 
-  final String id;
+  @override
+  String id;
+  
   final String idStudent;
   final DateTime dateTime;
   final double sum;

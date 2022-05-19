@@ -39,6 +39,16 @@ class LessonsController extends GetxController {
     update();
   }
 
+  ///Перехід до EditLessonScreen
+  gotoEditLesson(LessonsModel item) {
+    Get.toNamed(AppRoutes.EDIT_LESSON, arguments: item)?.then((result) async {
+      final isReloadStudent = result as bool?;
+      if (isReloadStudent != null && isReloadStudent) {
+        await getListLessons();
+      }
+    });
+  }
+
   /// Видалення запису
   Future deleteLesson(int index) async {
     final lessonId = listLessons[index].id;
@@ -115,7 +125,7 @@ class LessonsController extends GetxController {
   final kLastDay = DateTime(
       DateTime.now().year + 1, DateTime.now().month, DateTime.now().day);
 
-  CalendarFormat calendarFormat = CalendarFormat.month;
+  CalendarFormat calendarFormat = CalendarFormat.twoWeeks;
 
   /// Вибрали дату
   onDaySelected(DateTime selectedDay, DateTime focusedDay) {

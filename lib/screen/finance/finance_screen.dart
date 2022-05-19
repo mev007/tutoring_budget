@@ -23,7 +23,16 @@ class FinanceScreen extends StatelessWidget {
       body: GetBuilder<FinanceController>(
         builder: (_) => Column(
           children: [
-            _buildBoardFilter(context),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              child: Row(
+                children: [
+                  Expanded(child: _buildTitleParamFilter()),
+                  _buildBoardFilter(context),
+                  Expanded(child: _buildFilterBtt(context)),
+                ],
+              ),
+            ),
             Expanded(
               child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
@@ -56,58 +65,86 @@ class FinanceScreen extends StatelessWidget {
     );
   }
 
+  
+
+  
+
   //#  ===============   ДОДАТКОВІ МЕТОДИ   =================
-  /// Дошка для фільтрування
-  Widget _buildBoardFilter(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: Card(
-        elevation: 5.0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          side: BorderSide(color: MAIN_COLOR, width: 2),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            children: [
-              Text(ctrl.sum.toStringAsFixed(0), style: STYLE_PARAM),
-              Expanded(
-                  child: Column(
-                children: [
-                  Text(
-                    ctrl.titleCategorVideo,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    ctrl.titleDate,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              )),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 0),
-                child: SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: FloatingActionButton(
-                    tooltip: 'Фільтр для списку'.tr,
-                    backgroundColor: BTT_COLOR,
-                    child: Icon(
-                      // ctrl.isFilter
-                      //     ? Icons.filter_alt_outlined
-                      //     :
-                      Icons.filter_alt_outlined,
-                      color: Colors.white,
-                    ),
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (context) => FillterSearch(),
-                    ),
-                  ),
-                ),
+  /// інформація про параметри фільтру
+  Column _buildTitleParamFilter() {
+    return Column(
+      children: [
+        ctrl.titleStudent.isEmpty
+            ? const SizedBox.square()
+            : AutoSizeText(
+                ctrl.titleStudent,
+                textAlign: TextAlign.center,
+                minFontSize: 6,
+                maxLines: 1,
               ),
-            ],
+        ctrl.titleCategor.isEmpty
+            ? const SizedBox.square()
+            : AutoSizeText(
+                ctrl.titleCategor,
+                textAlign: TextAlign.center,
+                minFontSize: 6,
+                maxLines: 1,
+              ),
+        ctrl.titleVideo.isEmpty
+            ? const SizedBox.square()
+            : AutoSizeText(
+                ctrl.titleVideo,
+                textAlign: TextAlign.center,
+                minFontSize: 6,
+                maxLines: 1,
+              ),
+        ctrl.titleDate.isEmpty
+            ? const SizedBox.square()
+            : AutoSizeText(
+                ctrl.titleDate,
+                textAlign: TextAlign.center,
+                minFontSize: 6,
+                maxLines: 1,
+              ),
+      ],
+    );
+  }
+
+  /// Дошка для СУМИ фільтрування
+  Widget _buildBoardFilter(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        side: BorderSide(color: MAIN_COLOR, width: 2),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: Text(ctrl.sum.toStringAsFixed(0),
+            style: STYLE_PARAM.copyWith(fontSize: 24)),
+      ),
+    );
+  }
+
+  /// Кнопка для фільтру
+  Widget _buildFilterBtt(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        height: 40,
+        width: 40,
+        child: FloatingActionButton(
+          tooltip: 'Фільтр для списку'.tr,
+          backgroundColor: BTT_COLOR,
+          child: Icon(
+            ctrl.isEmptyParamInfo()
+                ? Icons.filter_alt_off_outlined
+                : Icons.filter_alt_outlined,
+            color: Colors.white,
+          ),
+          onPressed: () => showDialog(
+            context: context,
+            builder: (context) => const FillterSearch(),
           ),
         ),
       ),
@@ -156,7 +193,7 @@ class FinanceScreen extends StatelessWidget {
               minFontSize: 10,
               overflow: TextOverflow.ellipsis,
             ),
-            subtitle: AutoSizeText(itemStudent.adress,
+            subtitle: AutoSizeText(itemStudent.category,
                 minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
             trailing: Text(Utils.getDate(item.dateTime),
                 style:

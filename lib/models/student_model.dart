@@ -3,7 +3,9 @@ import 'model.dart';
 class StudentModel implements Model {
   static String nameTable = 'Student';
 
-  final String id;
+  @override
+  String id;
+  
   final String firstName;
   final String lastName;
   final String adress;

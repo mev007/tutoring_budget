@@ -74,6 +74,20 @@ abstract class DB {
     }
   }
 
+  ///Оновлює map [model] в заданій таблиці [table]
+  static Future<void> update(String table, Model model) async {
+    try {
+      await _db?.update(
+        table,
+        model.toMap(),
+        where: 'id = ?',
+        whereArgs: [model.id],
+      );
+    } catch (e) {
+      log('Error update: ${e.toString()}');
+    }
+  }
+
   ///Видаляє з [table] записи із заданими [id]
   static Future<void> deleteFromId(String table, String id) async {
     try {
@@ -218,18 +232,7 @@ abstract class DB {
     }
   }
 
-  // static Future<void> update(String table, Model model) async {
-  //   try {
-  //     await _db.update(
-  //       table,
-  //       model.toMap(),
-  //       where: 'id = ?',
-  //       whereArgs: [model.id],
-  //     );
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  
 
   // static Future<int> delete(String table, Model model) async =>
   //     await _db.delete(table, where: 'id = ?', whereArgs: [model.id]);

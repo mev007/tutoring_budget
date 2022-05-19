@@ -32,6 +32,14 @@ class ItemLesson extends StatelessWidget {
     return Slidable(
       actionPane: const SlidableStrechActionPane(),
       actionExtentRatio: 0.25,
+      actions: [
+        IconSlideAction(
+          color: EDIT_FON_COLOR,
+          foregroundColor: SLIDE_ICON_COLOR,
+          icon: Icons.edit,
+          onTap: () => ctrlLesson.gotoEditLesson(item),
+        ),
+      ],
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,

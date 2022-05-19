@@ -12,8 +12,6 @@ import 'add_lesson_controller.dart';
 class AddLessonScreen extends StatelessWidget {
   const AddLessonScreen({Key? key}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -131,8 +129,8 @@ class AddLessonScreen extends StatelessWidget {
         }
       },
       icon: const Icon(Icons.event_note, color: MAIN_COLOR),
-      label: Obx(
-          () => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
+      label:
+          Obx(() => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
       style: OUTLINED_BTT_STYLE,
     );
   }

@@ -1,4 +1,4 @@
-package com.example.tutoring_budget
+package com.tutoring.budget.mev
 
 import io.flutter.embedding.android.FlutterActivity
 

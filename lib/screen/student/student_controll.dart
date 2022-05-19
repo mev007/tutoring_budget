@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants/constants.dart';
@@ -20,7 +22,7 @@ class StudentController extends GetxController {
     final response = await DB.query(StudentModel.nameTable);
     if (response == null) return;
     listStudent = response.map((e) => StudentModel.fromMap(e)).toList();
-    // listStudent.sort((a, b) => -a.firstName.compareTo(b.firstName));
+    listStudent.sort((a, b) => a.firstName.compareTo(b.firstName));
     update();
   }
 
@@ -65,5 +67,15 @@ class StudentController extends GetxController {
   /// Детальніше про студента
   gotoDetailStudent(item) {
     Get.toNamed(AppRoutes.DETAIL_STUDENT, arguments: item);
+  }
+
+  /// Пошук StudentModel по id
+  StudentModel? searchStudentModel(String id) {
+    try {
+      return listStudent.firstWhere((element) => element.id == id);
+    } on Exception catch (e) {
+      log('$e');
+      return null;
+    }
   }
 }

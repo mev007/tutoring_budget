@@ -5,7 +5,9 @@ import 'model.dart';
 class LessonsModel implements Model {
   static String nameTable = 'Lessons';
 
-  final String id;
+  @override
+  String id;
+  
   final DateTime dateTime;
   final String idStudent;
   final double cost;

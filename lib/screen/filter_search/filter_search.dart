@@ -14,7 +14,7 @@ class FillterSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<FillterSearchController>(
-      init: FillterSearchController(), //filterData),
+      // init: FillterSearchController(), //filterData),
       builder: (ctrl) {
         return AlertDialog(
           shape: const RoundedRectangleBorder(
@@ -83,7 +83,7 @@ class FillterSearch extends StatelessWidget {
               onPressed: () => ctrl.onClearStudent(),
               iconSize: 20,
               splashRadius: 20,
-              icon: const Icon(Icons.close, color: MAIN_COLOR)),
+              icon: const Icon(Icons.close, color: DEL_FON_COLOR)),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -141,7 +141,7 @@ class FillterSearch extends StatelessWidget {
               onPressed: () => ctrl.onClearCategory(),
               iconSize: 20,
               splashRadius: 20,
-              icon: const Icon(Icons.close, color: MAIN_COLOR)),
+              icon: const Icon(Icons.close, color: DEL_FON_COLOR)),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -181,7 +181,7 @@ class FillterSearch extends StatelessWidget {
               onPressed: () => ctrl.onClearVideo(),
               iconSize: 20,
               splashRadius: 20,
-              icon: const Icon(Icons.close, color: MAIN_COLOR)),
+              icon: const Icon(Icons.close, color: DEL_FON_COLOR)),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -235,7 +235,7 @@ class FillterSearch extends StatelessWidget {
                   onPressed: () => ctrl.onClearFromDate(),
                   iconSize: 20,
                   splashRadius: 20,
-                  icon: const Icon(Icons.close, color: MAIN_COLOR),
+                  icon: const Icon(Icons.close, color: DEL_FON_COLOR),
                   constraints: const BoxConstraints(maxHeight: 36),
                 )
               ],
@@ -284,7 +284,7 @@ class FillterSearch extends StatelessWidget {
                   onPressed: () => ctrl.onClearToDate(),
                   iconSize: 20,
                   splashRadius: 20,
-                  icon: const Icon(Icons.close, color: MAIN_COLOR),
+                  icon: const Icon(Icons.close, color: DEL_FON_COLOR),
                   constraints: const BoxConstraints(maxHeight: 36),
                 )
               ],

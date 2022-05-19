@@ -4,7 +4,6 @@ import 'package:tutoring_budget/constants/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
-import 'package:tutoring_budget/utils.dart';
 
 class FinanceController extends GetxController {
   /// Список проплат
@@ -14,7 +13,9 @@ class FinanceController extends GetxController {
   DateTime? toDate;
   var sum = 0.0;
 
-  String titleCategorVideo = '';
+  String titleStudent = '';
+  String titleCategor = '';
+  String titleVideo = '';
   String titleDate = '';
 
   @override
@@ -84,5 +85,17 @@ class FinanceController extends GetxController {
     );
     if (response == null) return null;
     return response.map((e) => FinanceModel.fromMap(e)).toList();
+  }
+
+  /// Перевірка що параметри про фільтрування ПУСТО
+  bool isEmptyParamInfo() {
+    if (titleStudent.isEmpty &&
+        titleCategor.isEmpty &&
+        titleVideo.isEmpty &&
+        titleDate.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

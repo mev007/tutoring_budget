@@ -159,7 +159,7 @@ class AddLessonController extends GetxController {
         },
       );
       Get.back();
-      Utils.snackbarCheck('Записи добавлено успішно'.tr);
+      Utils.snackbarCheck('Записи успішно добавлено'.tr);
     } else {
       final dateTime = DateTime(selDate.value.year, selDate.value.month,
           selDate.value.day, selTime.value.hour, selTime.value.minute);
@@ -171,7 +171,7 @@ class AddLessonController extends GetxController {
       );
       await DB.insert(LessonsModel.nameTable, lesson);
       Get.back();
-      Utils.snackbarCheck('Записи добавлено успішно'.tr);
+      Utils.snackbarCheck('Записи успішно добавлено'.tr);
     }
   }
 }
