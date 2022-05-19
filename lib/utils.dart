@@ -84,23 +84,6 @@ class Utils {
     );
   }
 
-  static Widget changeLocateBtt() {
-    return TextButton(
-      onPressed: () {
-        final locale = Get.locale == const Locale('en', 'US')
-            ? const Locale('uk', 'UA')
-            : const Locale('en', 'US');
-        // var locale = Locale('en', 'US');
-        Get.updateLocale(locale);
-      },
-      child: const Icon(Icons.language, color: Colors.white,)
-      // const Text(
-      //   'en/ua',
-      //   style: TextStyle(color: Colors.white),
-      // ),
-    );
-  }
-
   ///Видає рандомний набір великих лат.літер і цифр заданої кількості [len]
   static String rndString(int len) {
     var r = Random.secure();

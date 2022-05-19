@@ -76,7 +76,7 @@ class FillterSearch extends StatelessWidget {
           labelText: ctrl.selectStudent == null ? null : 'Student'.tr,
           hintText: 'Виберіть учня для фільтрування'.tr,
           hintMaxLines: 2,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -134,7 +134,7 @@ class FillterSearch extends StatelessWidget {
           labelText:
               ctrl.selectCategory == null ? null : 'Категорія навчання'.tr,
           hintText: 'Категорія навчання'.tr,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.cast_for_education, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -174,7 +174,7 @@ class FillterSearch extends StatelessWidget {
           labelText:
               ctrl.selectVideo == null ? null : 'Програма спілкування'.tr,
           hintText: 'Месенджер'.tr,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.personal_video, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -226,7 +226,7 @@ class FillterSearch extends StatelessWidget {
                         ? 'Виберіть дату'.tr
                         : Utils.getDate(ctrl.selectFromDateTime),
                     style: ctrl.selectFromDateTime == null
-                        ? STYLE_DATE.copyWith(color: Colors.grey)
+                        ? STYLE_DATE.copyWith(color: GREY_COLOR)
                         : STYLE_DATE,
                     textAlign: TextAlign.center,
                   ),
@@ -275,7 +275,7 @@ class FillterSearch extends StatelessWidget {
                         ? 'Виберіть дату'.tr
                         : Utils.getDate(ctrl.selectToDateTime),
                     style: ctrl.selectToDateTime == null
-                        ? STYLE_DATE.copyWith(color: Colors.grey)
+                        ? STYLE_DATE.copyWith(color: GREY_COLOR)
                         : STYLE_DATE,
                     textAlign: TextAlign.center,
                   ),

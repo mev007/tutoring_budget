@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 import 'add_finance_controller.dart';
 
@@ -19,7 +20,7 @@ class AddFinanceScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Adding finance'.tr, maxLines: 2),
-          actions: [Utils.changeLocateBtt()],
+          actions: const [ChangeLocaleBtt()],
         ),
         body: GetBuilder<AddFinanceController>(
           builder: (ctrl) {
@@ -77,7 +78,7 @@ class AddFinanceScreen extends StatelessWidget {
         decoration: InputDecoration(
           labelText: ctrl.selectStudent == null ? null : 'Student'.tr,
           hintText: 'Виберіть учня із списку'.tr,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
           border: BORDER_DROPDOWN,

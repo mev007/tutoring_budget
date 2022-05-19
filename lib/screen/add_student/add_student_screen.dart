@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
-import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 import 'add_student_controller.dart';
 
@@ -17,7 +17,7 @@ class AddStudentScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Adding a student'.tr, maxLines: 2),
-          actions: [Utils.changeLocateBtt()],
+          actions: const [ChangeLocaleBtt()],
         ),
         body: GetBuilder<AddStudentController>(
           builder: (ctrl) {

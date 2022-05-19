@@ -45,7 +45,7 @@ class BuildTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          labelStyle: const TextStyle(color: Colors.grey),
+          labelStyle: const TextStyle(color: GREY_COLOR),
           prefixIcon: prIcon,
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,

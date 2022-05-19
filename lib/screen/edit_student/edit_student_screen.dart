@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/edit_student/edit_student_controller.dart';
-import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 class EditStudentScreen extends StatelessWidget {
   const EditStudentScreen({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class EditStudentScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Editing a student'.tr, maxLines: 2),
-          actions: [Utils.changeLocateBtt()],
+          actions: const [ChangeLocaleBtt()],
         ),
         body: GetBuilder<EditStudentController>(
           builder: (ctrl) {

@@ -5,7 +5,7 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/finance/finance_screen.dart';
 import 'package:tutoring_budget/screen/lessons/lessons_screen.dart';
 import 'package:tutoring_budget/screen/student/student_screen.dart';
-import 'package:tutoring_budget/utils.dart';
+import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 import 'board_controller.dart';
 
@@ -21,7 +21,7 @@ class BoardScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('Tutoring budget'.tr, maxLines: 2),
             centerTitle: true,
-            actions: [Utils.changeLocateBtt()],
+          actions: const [ChangeLocaleBtt()],
           ),
           body: SafeArea(
             child: IndexedStack(

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/detail_student/detail_student_controller.dart';
 import 'package:tutoring_budget/utils.dart';
+import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 class DetailStudentScreen extends StatelessWidget {
   const DetailStudentScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class DetailStudentScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('Student info'.tr, maxLines: 2),
             actions: [
-              Utils.changeLocateBtt(),
+              const ChangeLocaleBtt(),
               _buildFilter(),
             ],
           ),
