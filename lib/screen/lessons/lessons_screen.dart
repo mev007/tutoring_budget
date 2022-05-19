@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 
 import 'lessons_controller.dart';
 import 'views/item_lesson.dart';

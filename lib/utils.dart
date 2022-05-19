@@ -93,10 +93,11 @@ class Utils {
         // var locale = Locale('en', 'US');
         Get.updateLocale(locale);
       },
-      child: const Text(
-        'en/ua',
-        style: TextStyle(color: Colors.white),
-      ),
+      child: const Icon(Icons.language, color: Colors.white,)
+      // const Text(
+      //   'en/ua',
+      //   style: TextStyle(color: Colors.white),
+      // ),
     );
   }
 

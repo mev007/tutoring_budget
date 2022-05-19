@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
@@ -10,7 +10,7 @@ import 'package:tutoring_budget/widgets/BuildTextField.dart';
 import 'add_finance_controller.dart';
 
 class AddFinanceScreen extends StatelessWidget {
-  const AddFinanceScreen({ Key? key }) : super(key: key);
+  const AddFinanceScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,7 @@ class AddFinanceScreen extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('AddFinanceScreen'.tr,
-              maxLines: 2, textAlign: TextAlign.center),
+          title: Text('Adding finance'.tr, maxLines: 2),
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<AddFinanceController>(
@@ -120,8 +119,8 @@ class AddFinanceScreen extends StatelessWidget {
         }
       },
       icon: const Icon(Icons.event_note, color: MAIN_COLOR),
-      label: Obx(
-          () => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
+      label:
+          Obx(() => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
       style: OUTLINED_BTT_STYLE,
     );
   }

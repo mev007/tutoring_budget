@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 
 ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: MAIN_COLOR,
+    centerTitle: false,
     // foregroundColor: MAIN_COLOR,
     // titleTextStyle: TextStyle(fontSize: 14),
   ),

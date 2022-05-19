@@ -1,6 +1,6 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_declarations
 import 'package:flutter/material.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 
 class Btt extends StatelessWidget {
   final String title;

@@ -107,10 +107,4 @@ class FillterSearchController extends GetxController {
     ctrl.getListFinance();
     Get.back();
   }
-
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
 }

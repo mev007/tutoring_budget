@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'dart:developer';
 import 'package:path/path.dart';
@@ -59,6 +61,7 @@ abstract class DB {
     } catch (e) {
       log('Error query: ${e.toString()}');
     }
+    return null;
   }
 
   ///Вставляє map [model] в задану таблицю [table]
@@ -113,6 +116,7 @@ abstract class DB {
     } catch (e) {
       log('Error query: ${e.toString()}');
     }
+    return null;
   }
 
   /// Вибірка з [table] по полю [columnDate] даних по заданому параметру [id]
@@ -125,6 +129,7 @@ abstract class DB {
     } catch (e) {
       log('Error query: ${e.toString()}');
     }
+    return null;
   }
 
   /// Вибірка з STUDENT списку [id] по полях [category] [video]

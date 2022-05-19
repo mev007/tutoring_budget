@@ -1,7 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/finance/finance_screen.dart';
 import 'package:tutoring_budget/screen/lessons/lessons_screen.dart';
 import 'package:tutoring_budget/screen/student/student_screen.dart';
@@ -19,7 +19,7 @@ class BoardScreen extends StatelessWidget {
       builder: (ctrl) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Tutoring budget'.tr),
+            title: Text('Tutoring budget'.tr, maxLines: 2),
             centerTitle: true,
             actions: [Utils.changeLocateBtt()],
           ),

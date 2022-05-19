@@ -1,5 +1,5 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_declarations
-import '../constants/constants.dart';
+import '../constants.dart';
 import 'package:flutter/material.dart';
 
 class BuildTextField extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/edit_student/edit_student_controller.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
@@ -15,8 +15,7 @@ class EditStudentScreen extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('EditStudentScreen'.tr,
-              maxLines: 2, textAlign: TextAlign.center),
+          title: Text('Editing a student'.tr, maxLines: 2),
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<EditStudentController>(

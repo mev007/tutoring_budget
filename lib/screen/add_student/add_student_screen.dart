@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
@@ -16,8 +16,7 @@ class AddStudentScreen extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('AddStudentScreen'.tr,
-              maxLines: 2, textAlign: TextAlign.center),
+          title: Text('Adding a student'.tr, maxLines: 2),
           actions: [Utils.changeLocateBtt()],
         ),
         body: GetBuilder<AddStudentController>(

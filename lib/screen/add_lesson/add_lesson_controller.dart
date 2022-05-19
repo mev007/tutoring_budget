@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tutoring_budget/constants/constants.dart';
+import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/lessons_model.dart';
 import 'package:tutoring_budget/models/student_model.dart';
