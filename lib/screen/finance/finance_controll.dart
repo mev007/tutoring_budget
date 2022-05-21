@@ -4,6 +4,9 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
+import 'package:tutoring_budget/screen/lessons/lessons_controller.dart';
+import 'package:tutoring_budget/screen/student/student_controll.dart';
+import 'package:tutoring_budget/utils.dart';
 
 class FinanceController extends GetxController {
   /// Список проплат
@@ -48,8 +51,12 @@ class FinanceController extends GetxController {
 
   /// Перехід до AddFinanceScreen
   gotoAddFinance() {
-    Get.toNamed(AppRoutes.ADD_FINANCE)
-        ?.then((_) async => await getListFinance());
+    if (Get.find<StudentController>().listStudent.isEmpty) {
+      Utils.messageError('Список студентів порожній'.tr);
+    } else {
+      Get.toNamed(AppRoutes.ADD_FINANCE)
+          ?.then((_) async => await getListFinance());
+    }
   }
 
   /// Видалення запису
@@ -67,9 +74,11 @@ class FinanceController extends GetxController {
       buttonColor: MAIN_COLOR,
       onConfirm: () async {
         await DB.deleteFromId(FinanceModel.nameTable, financeId);
-        listFinance.removeAt(index);
+        // listFinance.removeAt(index);
+        await getListFinance();
+        await Get.find<LessonsController>().getListLessons();
         Get.back();
-        update();
+        // update();
       },
     );
   }

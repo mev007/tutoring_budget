@@ -6,6 +6,8 @@ import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/lessons_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
 import 'package:tutoring_budget/screen/finance/finance_controll.dart';
+import 'package:tutoring_budget/screen/student/student_controll.dart';
+import 'package:tutoring_budget/utils.dart';
 
 class LessonsController extends GetxController {
   /// Список занять
@@ -64,9 +66,35 @@ class LessonsController extends GetxController {
       buttonColor: MAIN_COLOR,
       onConfirm: () async {
         await DB.deleteFromId(LessonsModel.nameTable, lessonId);
-        listLessons.removeAt(index);
+        await getListLessons();
         Get.back();
-        update();
+        // update();
+      },
+    );
+  }
+
+  /// Видалення декілька записів
+  Future deleteAllFromDate(int index, String nameStudent) async {
+    final idStudent = listLessons[index].idStudent;
+    final lessonId = listLessons[index].dateTime;
+    Get.defaultDialog(
+      title: 'Delete'.tr,
+      titleStyle:
+          const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
+      middleText: 'DeleleManyRecord'.tr +
+          '\n$nameStudent\n' +
+          'after'.tr +
+          ' ${Utils.getDateTime(lessonId)}',
+      textCancel: 'Cancel'.tr,
+      cancelTextColor: MAIN_COLOR,
+      textConfirm: 'Ok',
+      confirmTextColor: Colors.white,
+      buttonColor: MAIN_COLOR,
+      onConfirm: () async {
+        await DB.deleteAllFromDate(lessonId, idStudent);
+        await getListLessons();
+        Get.back();
+        // update();
       },
     );
   }
@@ -107,8 +135,12 @@ class LessonsController extends GetxController {
 
   /// Перехід до AddLessonScreen
   gotoAddLesson() {
-    Get.toNamed(AppRoutes.ADD_LESSON)
-        ?.then((_) async => await getListLessons());
+    if (Get.find<StudentController>().listStudent.isEmpty) {
+      Utils.messageError('Список студентів порожній'.tr);
+    } else {
+      Get.toNamed(AppRoutes.ADD_LESSON)
+          ?.then((_) async => await getListLessons());
+    }
   }
 
   //# ===== КАЛЕНДАР =======

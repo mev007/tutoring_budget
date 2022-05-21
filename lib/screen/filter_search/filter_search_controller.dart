@@ -87,10 +87,24 @@ class FillterSearchController extends GetxController {
       }
     }
     ctrl.listStudentFilter = listStudentFilter;
-    ctrl.fromDate = selectFromDateTime;
-    ctrl.toDate = selectToDateTime;
+    if (selectFromDateTime != null) {
+      // Встановлюємо на початок дати
+      ctrl.fromDate = DateTime(selectFromDateTime!.year,
+          selectFromDateTime!.month, selectFromDateTime!.day);
+    } else {
+      ctrl.fromDate = selectFromDateTime;
+    }
+    if (selectToDateTime != null) {
+      // Встановлюємо на кінець дати
+      ctrl.toDate = DateTime(selectToDateTime!.year, selectToDateTime!.month,
+          selectToDateTime!.day, 23, 59, 59);
+    } else {
+      ctrl.toDate = selectToDateTime;
+    }
+
     if (selectStudent != null) {
-      ctrl.titleStudent = '${selectStudent!.firstName} ${selectStudent!.lastName}';
+      ctrl.titleStudent =
+          '${selectStudent!.firstName} ${selectStudent!.lastName}';
     } else {
       ctrl.titleStudent = '';
     }

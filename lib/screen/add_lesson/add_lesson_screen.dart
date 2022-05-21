@@ -125,7 +125,7 @@ class AddLessonScreen extends StatelessWidget {
         );
         if (picked != null) {
           ctrl.selDate.value = picked;
-          ctrl.definitionNameDay();
+          ctrl.definitionNameDayUKR();
         }
       },
       icon: const Icon(Icons.event_note, color: MAIN_COLOR),
@@ -189,7 +189,7 @@ class AddLessonScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text('в кожен день'.tr),
-                  Obx(() => Text(' ${ctrl.nameDay.value} '.tr,
+                  Obx(() => Text(' ${ctrl.nameDay.value.tr} ',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: MAIN_COLOR,
@@ -245,36 +245,3 @@ class AddLessonScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-// showModalBottomSheet(
-        //     context: context,
-        //     builder: (BuildContext builder) {
-        //       return Container(
-        //         height: MediaQuery.of(context).copyWith().size.height / 3,
-        //         color: Colors.white,
-        //         child: CupertinoDatePicker(
-        //           mode: CupertinoDatePickerMode.date,
-        //           onDateTimeChanged: (picked) => ctrl.onDateChange(picked),
-        //           dateOrder: DatePickerDateOrder.dmy,
-        //           initialDateTime: ctrl.initDate,
-        //         ),
-        //       );
-        //     });
-
-/* showModalBottomSheet(
-            context: context,
-            builder: (BuildContext builder) {
-              return Container(
-                height: MediaQuery.of(context).copyWith().size.height / 3,
-                color: Colors.white,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.time,
-                  onDateTimeChanged: (picked) => ctrl.onTimeChange(picked),
-                  initialDateTime: ctrl.initTime,
-                  use24hFormat: true,
-                ),
-              );
-            }); */

@@ -197,6 +197,19 @@ abstract class DB {
     return null;
   }
 
+  ///Видаляє з Lessons записи із заданими [idStudent] після [dt] дати
+  static Future<void> deleteAllFromDate(DateTime dt, String idStudent) async {
+    try {
+      final dtInt = Utils.integerFromDateTime(dt);
+      final response = await _db?.delete('Lessons',
+          where: 'dateTime >= ? AND idStudent = ?',
+          whereArgs: [dtInt, idStudent]);
+      log('>>> Видалено із таблиці: Lessons записів $response');
+    } catch (e) {
+      log('Error delete: ${e.toString()}');
+    }
+  }
+
 /*
   ///Очищає все та вставляє дані в таблицю City
   static Future<void> insertCity(City? city) async {

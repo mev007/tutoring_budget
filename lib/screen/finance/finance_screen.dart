@@ -65,10 +65,6 @@ class FinanceScreen extends StatelessWidget {
     );
   }
 
-  
-
-  
-
   //#  ===============   ДОДАТКОВІ МЕТОДИ   =================
   /// інформація про параметри фільтру
   Column _buildTitleParamFilter() {
@@ -119,9 +115,14 @@ class FinanceScreen extends StatelessWidget {
         side: BorderSide(color: MAIN_COLOR, width: 2),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Text(ctrl.sum.toStringAsFixed(0),
-            style: STYLE_PARAM.copyWith(fontSize: 24)),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Column(
+          children: [
+            AutoSizeText('Сума платежів'.tr, maxLines: 1, minFontSize: 6),
+            Text(ctrl.sum.toStringAsFixed(0),
+                style: STYLE_PARAM.copyWith(fontSize: 24)),
+          ],
+        ),
       ),
     );
   }

@@ -42,7 +42,7 @@ class AddLessonController extends GetxController {
     selTime.value = TimeOfDay(hour: selTime.value.hour, minute: 0);
     fromDateTime.value = Get.find<LessonsController>().selDay;
     toDateTime.value = fromDateTime.value.add(const Duration(days: 150));
-    definitionNameDay();
+    definitionNameDayUKR();
     update();
     super.onInit();
   }
@@ -70,43 +70,31 @@ class AddLessonController extends GetxController {
   }
 
   /// Визначення назви ДНЯ для [nameDay]
-  definitionNameDay() {
+  definitionNameDayUKR() {
     switch (selDate.value.weekday) {
       case 1:
-        nameDay.value = 'Понеділок'.tr;
+        nameDay.value = 'Понеділок';
         break;
       case 2:
-        nameDay.value = 'Вівторок'.tr;
+        nameDay.value = 'Вівторок';
         break;
       case 3:
-        nameDay.value = 'Середа'.tr;
+        nameDay.value = 'Середа';
         break;
       case 4:
-        nameDay.value = 'Четвер'.tr;
+        nameDay.value = 'Четвер';
         break;
       case 5:
-        nameDay.value = 'П\'ятниця'.tr;
+        nameDay.value = 'Пятниця';
         break;
       case 6:
-        nameDay.value = 'Субота'.tr;
+        nameDay.value = 'Субота';
         break;
       case 7:
-        nameDay.value = 'Неділя'.tr;
+        nameDay.value = 'Неділя';
         break;
     }
   }
-
-  // onDateChange(picked) {
-  //   selectDate = picked;
-  //   initDate = picked;
-  //   update();
-  // }
-
-  // onTimeChange(picked) {
-  //   selectTime = picked;
-  //   initTime = picked;
-  //   update();
-  // }
 
   /// Збереження
   onSave() async {
@@ -158,10 +146,11 @@ class AddLessonController extends GetxController {
             dateTime = dateTime.add(const Duration(days: 7));
           }
           Get.back();
+          Utils.snackbarCheck('Записи успішно добавлено'.tr);
         },
       );
       Get.back();
-      Utils.snackbarCheck('Записи успішно добавлено'.tr);
+      
     } else {
       final dateTime = DateTime(selDate.value.year, selDate.value.month,
           selDate.value.day, selTime.value.hour, selTime.value.minute);

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/models/student_model.dart';
+import 'package:tutoring_budget/screen/lessons/lessons_controller.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:uuid/uuid.dart';
 
@@ -53,6 +54,7 @@ class AddFinanceController extends GetxController {
       sum: sum,
     );
     await DB.insert(FinanceModel.nameTable, lesson);
+    await Get.find<LessonsController>().getListLessons();
     Get.back();
     Utils.snackbarCheck('Записи добавлено успішно'.tr);
   }

@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   build(BuildContext context) {
+    print('deviceLocale = ${Get.deviceLocale}');
     return GetMaterialApp(
-      title: 'Tutoring budget',
+      title: 'Tutor budget',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: AppPages.list,
@@ -29,8 +30,8 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       translations: Messages(),
-      locale: const Locale('uk', 'UA'), //Get.deviceLocale,
-      fallbackLocale: const Locale('uk', 'UA'),
+      locale: Get.deviceLocale,  //const Locale('uk', 'UA'), 
+      fallbackLocale: const Locale('en', ''),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       // const [
       //   GlobalMaterialLocalizations.delegate,

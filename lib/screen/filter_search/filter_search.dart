@@ -14,7 +14,6 @@ class FillterSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<FillterSearchController>(
-      // init: FillterSearchController(), //filterData),
       builder: (ctrl) {
         return AlertDialog(
           shape: const RoundedRectangleBorder(
@@ -72,11 +71,12 @@ class FillterSearch extends StatelessWidget {
       child: DropdownButtonFormField(
         isDense: false,
         isExpanded: true,
+        hint: Text('Виберіть учня для фільтрування'.tr, style: const TextStyle(color: GREY_COLOR)),
         decoration: InputDecoration(
           labelText: ctrl.selectStudent == null ? null : 'Student'.tr,
-          hintText: 'Виберіть учня для фільтрування'.tr,
-          hintMaxLines: 2,
-          hintStyle: const TextStyle(color: GREY_COLOR),
+          // hintText: 'Виберіть учня для фільтрування'.tr,
+          // hintMaxLines: 2,
+          // hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -130,11 +130,13 @@ class FillterSearch extends StatelessWidget {
       child: DropdownButtonFormField(
         isDense: false,
         isExpanded: true,
+        hint: Text('Категорія навчання'.tr,
+            style: const TextStyle(color: GREY_COLOR)),
         decoration: InputDecoration(
           labelText:
               ctrl.selectCategory == null ? null : 'Категорія навчання'.tr,
-          hintText: 'Категорія навчання'.tr,
-          hintStyle: const TextStyle(color: GREY_COLOR),
+          // hintText: 'Категорія навчання'.tr,
+          // hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.cast_for_education, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -150,7 +152,7 @@ class FillterSearch extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
         ),
         items: listCategory
-            .map((e) => DropdownMenuItem(child: Text(e), value: e))
+            .map((e) => DropdownMenuItem(child: Text(e, maxLines: 2), value: e))
             .toList(),
         onChanged: (e) => ctrl.onChangeCategory(e.toString()),
         value: ctrl.selectCategory,
@@ -170,11 +172,10 @@ class FillterSearch extends StatelessWidget {
       child: DropdownButtonFormField(
         isDense: false,
         isExpanded: true,
+        hint: Text('Месенджер'.tr, style: const TextStyle(color: GREY_COLOR)),
         decoration: InputDecoration(
           labelText:
               ctrl.selectVideo == null ? null : 'Програма спілкування'.tr,
-          hintText: 'Месенджер'.tr,
-          hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const Icon(Icons.personal_video, color: MAIN_COLOR),
           suffixIcon: IconButton(
@@ -190,7 +191,7 @@ class FillterSearch extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
         ),
         items: listVideo
-            .map((e) => DropdownMenuItem(child: Text(e), value: e))
+            .map((e) => DropdownMenuItem(child: Text(e, maxLines: 1), value: e))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
         value: ctrl.selectVideo,

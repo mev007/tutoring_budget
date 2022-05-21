@@ -47,6 +47,13 @@ class ItemLesson extends StatelessWidget {
           icon: Icons.delete,
           onTap: () => ctrlLesson.deleteLesson(i),
         ),
+        IconSlideAction(
+          color: BTT_COLOR,
+          foregroundColor: SLIDE_ICON_COLOR,
+          icon: Icons.auto_delete,
+          onTap: () => ctrlLesson.deleteAllFromDate(
+              i, '${itemStudent.firstName} ${itemStudent.lastName}'),
+        ),
       ],
 
       //

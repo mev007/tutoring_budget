@@ -19,17 +19,17 @@ class BoardScreen extends StatelessWidget {
       builder: (ctrl) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Tutoring budget'.tr, maxLines: 2),
+            title: Text('Tutor budget'.tr, maxLines: 2),
             centerTitle: true,
-          actions: const [ChangeLocaleBtt()],
+            actions: const [ChangeLocaleBtt()],
           ),
           body: SafeArea(
             child: IndexedStack(
               index: ctrl.tabIndex,
               children: [
+                StudentScreen(),
                 LessonsScreen(),
                 FinanceScreen(),
-                StudentScreen(),
               ],
             ),
           ),
@@ -51,16 +51,16 @@ class BoardScreen extends StatelessWidget {
       color: Colors.white,
       items: [
         TabItem(
-          icon: Icon(Icons.event_note, color: _buildColorTab(0, ctrl)),
+          icon: Icon(Icons.school, color: _buildColorTab(0, ctrl)),
+          title: 'Students'.tr,
+        ),
+        TabItem(
+          icon: Icon(Icons.event_note, color: _buildColorTab(1, ctrl)),
           title: 'Lessons'.tr,
         ),
         TabItem(
-          icon: Icon(Icons.savings, color: _buildColorTab(1, ctrl)),
+          icon: Icon(Icons.savings, color: _buildColorTab(2, ctrl)),
           title: 'Finances'.tr,
-        ),
-        TabItem(
-          icon: Icon(Icons.school, color: _buildColorTab(2, ctrl)),
-          title: 'Students'.tr,
         ),
       ],
     );
