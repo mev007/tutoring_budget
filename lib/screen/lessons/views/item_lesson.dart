@@ -35,7 +35,7 @@ class ItemLesson extends StatelessWidget {
       actions: [
         IconSlideAction(
           color: EDIT_FON_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
+          foregroundColor: WHITE_COLOR,
           icon: Icons.edit,
           onTap: () => ctrlLesson.gotoEditLesson(item),
         ),
@@ -43,13 +43,13 @@ class ItemLesson extends StatelessWidget {
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
+          foregroundColor: WHITE_COLOR,
           icon: Icons.delete,
           onTap: () => ctrlLesson.deleteLesson(i),
         ),
         IconSlideAction(
           color: BTT_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
+          foregroundColor: WHITE_COLOR,
           icon: Icons.auto_delete,
           onTap: () => ctrlLesson.deleteAllFromDate(
               i, '${itemStudent.firstName} ${itemStudent.lastName}'),

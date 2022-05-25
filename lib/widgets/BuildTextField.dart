@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class BuildTextField extends StatelessWidget {
   final String labelText;
+  final bool autofocus;
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
@@ -16,6 +17,7 @@ class BuildTextField extends StatelessWidget {
   const BuildTextField({
     Key? key,
     this.labelText = '',
+    this.autofocus = false,
     this.obscureText = false,
     this.keyboardType,
     this.controller,
@@ -37,6 +39,7 @@ class BuildTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
+        autofocus: autofocus,
         obscureText: obscureText,
         controller: controller,
         keyboardType: keyboardType,

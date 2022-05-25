@@ -102,4 +102,19 @@ class Utils {
       return dt.millisecondsSinceEpoch;
     }
   }
+
+  static DateTime withoutTime(DateTime dt) =>
+      DateTime(dt.year, dt.month, dt.day);
+
+  /// Визначає ДАТУ початку тижня
+  static DateTime startWeek(DateTime dateTime) {
+    final countDay = dateTime.weekday - 1;
+    return dateTime.subtract(Duration(days: countDay));
+  }
+
+  /// Визначає ДАТУ кінця тижня
+  static DateTime endWeek(DateTime dateTime) {
+    final countDay = 7 - dateTime.weekday;
+    return dateTime.add(Duration(days: countDay));
+  }
 }

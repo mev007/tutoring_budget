@@ -2,22 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-List<String> listCategory = [
-  'ЗНО',
-  '5 клас',
-  '6 клас',
-  '7 клас',
-  '8 клас',
-  '9 клас',
-  '10 клас',
-];
+// List<String> listCategory = [
+//   'ZNO',
+//   '10th grade'
+// ];
 
-List<String> listVideo = [
-  'Skype',
-  'Google Meet',
-  'Zoom',
-  'Microsoft Teams',
-];
+// List<String> listVideo = [
+//   'Skype',
+//   'Google Meet',
+//   'Zoom',
+//   'Microsoft Teams',
+// ];
 
 const Color MAIN_COLOR = Color(0xFF4a354f);
 const Color BTT_COLOR = Color(0xFFc06033); 
@@ -27,7 +22,7 @@ const Color FON_COLOR = Color(0xFFFFF1E7);
 const Color GREEN_COLOR = Color.fromARGB(255, 4, 154, 4);
 const Color EDIT_FON_COLOR = Color(0xFF2A64AB);
 const Color DEL_FON_COLOR = Color(0xFFAA3731);
-const Color SLIDE_ICON_COLOR = Color(0xFFFFFFFF);
+const Color WHITE_COLOR = Color(0xFFFFFFFF);
 const Color GREY_COLOR = Colors.grey;
 
 const BoxShadow SHADOW = BoxShadow(

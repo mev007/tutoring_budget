@@ -1,7 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/db.dart';
+import 'package:tutoring_budget/sp.dart';
 
 import 'messages.dart';
 import 'routes/app_pages.dart';
@@ -9,6 +12,8 @@ import 'themes/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SP.init();
+  print('SP.prefs = ${SP.prefs}');
   await DB.init();
   // Ініціалізаці для бібліотеки intl для locale: '${Get.locale}'
   // await initializeDateFormatting('uk_UA', null);
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       translations: Messages(),
-      locale: Get.deviceLocale,  //const Locale('uk', 'UA'), 
+      locale: Locale(SP.curentLanguage), //Get.deviceLocale,  //const Locale('uk', 'UA'), 
       fallbackLocale: const Locale('en', ''),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       // const [
@@ -38,8 +43,10 @@ class MyApp extends StatelessWidget {
       //   GlobalWidgetsLocalizations.delegate,
       // ],
       supportedLocales: const [
-        Locale('en', ''),
-        Locale('uk', 'UA'),
+        Locale('en'),
+        Locale('uk'),
+        // Locale('en', ''),
+        // Locale('uk', 'UA'),
       ],
     );
   }

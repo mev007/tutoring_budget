@@ -4,7 +4,7 @@ import 'package:tutoring_budget/constants.dart';
 ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: MAIN_COLOR,
-    centerTitle: false,
+    centerTitle: true,
     // foregroundColor: MAIN_COLOR,
     // titleTextStyle: TextStyle(fontSize: 14),
   ),

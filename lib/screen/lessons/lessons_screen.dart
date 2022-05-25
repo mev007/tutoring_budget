@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:tutoring_budget/constants.dart';
+import 'package:tutoring_budget/utils.dart';
 
 import 'lessons_controller.dart';
 import 'views/item_lesson.dart';
@@ -9,7 +10,7 @@ import 'views/item_lesson.dart';
 class LessonsScreen extends StatelessWidget {
   LessonsScreen({Key? key}) : super(key: key);
   final LessonsController ctrl = Get.put(LessonsController());
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,10 @@ class LessonsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   side: BorderSide(color: MAIN_COLOR, width: 2.0),
                 ),
-                child: _buildCalendar(),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: _buildCalendar(),
+                ),
               ),
               ListView.separated(
                 shrinkWrap: true,
@@ -61,6 +65,28 @@ class LessonsScreen extends StatelessWidget {
   Widget _buildCalendar() {
     return TableCalendar(
       //% Налаштування ==========
+      calendarBuilders: CalendarBuilders(
+        markerBuilder: (_, date, __) {
+          final count = ctrl.mapMarket[Utils.withoutTime(date)];
+          return count == null
+              ? const SizedBox.shrink()
+              : Positioned(
+                  bottom: 5,
+                  right: 5,
+                  child: CircleAvatar(
+                    child: Text(
+                      '$count',
+                      style: const TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    radius: 8,
+                    backgroundColor: BTT_COLOR,
+                  ),
+                );
+        },
+      ),
       focusedDay: ctrl.focusedDay,
       firstDay: ctrl.kFirstDay,
       lastDay: ctrl.kLastDay,
@@ -105,8 +131,7 @@ class LessonsScreen extends StatelessWidget {
         ctrl.onDaySelected(selectedDay, focusedDay);
       },
       onFormatChanged: (format) => ctrl.onFormatChanged(format),
+      onPageChanged: (date) => ctrl.onPageChanged(date),
     );
   }
 }
-
-

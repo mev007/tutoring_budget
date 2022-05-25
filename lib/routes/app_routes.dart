@@ -8,4 +8,8 @@ class AppRoutes {
   static const String ADD_LESSON = '/AddLessonScreen';
   static const String ADD_FINANCE = '/AddFinanceScreen';
   static const String EDIT_LESSON = '/EditLessonScreen';
+  static const String LANGUAGE = '/Language';
+  static const String CATEGORY = '/Category';
+  static const String COMMUNICATION = '/Communication';
+  static const String SUPPORT = '/Support';
 }

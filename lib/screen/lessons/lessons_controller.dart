@@ -5,17 +5,19 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/lessons_model.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
-import 'package:tutoring_budget/screen/finance/finance_controll.dart';
+import 'package:tutoring_budget/screen/FINANCES/finance_controll.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
 
 class LessonsController extends GetxController {
   /// Список занять
   List<LessonsModel> listLessons = <LessonsModel>[];
+  Map<DateTime, int> mapMarket = {};
 
   @override
   onInit() async {
     await getListLessons();
+    await builMarker();
     super.onInit();
   }
 
@@ -47,6 +49,7 @@ class LessonsController extends GetxController {
       final isReloadStudent = result as bool?;
       if (isReloadStudent != null && isReloadStudent) {
         await getListLessons();
+        builMarker();
       }
     });
   }
@@ -67,8 +70,8 @@ class LessonsController extends GetxController {
       onConfirm: () async {
         await DB.deleteFromId(LessonsModel.nameTable, lessonId);
         await getListLessons();
+        builMarker();
         Get.back();
-        // update();
       },
     );
   }
@@ -91,10 +94,12 @@ class LessonsController extends GetxController {
       confirmTextColor: Colors.white,
       buttonColor: MAIN_COLOR,
       onConfirm: () async {
-        await DB.deleteAllFromDate(lessonId, idStudent);
+        final countDelRecords = await DB.deleteAllFromDate(lessonId, idStudent);
         await getListLessons();
+        builMarker();
         Get.back();
-        // update();
+        Utils.snackbarCheck(
+            'Видалено записів:'.tr + ' $countDelRecords ' + 'шт'.tr);
       },
     );
   }
@@ -138,9 +143,43 @@ class LessonsController extends GetxController {
     if (Get.find<StudentController>().listStudent.isEmpty) {
       Utils.messageError('Список студентів порожній'.tr);
     } else {
-      Get.toNamed(AppRoutes.ADD_LESSON)
-          ?.then((_) async => await getListLessons());
+      Get.toNamed(AppRoutes.ADD_LESSON)?.then((countRecords) async {
+        await getListLessons();
+        builMarker();
+        if (countRecords != null) {
+          Utils.snackbarCheck('Успішно добавлено записи:'.tr +
+              ' ${countRecords as int} ' +
+              'шт'.tr);
+        }
+      });
     }
+  }
+
+  /// Побудова маркерів кількості занять на день
+  Future<void> builMarker() async {
+    final firstDayOfMonth = DateTime(focusedDay.year, focusedDay.month, 1);
+    final lastDayOfMonth = DateTime(focusedDay.year, focusedDay.month + 1, 1)
+        .subtract(const Duration(days: 1));
+    final startDate = Utils.startWeek(firstDayOfMonth);
+    final endDate = Utils.endWeek(lastDayOfMonth);
+    final tempList =
+        await DB.totalPayment('Lessons', fromDate: startDate, toDate: endDate);
+    var currentDate = Utils.withoutTime(startDate);
+    mapMarket = {};
+    while (!currentDate.isAfter(endDate)) {
+      final count = tempList
+          ?.where((e) {
+            final ddd = LessonsModel.fromMap(e);
+            return Utils.withoutTime(ddd.dateTime) == currentDate;
+          })
+          .toList()
+          .length;
+      if (count != null && count != 0) {
+        mapMarket[currentDate] = count;
+      }
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+    update();
   }
 
   //# ===== КАЛЕНДАР =======
@@ -149,6 +188,9 @@ class LessonsController extends GetxController {
 
   /// Дата для фокусування
   DateTime focusedDay = DateTime.now();
+
+  // /// Дата для створення маркерів
+  // DateTime markerDay = DateTime.now();
 
   /// Дата початку діапазону
   final kFirstDay = DateTime(DateTime.now().year - 1, DateTime.now().month, 1);
@@ -175,103 +217,10 @@ class LessonsController extends GetxController {
       update();
     }
   }
+
+  /// Змінює формат відображення календаря
+  onPageChanged(DateTime date) {
+      focusedDay = date;
+      builMarker();
+  }
 }
-
-// @override
-// void onDetached() {
-//   print('object');
-// }
-
-// @override
-// void onInactive() {
-//   print('object');
-// }
-
-// @override
-// void onPaused() {
-//   print('object');
-// }
-
-// @override
-// void onResumed() {
-//   print('object');
-// }
-
-// @override
-// Future<bool> didPopRoute() {
-//   print('object');
-//   return super.didPopRoute();
-// }
-
-// @override
-// void didChangeAccessibilityFeatures() {
-//   print('object');
-//   super.didChangeAccessibilityFeatures();
-// }
-
-// @override
-// void didChangeMetrics() {
-//   print('object');
-//   super.didChangeMetrics();
-// }
-
-// @override
-// void didChangePlatformBrightness() {
-//   print('object');
-//   super.didChangePlatformBrightness();
-// }
-
-// @override
-// void didChangeTextScaleFactor() {
-//   print('object');
-//   super.didChangeTextScaleFactor();
-// }
-
-// @override
-// Future<bool> didPushRoute(String route) {
-//  print('object');
-//   return super.didPushRoute(route);
-// }
-
-// @override
-// void didHaveMemoryPressure() {
-//  print('object');
-//   super.didHaveMemoryPressure();
-// }
-// @override
-// void disposeId(Object id) {
-//   print('object');
-//   super.disposeId(id);
-// }
-
-// @override
-// void dispose() {
-//  print('object');
-//   super.dispose();
-// }
-
-// @override
-// void onClose() {
-//   print('object');
-//   super.onClose();
-// }
-
-// @override
-// void onReady() {
-//   print('object');
-//   super.onReady();
-// }
-
-// @override
-// // TODO: implement onStart
-// InternalFinalCallback<void> get onStart {
-//   print('dfghdfgdfgdfgdfg');
-//   return super.onStart;
-// }
-
-// @override
-// // TODO: implement onDelete
-// InternalFinalCallback<void> get onDelete {
-//   print('object');
-//   return super.onDelete;
-// }

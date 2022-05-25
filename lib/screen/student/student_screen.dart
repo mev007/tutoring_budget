@@ -52,7 +52,7 @@ class StudentScreen extends StatelessWidget {
       actions: [
         IconSlideAction(
           color: EDIT_FON_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
+          foregroundColor: WHITE_COLOR,
           icon: Icons.edit,
           onTap: () => ctrl.gotoEditStudent(item),
         ),
@@ -60,7 +60,7 @@ class StudentScreen extends StatelessWidget {
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,
-          foregroundColor: SLIDE_ICON_COLOR,
+          foregroundColor: WHITE_COLOR,
           icon: Icons.delete,
           onTap: () => ctrl.deleteStudent(i),
         ),

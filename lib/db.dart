@@ -198,17 +198,32 @@ abstract class DB {
   }
 
   ///Видаляє з Lessons записи із заданими [idStudent] після [dt] дати
-  static Future<void> deleteAllFromDate(DateTime dt, String idStudent) async {
+  static Future<int?> deleteAllFromDate(DateTime dt, String idStudent) async {
     try {
       final dtInt = Utils.integerFromDateTime(dt);
       final response = await _db?.delete('Lessons',
           where: 'dateTime >= ? AND idStudent = ?',
           whereArgs: [dtInt, idStudent]);
       log('>>> Видалено із таблиці: Lessons записів $response');
+      return response;
     } catch (e) {
       log('Error delete: ${e.toString()}');
     }
+    return null;
   }
+
+  // static void queryGoupbyDatetime() async {
+  //   try {
+  //     final ddd = await _db?.query(
+  //       'Lessons',
+  //       groupBy: '"dateTime" = ?',
+  //       whereArgs: [],
+  //     );
+  //   } catch (e) {
+  //     log('Error query: ${e.toString()}');
+  //   }
+  //   return null;
+  // }
 
 /*
   ///Очищає все та вставляє дані в таблицю City

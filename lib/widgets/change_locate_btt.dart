@@ -14,7 +14,11 @@ class ChangeLocaleBtt extends StatelessWidget {
         // var locale = Locale('en', 'US');
         Get.updateLocale(locale);
       },
-      child: const Icon(Icons.language, color: Colors.white,)
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Image.asset("assets/icon/ua-en.png"),
+      ),
+      // const Icon(Icons.language, color: Colors.white,)
       // const Text(
       //   'en/ua',
       //   style: TextStyle(color: Colors.white),

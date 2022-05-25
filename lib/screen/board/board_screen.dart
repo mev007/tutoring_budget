@@ -2,10 +2,10 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
-import 'package:tutoring_budget/screen/finance/finance_screen.dart';
+import 'package:tutoring_budget/screen/FINANCES/finance_screen.dart';
 import 'package:tutoring_budget/screen/lessons/lessons_screen.dart';
+import 'package:tutoring_budget/screen/setting/setting_screen.dart';
 import 'package:tutoring_budget/screen/student/student_screen.dart';
-import 'package:tutoring_budget/widgets/change_locate_btt.dart';
 
 import 'board_controller.dart';
 
@@ -18,11 +18,7 @@ class BoardScreen extends StatelessWidget {
       init: BoardController(),
       builder: (ctrl) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text('Tutor budget'.tr, maxLines: 2),
-            centerTitle: true,
-            actions: const [ChangeLocaleBtt()],
-          ),
+          appBar: AppBar(title: Text('Tutor budget'.tr, maxLines: 2)),
           body: SafeArea(
             child: IndexedStack(
               index: ctrl.tabIndex,
@@ -30,6 +26,7 @@ class BoardScreen extends StatelessWidget {
                 StudentScreen(),
                 LessonsScreen(),
                 FinanceScreen(),
+                const SettingScreen(),
               ],
             ),
           ),
@@ -61,6 +58,10 @@ class BoardScreen extends StatelessWidget {
         TabItem(
           icon: Icon(Icons.savings, color: _buildColorTab(2, ctrl)),
           title: 'Finances'.tr,
+        ),
+        TabItem(
+          icon: Icon(Icons.settings, color: _buildColorTab(3, ctrl)),
+          title: 'Setting'.tr,
         ),
       ],
     );
