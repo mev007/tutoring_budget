@@ -111,6 +111,10 @@ class AddLessonController extends GetxController {
     } else {
       cost = double.tryParse(costNameController.text.trim())!;
     }
+    if (fromDateTime.value.isAfter(toDateTime.value)) {
+      Utils.messageError('Date range error'.tr);
+      return;
+    }
 
     if (isCheckbox.value == true) {
       var countRecords = 0;

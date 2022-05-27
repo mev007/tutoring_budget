@@ -135,6 +135,7 @@ class FinanceScreen extends StatelessWidget {
         height: 40,
         width: 40,
         child: FloatingActionButton(
+          heroTag: null,
           tooltip: 'Фільтр для списку'.tr,
           backgroundColor: BTT_COLOR,
           child: Icon(

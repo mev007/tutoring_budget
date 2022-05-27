@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get/get.dart';
@@ -22,8 +23,16 @@ class SupportController extends GetxController {
       recipients: ['mobile2021app@gmail.com'],
       isHTML: false,
     );
-    await FlutterEmailSender.send(sendEmail);
-    Get.back();
+    
+    try {
+      await FlutterEmailSender.send(sendEmail);
+      Get.back();
+    } on PlatformException catch(e) {
+      Utils.messageError('Error E-Mail'.tr + '\n\n${e.message}');
+    } on Exception catch (e) {
+      Utils.messageError('Error E-Mail'.tr + '\n$e');
+    }
+    
   }
 
   @override

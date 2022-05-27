@@ -67,6 +67,7 @@ class DetailStudentScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: FloatingActionButton(
+        heroTag: 'filter_2',
         tooltip: 'Фільтр для списку'.tr,
         backgroundColor: ICON_COLOR,
         child: Icon(
@@ -190,26 +191,5 @@ class DetailStudentScreen extends StatelessWidget {
         ));
   }
 
-  /* Widget _buildSum() {
-    final ctrl = Get.find<DetailStudentController>();
-    return Obx(() => Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              ctrl.sumF.value.toStringAsFixed(0),
-              style: TextStyle(color: ADD_COLOR),
-            ),
-            Text(
-              ctrl.sumF.value.toStringAsFixed(0),
-              style: TextStyle(color: ADD_COLOR),
-            ),
-            Text('-'),
-            Text(ctrl.sumL.value.toStringAsFixed(0),
-              style: TextStyle(color: ADD_COLOR),),
-            Text('='),
-            Text(ctrl.sum.value.toStringAsFixed(0),
-              style: TextStyle(color: GREEN_COLOR),),
-          ],
-        ));
-  } */
+  
 }

@@ -49,6 +49,10 @@ class CategoryController extends GetxController {
   }
 
   deleteItem(int i) {
+    if (listCategory.length == 1) {
+      Utils.messageError('Не можна видалити. Залиште один запис'.tr);
+      return;
+    } 
     Get.defaultDialog(
       title: 'Delete'.tr,
       titleStyle:

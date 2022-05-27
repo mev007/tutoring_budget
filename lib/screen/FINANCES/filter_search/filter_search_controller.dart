@@ -74,6 +74,12 @@ class FillterSearchController extends GetxController {
   }
 
   onApply() async {
+    if (selectFromDateTime != null &&
+        selectToDateTime != null &&
+        selectFromDateTime!.isAfter(selectToDateTime!)) {
+      Utils.messageError('Date range error'.tr);
+      return;
+    }
     final ctrl = Get.find<FinanceController>();
     List<String>? listStudentFilter;
     if (selectStudent != null) {
