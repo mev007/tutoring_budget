@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_declarations
 import 'package:flutter/material.dart';
 import 'package:tutoring_budget/constants.dart';
+import 'package:tutoring_budget/widgets/my_icon.dart';
 
 class BuildTextFieldMultiline extends StatelessWidget {
   final double height;
@@ -16,7 +17,6 @@ class BuildTextFieldMultiline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       height: height,
       decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class BuildTextFieldMultiline extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
           labelText: labelText,
-          prefixIcon: const Icon(Icons.text_fields, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.text_fields),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           labelStyle: const TextStyle(color: Colors.grey),
           border: BORDER_DROPDOWN,

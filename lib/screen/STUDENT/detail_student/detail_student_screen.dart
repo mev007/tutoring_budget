@@ -176,11 +176,11 @@ class DetailStudentScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                ctrl.sumF.value.toStringAsFixed(0) +
-                    ' - ' +
-                    ctrl.sumL.value.toStringAsFixed(0) +
-                    ' = ',
-                style: const TextStyle(color: ADD_COLOR)),
+              ctrl.sumF.value.toStringAsFixed(0) +
+                  ' - ' +
+                  ctrl.sumL.value.toStringAsFixed(0) +
+                  ' = ',
+            ),
             Text(
               ctrl.sum.value.toStringAsFixed(0),
               style: TextStyle(
@@ -190,6 +190,4 @@ class DetailStudentScreen extends StatelessWidget {
           ],
         ));
   }
-
-  
 }

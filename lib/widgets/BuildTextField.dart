@@ -1,6 +1,11 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_declarations
+
+import 'package:get/get.dart';
+
 import '../constants.dart';
 import 'package:flutter/material.dart';
+
+import 'my_icon.dart';
 
 class BuildTextField extends StatelessWidget {
   final String labelText;
@@ -30,7 +35,8 @@ class BuildTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prIcon =
-        prefixIcon == null ? null : Icon(prefixIcon, color: MAIN_COLOR);
+        prefixIcon == null ? null : MyIcon(prefixIcon!);
+    // , color: MAIN_COLOR);
     return Container(
       height: height,
       // alignment: Alignment.center,
@@ -44,7 +50,7 @@ class BuildTextField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         textAlign: textAlign,
-        cursorColor: MAIN_COLOR,
+        cursorColor: Get.isDarkMode ? Colors.white : MAIN_COLOR,
         decoration: InputDecoration(
           labelText: labelText,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),

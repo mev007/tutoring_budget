@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
@@ -5,8 +6,11 @@ import 'package:store_redirect/store_redirect.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/routes/app_routes.dart';
 
+import 'setting_controller.dart';
+
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+  SettingScreen({Key? key}) : super(key: key);
+  final SettingController ctrl = Get.put(SettingController());
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +61,13 @@ class SettingScreen extends StatelessWidget {
             color: Colors.orange,
             onTap: () => StoreRedirect.redirect(),
           ),
+          itemTitleSwitch(
+            icon: CupertinoIcons.moon_stars_fill,
+            title: 'ThemeTitle'.tr,
+            subtitle: 'ThemeSubtitle'.tr,
+            color: Colors.brown,
+            onTap: () => StoreRedirect.redirect(),
+          ),
         ],
       ),
     );
@@ -84,6 +95,36 @@ class SettingScreen extends StatelessWidget {
         subtitle: subtitle == null ? null : Text(subtitle),
         trailing:
             const Icon(Icons.arrow_forward_ios, size: 15, color: MAIN_COLOR),
+        minVerticalPadding: 2,
+        minLeadingWidth: 0,
+      ),
+    );
+  }
+
+  Widget itemTitleSwitch(
+      {IconData? icon,
+      required String title,
+      String? subtitle,
+      Color? color,
+      TextDecoration? decoration,
+      VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      splashColor: (color ?? MAIN_COLOR).withOpacity(0.1),
+      child: ListTile(
+        isThreeLine: true,
+        leading: Icon(icon, size: 25, color: color),
+        title: Text(title,
+            style: TextStyle(
+                color: color,
+                fontWeight: FontWeight.bold,
+                decoration: decoration)),
+        subtitle: subtitle == null ? null : Text(subtitle),
+        trailing: Obx(() => CupertinoSwitch(
+              activeColor: color,
+              value: ctrl.valSwitch.value,
+              onChanged: ctrl.onChangeSwitch,
+            )),
         minVerticalPadding: 2,
         minLeadingWidth: 0,
       ),

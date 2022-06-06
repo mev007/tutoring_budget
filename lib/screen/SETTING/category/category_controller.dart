@@ -32,10 +32,10 @@ class CategoryController extends GetxController {
         title: 'Save'.tr,
         middleText: 'SaveExit'.tr,
         textCancel: 'Do not save'.tr,
-        cancelTextColor: MAIN_COLOR,
+        cancelTextColor: BTT_COLOR,
         textConfirm: 'Save'.tr,
         confirmTextColor: Colors.white,
-        buttonColor: MAIN_COLOR,
+        buttonColor: BTT_COLOR,
         onCancel: () => Get.back(),
         onConfirm: () {
           save();
@@ -59,10 +59,10 @@ class CategoryController extends GetxController {
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
       middleText: 'DeleleRecord?'.tr + '\n\n' + listCategory[i],
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () {
         listCategory.removeAt(i);
         isChangeData = true;
@@ -84,10 +84,10 @@ class CategoryController extends GetxController {
       titleStyle:
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () {
         listCategory[i] = itemController.text;
         listCategory.sort((a, b) => a.toUpperCase().compareTo(b.toUpperCase()));
@@ -110,10 +110,10 @@ class CategoryController extends GetxController {
       titleStyle:
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () {
         listCategory.add(itemController.text);
         listCategory.sort((a, b) => a.toUpperCase().compareTo(b.toUpperCase()));

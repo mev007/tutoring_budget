@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'add_lesson_controller.dart';
 
@@ -71,6 +72,7 @@ class AddLessonScreen extends StatelessWidget {
   /// Список із студентами
   Widget _buildListStudent() {
     final ctrl = Get.find<AddLessonController>();
+
     return Container(
       height: 54,
       decoration: BoxDecoration(
@@ -83,7 +85,7 @@ class AddLessonScreen extends StatelessWidget {
           hintText: 'Виберіть учня із списку'.tr,
           hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.school),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -124,7 +126,7 @@ class AddLessonScreen extends StatelessWidget {
           ctrl.definitionNameDayUKR();
         }
       },
-      icon: const Icon(Icons.event_note, color: MAIN_COLOR),
+      icon: const MyIcon(Icons.event_note),
       label:
           Obx(() => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
       style: OUTLINED_BTT_STYLE,
@@ -143,7 +145,7 @@ class AddLessonScreen extends StatelessWidget {
         );
         if (picked != null) ctrl.selTime.value = picked;
       },
-      icon: const Icon(Icons.watch_later_outlined, color: MAIN_COLOR),
+      icon: const MyIcon(Icons.watch_later_outlined),
       label: Obx(() =>
           Text(Utils.getTimeString(ctrl.selTime.value), style: STYLE_DATE)),
       style: OUTLINED_BTT_STYLE,
@@ -187,9 +189,7 @@ class AddLessonScreen extends StatelessWidget {
                   Text('в кожен день'.tr),
                   Obx(() => Text(' ${ctrl.nameDay.value.tr} ',
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: MAIN_COLOR,
-                          fontSize: 18))),
+                          fontWeight: FontWeight.bold, fontSize: 18))),
                   Text('в заданий період'.tr),
                 ],
               ),

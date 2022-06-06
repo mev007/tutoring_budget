@@ -63,10 +63,10 @@ class LessonsController extends GetxController {
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
       middleText: 'DeleleRecord?'.tr,
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () async {
         await DB.deleteFromId(LessonsModel.nameTable, lessonId);
         await getListLessons();
@@ -89,10 +89,10 @@ class LessonsController extends GetxController {
           'after'.tr +
           ' ${Utils.getDateTime(lessonId)}',
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () async {
         final countDelRecords = await DB.deleteAllFromDate(lessonId, idStudent);
         await getListLessons();

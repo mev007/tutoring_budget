@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 const String ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.tutoring.budget.mev';
 // List<String> listCategory = [
@@ -49,7 +50,7 @@ final OUTLINED_BTT_STYLE = OutlinedButton.styleFrom(
 );
 
 const STYLE_DATE =
-    TextStyle(color: MAIN_COLOR, fontSize: 16, fontWeight: FontWeight.normal);
+    TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
 
 final OUTLINED_DT = OutlinedButton.styleFrom(
   alignment: Alignment.centerLeft,

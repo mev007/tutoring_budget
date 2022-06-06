@@ -35,10 +35,10 @@ class StudentController extends GetxController {
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
       middleText: 'DeleleRecord?'.tr,
       textCancel: 'Cancel'.tr,
-      cancelTextColor: MAIN_COLOR,
+      cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
-      buttonColor: MAIN_COLOR,
+      buttonColor: BTT_COLOR,
       onConfirm: () async {
         await DB.deleteFromId(StudentModel.nameTable, studentId);
         listStudent.removeAt(index);

@@ -4,6 +4,7 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'add_student_controller.dart';
 
@@ -94,7 +95,7 @@ class AddStudentScreen extends StatelessWidget {
         decoration: InputDecoration(
           labelText: 'Категорія навчання'.tr,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.cast_for_education, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.cast_for_education),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -122,7 +123,7 @@ class AddStudentScreen extends StatelessWidget {
         decoration: InputDecoration(
           labelText: 'Програма спілкування'.tr,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.personal_video, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.personal_video),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,

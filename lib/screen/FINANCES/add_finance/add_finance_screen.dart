@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'add_finance_controller.dart';
 
@@ -76,7 +77,7 @@ class AddFinanceScreen extends StatelessWidget {
           hintText: 'Виберіть учня із списку'.tr,
           hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.school),
           border: BORDER_DROPDOWN,
           focusedBorder: BORDER_DROPDOWN,
           enabledBorder: BORDER_DROPDOWN,
@@ -115,7 +116,7 @@ class AddFinanceScreen extends StatelessWidget {
           ctrl.selDate.value = picked;
         }
       },
-      icon: const Icon(Icons.event_note, color: MAIN_COLOR),
+      icon: const MyIcon(Icons.event_note),
       label:
           Obx(() => Text(Utils.getDate(ctrl.selDate.value), style: STYLE_DATE)),
       style: OUTLINED_BTT_STYLE,

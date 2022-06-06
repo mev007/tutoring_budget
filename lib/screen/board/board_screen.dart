@@ -26,7 +26,7 @@ class BoardScreen extends StatelessWidget {
                 StudentScreen(),
                 LessonsScreen(),
                 FinanceScreen(),
-                const SettingScreen(),
+                SettingScreen(),
               ],
             ),
           ),

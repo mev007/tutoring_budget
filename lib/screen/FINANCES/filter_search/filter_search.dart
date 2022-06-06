@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
+import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'filter_search_controller.dart';
 
@@ -62,6 +63,8 @@ class FillterSearch extends StatelessWidget {
   /// Список із студентами
   Widget _buildListStudent() {
     final ctrl = Get.find<FillterSearchController>();
+    
+
     return Container(
       height: 54,
       // width: 250,
@@ -72,14 +75,15 @@ class FillterSearch extends StatelessWidget {
       child: DropdownButtonFormField(
         isDense: false,
         isExpanded: true,
-        hint: Text('Виберіть учня для фільтрування'.tr, style: const TextStyle(color: GREY_COLOR)),
+        hint: Text('Виберіть учня для фільтрування'.tr,
+            style: const TextStyle(color: GREY_COLOR)),
         decoration: InputDecoration(
           labelText: ctrl.selectStudent == null ? null : 'Student'.tr,
           // hintText: 'Виберіть учня для фільтрування'.tr,
           // hintMaxLines: 2,
           // hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.school, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.school),
           suffixIcon: IconButton(
               onPressed: () => ctrl.onClearStudent(),
               iconSize: 20,
@@ -122,6 +126,7 @@ class FillterSearch extends StatelessWidget {
   /// Список із категоріями
   Widget _buildCategory() {
     final ctrl = Get.find<FillterSearchController>();
+    
     return Container(
       height: 54,
       decoration: BoxDecoration(
@@ -139,7 +144,7 @@ class FillterSearch extends StatelessWidget {
           // hintText: 'Категорія навчання'.tr,
           // hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.cast_for_education, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.cast_for_education),
           suffixIcon: IconButton(
               onPressed: () => ctrl.onClearCategory(),
               iconSize: 20,
@@ -164,6 +169,7 @@ class FillterSearch extends StatelessWidget {
   /// Вибір месенджера
   Widget _buildVideo() {
     final ctrl = Get.find<FillterSearchController>();
+    
     return Container(
       height: 54,
       decoration: BoxDecoration(
@@ -178,7 +184,7 @@ class FillterSearch extends StatelessWidget {
           labelText:
               ctrl.selectVideo == null ? null : 'Програма спілкування'.tr,
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const Icon(Icons.personal_video, color: MAIN_COLOR),
+          prefixIcon: const MyIcon(Icons.personal_video),
           suffixIcon: IconButton(
               onPressed: () => ctrl.onClearVideo(),
               iconSize: 20,
