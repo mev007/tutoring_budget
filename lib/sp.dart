@@ -37,6 +37,9 @@ class SP {
     return lV;
   }
 
+  static bool findItemCategory(String itemCategory) =>
+      listCategory.contains(itemCategory);
+
   static set listVideo(List<String> val) =>
       prefs.setStringList('listVideo', val);
 
@@ -48,6 +51,9 @@ class SP {
     }
     return lang;
   }
+
+  static bool findItemVideo(String itemVideo) =>
+      listVideo.contains(itemVideo);
 
   static set curentLanguage(String val) =>
       prefs.setString('curentLanguage', val);

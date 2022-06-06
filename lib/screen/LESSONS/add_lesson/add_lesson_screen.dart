@@ -172,7 +172,7 @@ class AddLessonScreen extends StatelessWidget {
                 ctrl.isCheckbox.value = !ctrl.isCheckbox.value;
               },
             ),
-            Text('Використовувати повторюваність занять'.tr),
+            Expanded(child: Text('Використовувати повторюваність занять'.tr)),
           ],
         ),
         Visibility(

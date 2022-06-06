@@ -74,11 +74,14 @@ class ItemLesson extends StatelessWidget {
             title: Row(
               children: [
                 Expanded(
-                  child: AutoSizeText(
-                    '${itemStudent.firstName} ${itemStudent.lastName}',
-                    maxLines: 1,
-                    minFontSize: 10,
-                    overflow: TextOverflow.ellipsis,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: AutoSizeText(
+                      '${itemStudent.firstName} ${itemStudent.lastName}',
+                      maxLines: 1,
+                      minFontSize: 10,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
                 AutoSizeText(

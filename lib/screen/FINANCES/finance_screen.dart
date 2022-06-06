@@ -58,8 +58,6 @@ class FinanceScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: null,
         child: const Icon(Icons.add, color: Colors.white),
-        backgroundColor: BTT_COLOR,
-        elevation: 10,
         onPressed: () => ctrl.gotoAddFinance(),
       ),
     );
@@ -189,11 +187,14 @@ class FinanceScreen extends StatelessWidget {
               foregroundColor: Colors.white,
             ),
             // minVerticalPadding: 5,
-            title: AutoSizeText(
-              '${itemStudent.firstName} ${itemStudent.lastName}',
-              maxLines: 1,
-              minFontSize: 10,
-              overflow: TextOverflow.ellipsis,
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: AutoSizeText(
+                '${itemStudent.firstName} ${itemStudent.lastName}',
+                maxLines: 1,
+                minFontSize: 10,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             subtitle: AutoSizeText(itemStudent.category,
                 minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),

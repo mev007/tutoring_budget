@@ -32,15 +32,11 @@ class CommunicationScreen extends StatelessWidget {
                 FloatingActionButton(
                   heroTag: null,
                   onPressed: () => ctrl.addItem(),
-                  backgroundColor: BTT_COLOR,
-                  elevation: 10,
                   child: const Icon(Icons.add, color: WHITE_COLOR),
                 ),
                 FloatingActionButton.extended(
                   heroTag: null,
                   onPressed: () => ctrl.save(),
-                  backgroundColor: BTT_COLOR,
-                  elevation: 10,
                   icon: const Icon(Icons.save, color: WHITE_COLOR),
                   label: Text('Save'.tr,
                       style: const TextStyle(color: WHITE_COLOR)),

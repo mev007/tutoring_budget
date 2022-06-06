@@ -39,6 +39,7 @@ class BoardScreen extends StatelessWidget {
   Widget _buildNavigationBar() {
     final BoardController ctrl = Get.find<BoardController>();
     return ConvexAppBar(
+      height: 60,
       activeColor: Colors.white,
       backgroundColor: MAIN_COLOR,
       style: TabStyle.reactCircle,

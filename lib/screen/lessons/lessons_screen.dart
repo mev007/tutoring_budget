@@ -53,8 +53,6 @@ class LessonsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: null,
         child: const Icon(Icons.add, color: Colors.white),
-        backgroundColor: BTT_COLOR,
-        elevation: 10,
         onPressed: () => ctrl.gotoAddLesson(),
       ),
     );

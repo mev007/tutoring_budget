@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/db.dart';
 import 'package:tutoring_budget/models/student_model.dart';
+import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/utils.dart';
 
 class EditStudentController extends GetxController {
@@ -15,8 +16,8 @@ class EditStudentController extends GetxController {
 
   var student = StudentModel();
 
-  String selectCategory = '';
-  String selectVideo = '';
+  String? selectCategory;
+  String? selectVideo;
 
   @override
   void onInit() {
@@ -27,8 +28,9 @@ class EditStudentController extends GetxController {
     adressNameController.text = student.adress;
     costNameController.text = student.cost.toStringAsFixed(0);
     noteNameController.text = student.note;
-    selectCategory = student.category;
-    selectVideo = student.video;
+    selectCategory =
+        SP.findItemCategory(student.category) ? student.category : null;
+    selectVideo = SP.findItemVideo(student.video) ? student.video : null;
     update();
     super.onInit();
   }
@@ -67,13 +69,21 @@ class EditStudentController extends GetxController {
     } else {
       cost = double.tryParse(costNameController.text.trim())!;
     }
+    if (selectCategory == null) {
+      Utils.messageError('Виберіть категорію навчання'.tr);
+      return;
+    }
+    if (selectVideo == null) {
+      Utils.messageError('Виберіть програму спілкування'.tr);
+      return;
+    }
     final student = StudentModel(
       id: id,
       firstName: firstNameController.text.trim(),
       lastName: lastNameController.text.trim(),
       adress: adressNameController.text.trim(),
-      category: selectCategory,
-      video: selectVideo,
+      category: selectCategory!,
+      video: selectVideo!,
       cost: cost,
       note: noteNameController.text.trim(),
     );

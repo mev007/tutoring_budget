@@ -36,8 +36,6 @@ class StudentScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: null,
         child: const Icon(Icons.add, color: Colors.white),
-        backgroundColor: BTT_COLOR,
-        elevation: 10,
         onPressed: () => ctrl.gotoAddStudent(),
       ),
     );
@@ -54,7 +52,9 @@ class StudentScreen extends StatelessWidget {
           color: EDIT_FON_COLOR,
           foregroundColor: WHITE_COLOR,
           icon: Icons.edit,
-          onTap: () => ctrl.gotoEditStudent(item),
+          onTap: () {
+            ctrl.gotoEditStudent(item);
+          },
         ),
       ],
       secondaryActions: [
@@ -67,7 +67,7 @@ class StudentScreen extends StatelessWidget {
       ],
       child: InkWell(
         child: SizedBox(
-          height: 90,
+          height: 100,
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: CircleAvatar(
@@ -78,11 +78,14 @@ class StudentScreen extends StatelessWidget {
               foregroundColor: Colors.white,
             ),
             minVerticalPadding: 10,
-            title: AutoSizeText(
-              '${item.firstName} ${item.lastName}',
-              maxLines: 1,
-              minFontSize: 10,
-              overflow: TextOverflow.ellipsis,
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: AutoSizeText(
+                '${item.firstName} ${item.lastName}',
+                maxLines: 1,
+                minFontSize: 10,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -106,7 +109,7 @@ class StudentScreen extends StatelessWidget {
                 ),
                 AutoSizeText(item.note,
                     minFontSize: 12,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis),
               ],
             ),
