@@ -5,9 +5,18 @@ ThemeData darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: MAIN_COLOR,
     centerTitle: true,
-    titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-    iconTheme: IconThemeData(color: Colors.white)
+    titleTextStyle: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+      fontFamily: 'Comfortaa',
+    ),
+    iconTheme: IconThemeData(color: Colors.white),
     // foregroundColor: MAIN_COLOR,
+  ),
+  tooltipTheme: const TooltipThemeData(
+    padding: EdgeInsets.all(15),
+    margin: EdgeInsets.symmetric(horizontal: 25),
+    showDuration: Duration(seconds: 5),
   ),
   fontFamily: 'Comfortaa',
   scaffoldBackgroundColor: Colors.black,

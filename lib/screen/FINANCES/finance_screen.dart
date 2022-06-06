@@ -16,7 +16,7 @@ import 'finance_controll.dart';
 class FinanceScreen extends StatelessWidget {
   FinanceScreen({Key? key}) : super(key: key);
   final FinanceController ctrl = Get.put(FinanceController());
-
+  // final SlidableController ccc = SlidableController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +134,7 @@ class FinanceScreen extends StatelessWidget {
         width: 40,
         child: FloatingActionButton(
           heroTag: null,
-          tooltip: 'Фільтр для списку'.tr,
+          tooltip: 'Фільтр для фінансів'.tr,
           backgroundColor: BTT_COLOR,
           child: Icon(
             ctrl.isEmptyParamInfo()
@@ -142,10 +142,13 @@ class FinanceScreen extends StatelessWidget {
                 : Icons.filter_alt_outlined,
             color: Colors.white,
           ),
-          onPressed: () => showDialog(
-            context: context,
-            builder: (context) => const FillterSearch(),
-          ),
+          onPressed: () {
+            
+            showDialog(
+              context: context,
+              builder: (context) => const FillterSearch(),
+            );
+          },
         ),
       ),
     );
@@ -166,6 +169,7 @@ class FinanceScreen extends StatelessWidget {
     return Slidable(
       actionPane: const SlidableStrechActionPane(),
       actionExtentRatio: 0.25,
+      // controller: ccc,
       secondaryActions: [
         IconSlideAction(
           color: DEL_FON_COLOR,
