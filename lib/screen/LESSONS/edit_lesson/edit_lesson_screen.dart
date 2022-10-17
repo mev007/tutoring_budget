@@ -91,12 +91,15 @@ class EditLessonScreen extends StatelessWidget {
         ),
         items: Get.find<StudentController>()
             .listStudent
-            .map((e) => DropdownMenuItem(
+            .map(
+              (e) => DropdownMenuItem(
+                value: e,
                 child: Text(
-                  '${e.firstName} ${e.lastName}${e.adress.isEmpty ? '' : '\n' + e.adress}',
+                  '${e.firstName} ${e.lastName}${e.adress.isEmpty ? '' : '\n${e.adress}'}',
                   maxLines: 2,
                 ),
-                value: e))
+              ),
+            )
             .toList(),
         onChanged: (e) => ctrl.onChangeStudent(e as StudentModel),
         value: ctrl.selectStudent,

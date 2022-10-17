@@ -28,9 +28,9 @@ class SupportController extends GetxController {
       await FlutterEmailSender.send(sendEmail);
       Get.back();
     } on PlatformException catch(e) {
-      Utils.messageError('Error E-Mail'.tr + '\n\n${e.message}');
+      Utils.messageError('${'Error E-Mail'.tr}\n\n${e.message}');
     } on Exception catch (e) {
-      Utils.messageError('Error E-Mail'.tr + '\n$e');
+      Utils.messageError('${'Error E-Mail'.tr}\n$e');
     }
     
   }

@@ -179,16 +179,18 @@ class FinanceScreen extends StatelessWidget {
         ),
       ],
       child: InkWell(
+        onTap: () => {}, //ctrl.gotoDetailStudent(item),
+        splashColor: MAIN_COLOR.withOpacity(0.1),
         child: SizedBox(
           height: 70,
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: CircleAvatar(
               backgroundColor: ICON_COLOR,
+              foregroundColor: Colors.white,
               child: Text(item.sum.toStringAsFixed(0),
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.bold)),
-              foregroundColor: Colors.white,
             ),
             // minVerticalPadding: 5,
             title: Padding(
@@ -207,8 +209,6 @@ class FinanceScreen extends StatelessWidget {
                     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
         ),
-        onTap: () => {}, //ctrl.gotoDetailStudent(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
       ),
       // ),
     );

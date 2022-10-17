@@ -95,12 +95,15 @@ class AddLessonScreen extends StatelessWidget {
         ),
         items: Get.find<StudentController>()
             .listStudent
-            .map((e) => DropdownMenuItem(
+            .map(
+              (e) => DropdownMenuItem(
+                value: e,
                 child: Text(
-                  '${e.firstName} ${e.lastName}${e.adress.isEmpty ? '' : '\n' + e.adress}',
+                  '${e.firstName} ${e.lastName}${e.adress.isEmpty ? '' : '\n${e.adress}'}',
                   maxLines: 2,
                 ),
-                value: e))
+              ),
+            )
             .toList(),
         onChanged: (e) => ctrl.onChangeStudent(e as StudentModel),
         value: ctrl.selectStudent,
@@ -210,10 +213,10 @@ class AddLessonScreen extends StatelessWidget {
                       );
                       if (picked != null) ctrl.fromDateTime.value = picked;
                     },
+                    style: outlinedBttStyle,
                     child: Obx(() => Text(
                         Utils.getDate(ctrl.fromDateTime.value),
                         style: STYLE_DATE)),
-                    style: outlinedBttStyle,
                   ),
                   const SizedBox(width: 20),
                   Text('по'.tr),
@@ -228,9 +231,9 @@ class AddLessonScreen extends StatelessWidget {
                       );
                       if (picked != null) ctrl.toDateTime.value = picked;
                     },
+                    style: outlinedBttStyle,
                     child: Obx(() => Text(Utils.getDate(ctrl.toDateTime.value),
                         style: STYLE_DATE)),
-                    style: outlinedBttStyle,
                   ),
                 ],
               )

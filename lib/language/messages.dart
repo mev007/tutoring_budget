@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, equal_keys_in_map
+/* // ignore_for_file: file_names, equal_keys_in_map
 
 import 'package:get/get.dart';
 
@@ -243,3 +243,4 @@ class Messages extends Translations {
         }
       };
 }
+ */

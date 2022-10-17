@@ -99,6 +99,7 @@ class FillterSearch extends StatelessWidget {
         items: Get.find<StudentController>()
             .listStudent
             .map((e) => DropdownMenuItem(
+                value: e,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -114,8 +115,7 @@ class FillterSearch extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
-                ),
-                value: e))
+                )))
             .toList(),
         onChanged: (e) => ctrl.onChangeStudent(e as StudentModel),
         value: ctrl.selectStudent,
@@ -158,7 +158,7 @@ class FillterSearch extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
         ),
         items: SP.listCategory
-            .map((e) => DropdownMenuItem(child: Text(e, maxLines: 2), value: e))
+            .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 2)))
             .toList(),
         onChanged: (e) => ctrl.onChangeCategory(e.toString()),
         value: ctrl.selectCategory,
@@ -198,7 +198,7 @@ class FillterSearch extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
         ),
         items: SP.listVideo
-            .map((e) => DropdownMenuItem(child: Text(e, maxLines: 1), value: e))
+            .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 1)))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
         value: ctrl.selectVideo,
@@ -226,6 +226,7 @@ class FillterSearch extends StatelessWidget {
               );
               ctrl.onChangeFromDate(picked);
             },
+            style: OUTLINED_DT,
             child: Row(
               children: [
                 Expanded(
@@ -248,7 +249,6 @@ class FillterSearch extends StatelessWidget {
                 )
               ],
             ),
-            style: OUTLINED_DT,
           ),
         ),
       ],
@@ -275,6 +275,7 @@ class FillterSearch extends StatelessWidget {
               );
               ctrl.onChangeToDate(picked);
             },
+            style: OUTLINED_DT,
             child: Row(
               children: [
                 Expanded(
@@ -297,7 +298,6 @@ class FillterSearch extends StatelessWidget {
                 )
               ],
             ),
-            style: OUTLINED_DT,
           ),
         ),
       ],

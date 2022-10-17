@@ -24,12 +24,9 @@ class Btt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: (icon == null)
-          ? Text(title,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: sizeTitle))
-          : Icon(icon, color: isNegative ? BTT_COLOR : Colors.white, size: 22),
       style: ElevatedButton.styleFrom(
+          foregroundColor: isNegative ? BTT_COLOR : Colors.white,
+          backgroundColor: isNegative ? Colors.white : BTT_COLOR,
           side: BorderSide(
               width: 2.0, color: isNegative ? BTT_COLOR : Colors.transparent),
           shape: RoundedRectangleBorder(
@@ -39,11 +36,14 @@ class Btt extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           minimumSize:
               minWidht == null ? Size(50, height) : Size(minWidht!, height),
-          onPrimary: isNegative ? BTT_COLOR : Colors.white,
-          primary: isNegative ? Colors.white : BTT_COLOR,
           textStyle:
               const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
       onPressed: onPress,
+      child: (icon == null)
+          ? Text(title,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: sizeTitle))
+          : Icon(icon, color: isNegative ? BTT_COLOR : Colors.white, size: 22),
     );
   }
 }

@@ -72,6 +72,8 @@ class LessonsScreen extends StatelessWidget {
                   bottom: 5,
                   right: 5,
                   child: CircleAvatar(
+                    radius: 8,
+                    backgroundColor: BTT_COLOR,
                     child: Text(
                       '$count',
                       style: const TextStyle(
@@ -79,8 +81,6 @@ class LessonsScreen extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
-                    radius: 8,
-                    backgroundColor: BTT_COLOR,
                   ),
                 );
         },

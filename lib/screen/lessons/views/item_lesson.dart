@@ -58,17 +58,19 @@ class ItemLesson extends StatelessWidget {
 
       //
       child: InkWell(
+        onTap: () {}, //=> ctrl.gotoTeacherTestDetail(item),
+        splashColor: MAIN_COLOR.withOpacity(0.1),
         child: SizedBox(
           height: 90,
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: CircleAvatar(
               backgroundColor: item.balance < 0 ? DEL_FON_COLOR : GREEN_COLOR,
+              foregroundColor: Colors.white,
+              radius: 25,
               child: Text(Utils.getTime(item.dateTime),
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.bold)),
-              foregroundColor: Colors.white,
-              radius: 25,
             ),
             minVerticalPadding: 10,
             title: Row(
@@ -85,7 +87,7 @@ class ItemLesson extends StatelessWidget {
                   ),
                 ),
                 AutoSizeText(
-                  item.cost.toStringAsFixed(2) + '₴',
+                  '${item.cost.toStringAsFixed(2)}₴',
                   maxLines: 1,
                   minFontSize: 10,
                   overflow: TextOverflow.ellipsis,
@@ -120,8 +122,6 @@ class ItemLesson extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () {}, //=> ctrl.gotoTeacherTestDetail(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
       ),
       // ),
     );

@@ -41,10 +41,10 @@ class DetailStudentScreen extends StatelessWidget {
                           child: CircleAvatar(
                             backgroundColor:
                                 item.balance < 0 ? DEL_FON_COLOR : GREEN_COLOR,
+                            foregroundColor: Colors.white,
                             child: Text(item.cost.toStringAsFixed(0),
                                 style: const TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            foregroundColor: Colors.white,
                           ),
                         ),
                         title: Text(Utils.getDateTime(item.dateTime)),
@@ -108,10 +108,10 @@ class DetailStudentScreen extends StatelessWidget {
                           overflow: TextOverflow.ellipsis),
                       CircleAvatar(
                         backgroundColor: ICON_COLOR,
+                        foregroundColor: Colors.white,
                         child: Text(ctrl.student.cost.toStringAsFixed(0),
                             style: const TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.bold)),
-                        foregroundColor: Colors.white,
                       ),
                       AutoSizeText(ctrl.student.video,
                           textAlign: TextAlign.center,
@@ -176,10 +176,7 @@ class DetailStudentScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              ctrl.sumF.value.toStringAsFixed(0) +
-                  ' - ' +
-                  ctrl.sumL.value.toStringAsFixed(0) +
-                  ' = ',
+              '${ctrl.sumF.value.toStringAsFixed(0)} - ${ctrl.sumL.value.toStringAsFixed(0)} = ',
             ),
             Text(
               ctrl.sum.value.toStringAsFixed(0),

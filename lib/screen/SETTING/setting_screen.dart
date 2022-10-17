@@ -52,7 +52,7 @@ class SettingScreen extends StatelessWidget {
             title: 'Share'.tr,
             subtitle: 'ShareSubtitle'.tr,
             color: Colors.red,
-            onTap: () => Share.share('ShareText'.tr + '\n' + ANDROID_URL),
+            onTap: () => Share.share('${'ShareText'.tr}\n$ANDROID_URL'),
           ),
           itemTitle(
             icon: Icons.star,
@@ -66,7 +66,7 @@ class SettingScreen extends StatelessWidget {
             title: 'ThemeTitle'.tr,
             subtitle: 'ThemeSubtitle'.tr,
             color: Colors.brown,
-            onTap: () => StoreRedirect.redirect(),
+            // onTap: () => StoreRedirect.redirect(),
           ),
         ],
       ),

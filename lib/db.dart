@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, depend_on_referenced_packages
 
 import 'dart:async';
 import 'dart:developer';
@@ -17,11 +17,11 @@ abstract class DB {
     if (_db != null) return;
     try {
       var databasesPath = await getDatabasesPath();
-      String _path = join(databasesPath, 'Tutor.db');
-      print('>>> Path >>>$_path');
+      String path = join(databasesPath, 'Tutor.db');
+      print('>>> Path >>>$path');
 
       ///Відкриває БД і якщо немає таблиць, то створює їх
-      _db = await openDatabase(_path, version: _version,
+      _db = await openDatabase(path, version: _version,
           onCreate: (db, ver) async {
         await db.execute("""
         CREATE TABLE "Student" (

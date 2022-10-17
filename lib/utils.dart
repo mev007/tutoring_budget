@@ -48,11 +48,10 @@ class Utils {
       ElevatedButton(
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
+                borderRadius: BorderRadius.circular(10.0)),
+            backgroundColor: Colors.red,
             elevation: 5,
             minimumSize: const Size(80, 40),
-            primary: Colors.red,
             textStyle:
                 const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         onPressed: () => Get.back(),
@@ -87,9 +86,8 @@ class Utils {
   ///Видає рандомний набір великих лат.літер і цифр заданої кількості [len]
   static String rndString(int len) {
     var r = Random.secure();
-    const _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    return List.generate(len, (index) => _chars[r.nextInt(_chars.length)])
-        .join();
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    return List.generate(len, (index) => chars[r.nextInt(chars.length)]).join();
   }
 
   static DateTime integerToDateTime(int number) =>

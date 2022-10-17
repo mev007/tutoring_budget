@@ -57,7 +57,7 @@ class CommunicationController extends GetxController {
       title: 'Delete'.tr,
       titleStyle:
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
-      middleText: 'DeleleRecord?'.tr + '\n\n' + listVideo[i],
+      middleText: '${'DeleleRecord?'.tr}\n\n${listVideo[i]}',
       textCancel: 'Cancel'.tr,
       cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',

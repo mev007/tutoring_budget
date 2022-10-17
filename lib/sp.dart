@@ -43,18 +43,25 @@ class SP {
   static set listVideo(List<String> val) =>
       prefs.setStringList('listVideo', val);
 
+  //# Локалізація
   static String get curentLanguage {
     String? lang = prefs.getString('curentLanguage');
     if (lang == null) {
       lang = Get.deviceLocale?.languageCode ?? 'uk';
+      if (lang != 'uk' || lang != 'en') {
+        lang = 'uk';
+      }
       curentLanguage = lang;
     }
     return lang;
   }
 
+  static set curentLanguage(String val) =>
+      prefs.setString('curentLanguage', val);
+
+
+
   static bool findItemVideo(String itemVideo) =>
       listVideo.contains(itemVideo);
 
-  static set curentLanguage(String val) =>
-      prefs.setString('curentLanguage', val);
 }

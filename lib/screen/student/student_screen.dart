@@ -66,16 +66,18 @@ class StudentScreen extends StatelessWidget {
         ),
       ],
       child: InkWell(
+        onTap: () => ctrl.gotoDetailStudent(item),
+        splashColor: MAIN_COLOR.withOpacity(0.1),
         child: SizedBox(
           height: 100,
           child: ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: CircleAvatar(
               backgroundColor: ICON_COLOR,
+              foregroundColor: Colors.white,
               child: Text(item.cost.toStringAsFixed(0),
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.bold)),
-              foregroundColor: Colors.white,
             ),
             minVerticalPadding: 10,
             title: Padding(
@@ -130,8 +132,6 @@ class StudentScreen extends StatelessWidget {
             // ),
           ),
         ),
-        onTap: () => ctrl.gotoDetailStudent(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
       ),
       // ),
     );

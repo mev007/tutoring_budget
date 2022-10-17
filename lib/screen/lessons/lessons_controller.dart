@@ -84,10 +84,8 @@ class LessonsController extends GetxController {
       title: 'Delete'.tr,
       titleStyle:
           const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
-      middleText: 'DeleleManyRecord'.tr +
-          '\n$nameStudent\n' +
-          'after'.tr +
-          ' ${Utils.getDateTime(lessonId)}',
+      middleText:
+          '${'DeleleManyRecord'.tr}\n$nameStudent\n${'after'.tr} ${Utils.getDateTime(lessonId)}',
       textCancel: 'Cancel'.tr,
       cancelTextColor: BTT_COLOR,
       textConfirm: 'Ok',
@@ -99,7 +97,7 @@ class LessonsController extends GetxController {
         builMarker();
         Get.back();
         Utils.snackbarCheck(
-            'Видалено записів:'.tr + ' $countDelRecords ' + 'шт'.tr);
+            '${'Видалено записів:'.tr} $countDelRecords ${'шт'.tr}');
       },
     );
   }
@@ -147,9 +145,8 @@ class LessonsController extends GetxController {
         await getListLessons();
         builMarker();
         if (countRecords != null) {
-          Utils.snackbarCheck('Успішно добавлено записи:'.tr +
-              ' ${countRecords as int} ' +
-              'шт'.tr);
+          Utils.snackbarCheck(
+              '${'Успішно добавлено записи:'.tr} ${countRecords as int} ${'шт'.tr}');
         }
       });
     }
@@ -220,7 +217,7 @@ class LessonsController extends GetxController {
 
   /// Змінює формат відображення календаря
   onPageChanged(DateTime date) {
-      focusedDay = date;
-      builMarker();
+    focusedDay = date;
+    builMarker();
   }
 }

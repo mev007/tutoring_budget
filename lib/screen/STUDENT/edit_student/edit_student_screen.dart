@@ -102,7 +102,7 @@ class EditStudentScreen extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 15, 5, 15),
         ),
         items: SP.listCategory
-            .map((e) => DropdownMenuItem(child: Text(e), value: e))
+            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeCategory(e.toString()),
         value: ctrl.selectCategory,
@@ -130,7 +130,7 @@ class EditStudentScreen extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(0, 15, 5, 15),
         ),
         items: SP.listVideo
-            .map((e) => DropdownMenuItem(child: Text(e), value: e))
+            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
         value: ctrl.selectVideo,
