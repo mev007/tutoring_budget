@@ -47,9 +47,9 @@ class SP {
   static String get curentLanguage {
     String? lang = prefs.getString('curentLanguage');
     if (lang == null) {
-      lang = Get.deviceLocale?.languageCode ?? 'uk';
-      if (lang != 'uk' || lang != 'en') {
-        lang = 'uk';
+      lang = Get.deviceLocale?.languageCode ?? 'en';
+      if (lang != 'uk' && lang != 'en') {
+        lang = 'en';
       }
       curentLanguage = lang;
     }

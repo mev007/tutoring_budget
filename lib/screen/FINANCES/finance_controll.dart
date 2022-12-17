@@ -52,7 +52,7 @@ class FinanceController extends GetxController {
   /// Перехід до AddFinanceScreen
   gotoAddFinance() {
     if (Get.find<StudentController>().listStudent.isEmpty) {
-      Utils.messageError('Список студентів порожній'.tr);
+      Utils.messageErrorAddStudent();
     } else {
       Get.toNamed(AppRoutes.ADD_FINANCE)
           ?.then((_) async => await getListFinance());

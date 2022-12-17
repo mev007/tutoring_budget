@@ -42,7 +42,7 @@ dependencies:
   flutter_slidable: ^0.6.0 # Слайдер
   uuid: ^3.0.5 # Генерація унікального id
   table_calendar: ^3.0.3 # календар
-  flutter_launcher_icons: ^0.10.0 # іконка програми
+  # flutter_launcher_icons: ^0.10.0 # іконка програми
   flutter_native_splash:  # заставка при запуску програми
   flutter_email_sender: ^5.1.0
   store_redirect: ^2.0.1 # для оцінювання проекту
@@ -68,12 +68,12 @@ dev_dependencies:
 flutter_app_name:
   name: "Tutor budget"
 
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/icon.png"
-  adaptive_icon_background: "assets/icon/icon-background.png"
-  adaptive_icon_foreground: "assets/icon/icon.png"
+# flutter_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   image_path: "assets/icon/icon.png"
+#   adaptive_icon_background: "assets/icon/icon-background.png"
+#   adaptive_icon_foreground: "assets/icon/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

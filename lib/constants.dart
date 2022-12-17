@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 const String ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.tutoring.budget.mev';
+const String IPHONE_URL = 'https://apps.apple.com/us/app/itunes-connect/id376771144';
 // List<String> listCategory = [
 //   'ZNO',
 //   '10th grade'

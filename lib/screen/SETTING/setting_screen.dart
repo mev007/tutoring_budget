@@ -52,14 +52,22 @@ class SettingScreen extends StatelessWidget {
             title: 'Share'.tr,
             subtitle: 'ShareSubtitle'.tr,
             color: Colors.red,
-            onTap: () => Share.share('${'ShareText'.tr}\n$ANDROID_URL'),
+            onTap: () {
+              if (GetPlatform.isAndroid) {
+                Share.share('${'ShareText'.tr}\n$ANDROID_URL');
+              } else if (GetPlatform.isIOS) {
+                Share.share('${'ShareText'.tr}\n$IPHONE_URL');
+              }
+            },
           ),
           itemTitle(
             icon: Icons.star,
             title: 'EvaluateTitle'.tr,
             subtitle: 'EvaluateSubtitle'.tr,
             color: Colors.orange,
-            onTap: () => StoreRedirect.redirect(),
+            onTap: () => StoreRedirect.redirect(
+                iOSAppId: '1660052554',
+                androidAppId: "com.tutoring.budget.mev"),
           ),
           itemTitleSwitch(
             icon: CupertinoIcons.moon_stars_fill,

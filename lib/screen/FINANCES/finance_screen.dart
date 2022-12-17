@@ -143,11 +143,14 @@ class FinanceScreen extends StatelessWidget {
             color: Colors.white,
           ),
           onPressed: () {
-            
-            showDialog(
-              context: context,
-              builder: (context) => const FillterSearch(),
-            );
+            if (Get.find<StudentController>().listStudent.isEmpty) {
+              Utils.messageErrorAddStudent();
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) => const FillterSearch(),
+              );
+            }
           },
         ),
       ),

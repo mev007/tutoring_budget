@@ -139,7 +139,7 @@ class LessonsController extends GetxController {
   /// Перехід до AddLessonScreen
   gotoAddLesson() {
     if (Get.find<StudentController>().listStudent.isEmpty) {
-      Utils.messageError('Список студентів порожній'.tr);
+      Utils.messageErrorAddStudent();
     } else {
       Get.toNamed(AppRoutes.ADD_LESSON)?.then((countRecords) async {
         await getListLessons();

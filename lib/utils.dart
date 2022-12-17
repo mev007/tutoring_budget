@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:tutoring_budget/screen/board/board_controller.dart';
+import 'package:tutoring_budget/screen/student/student_controll.dart';
+import 'package:tutoring_budget/widgets/Btt.dart';
 
 class Utils {
   ///01.01.2021 15:00
@@ -58,6 +61,28 @@ class Utils {
         child: const Text('Ok'),
       )
     ]);
+  }
+
+  static void messageErrorAddStudent() {
+    Get.defaultDialog(
+        title: 'Error'.tr,
+        middleText: 'Список студентів порожній'.tr,
+        actions: [
+          Btt(
+            onPress: () => Get.back(),
+            title: 'Cancel'.tr,
+            isNegative: true,
+          ),
+          Btt(
+            onPress: () {
+              Get.back();
+              Get.find<BoardController>().changeTabIndex(0);
+              Get.find<StudentController>().gotoAddStudent();
+              
+            },
+            title: 'Add'.tr,
+          )
+        ]);
   }
 
   static void snackbarError(String message) {

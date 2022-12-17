@@ -33,18 +33,12 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
-
+      
       translations: Language(),
-      locale: Locale(SP.curentLanguage), //Get.deviceLocale,  //const Locale('uk', 'UA'), 
+      locale: Locale(SP.curentLanguage),
       fallbackLocale: const Locale('en', ''),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      supportedLocales: const [
-        Locale('en'),
-        Locale('uk'),
-      ],
+      supportedLocales: const [Locale('en'), Locale('uk')],
     );
   }
 }
-
-
-

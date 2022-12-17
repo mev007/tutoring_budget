@@ -46,6 +46,7 @@ class EnLanguage {
         'Не коректно задана ціна': 'The price is not set correctly',
         'Editing': 'Editing',
         'Adding': 'Adding',
+        'Add': 'Add',
         'Delete': 'Delete',
         'DeleleRecord?': 'Are you sure you want to delete the current record?',
         'DeleleManyRecord':

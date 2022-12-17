@@ -6,7 +6,6 @@ class SettingController extends GetxController {
 
   onChangeSwitch(bool val) {
     valSwitch.value = !valSwitch.value;
-    Get.changeTheme(
-                  Get.isDarkMode ? AppTheme.light : AppTheme.dark);
+    Get.changeTheme(Get.isDarkMode ? AppTheme.light : AppTheme.dark);
   }
 }
