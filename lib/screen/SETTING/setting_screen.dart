@@ -17,7 +17,6 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         physics: const BouncingScrollPhysics(),
-        itemExtent: 80,
         children: [
           itemTitle(
             icon: Icons.language,
@@ -92,19 +91,26 @@ class SettingScreen extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       splashColor: (color ?? MAIN_COLOR).withOpacity(0.1),
-      child: ListTile(
-        isThreeLine: true,
-        leading: Icon(icon, size: 25, color: color),
-        title: Text(title,
-            style: TextStyle(
-                color: color,
-                fontWeight: FontWeight.bold,
-                decoration: decoration)),
-        subtitle: subtitle == null ? null : Text(subtitle),
-        trailing:
-            const Icon(Icons.arrow_forward_ios, size: 15, color: MAIN_COLOR),
-        minVerticalPadding: 2,
-        minLeadingWidth: 0,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 80),
+        child: ListTile(
+          leading: Icon(icon, size: 25, color: color),
+          title: Text(title,
+              style: TextStyle(
+                  color: color,
+                  fontWeight: FontWeight.bold,
+                  decoration: decoration)),
+          subtitle: subtitle == null
+              ? null
+              : Text(
+                  subtitle,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
+                ),
+          trailing:
+              const Icon(Icons.arrow_forward_ios, size: 15, color: MAIN_COLOR),
+          // minVerticalPadding: 2,
+          minLeadingWidth: 0,
+        ),
       ),
     );
   }
@@ -127,7 +133,12 @@ class SettingScreen extends StatelessWidget {
                 color: color,
                 fontWeight: FontWeight.bold,
                 decoration: decoration)),
-        subtitle: subtitle == null ? null : Text(subtitle),
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle,
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
         trailing: Obx(() => CupertinoSwitch(
               activeColor: color,
               value: ctrl.valSwitch.value,

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 import 'communication_controller.dart';
 
 class CommunicationScreen extends StatelessWidget {
-  const CommunicationScreen({ Key? key }) : super(key: key);
-  
+  const CommunicationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +16,9 @@ class CommunicationScreen extends StatelessWidget {
         return WillPopScope(
           onWillPop: ctrl.useWillPopScope(),
           child: Scaffold(
-            appBar: AppBar(
-              title: Text('Програма спілкування'.tr),
-              leading: IconButton(
-                  icon: const BackButtonIcon(),
-                  onPressed: () => ctrl.backScreen()),
-              //actions: const [ChangeLocaleBtt()],
+            appBar: CustomAppBar(
+              title: 'Програма спілкування'.tr,
+              onBack: () => ctrl.backScreen(),
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             floatingActionButton: Wrap(
@@ -58,24 +55,47 @@ class CommunicationScreen extends StatelessWidget {
                 }
                 final item = ctrl.listVideo[i];
                 return Slidable(
-                  actionPane: const SlidableStrechActionPane(),
-                  actionExtentRatio: 0.25,
-                  actions: [
-                    IconSlideAction(
-                      color: EDIT_FON_COLOR,
-                      foregroundColor: WHITE_COLOR,
-                      icon: Icons.edit,
-                      onTap: () => ctrl.editItem(i),
-                    ),
-                  ],
-                  secondaryActions: [
-                    IconSlideAction(
-                      color: DEL_FON_COLOR,
-                      foregroundColor: WHITE_COLOR,
-                      icon: Icons.delete,
-                      onTap: () => ctrl.deleteItem(i),
-                    ),
-                  ],
+                  startActionPane: ActionPane(
+                    extentRatio: 0.25,
+                    motion: const StretchMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (_) => ctrl.editItem(i),
+                        backgroundColor: EDIT_FON_COLOR,
+                        foregroundColor: WHITE_COLOR,
+                        icon: Icons.edit,
+                        // label: 'Delete',
+                      ),
+                    ],
+                  ),
+                  endActionPane: ActionPane(
+                    extentRatio: 0.25,
+                    motion: const StretchMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (_) => ctrl.deleteItem(i),
+                        backgroundColor: DEL_FON_COLOR,
+                        foregroundColor: WHITE_COLOR,
+                        icon: Icons.delete,
+                      ),
+                    ],
+                  ),
+                  // actions: [
+                  //   IconSlideAction(
+                  //     color: EDIT_FON_COLOR,
+                  //     foregroundColor: WHITE_COLOR,
+                  //     icon: Icons.edit,
+                  //     onTap: () => ctrl.editItem(i),
+                  //   ),
+                  // ],
+                  // secondaryActions: [
+                  //   IconSlideAction(
+                  //     color: DEL_FON_COLOR,
+                  //     foregroundColor: WHITE_COLOR,
+                  //     icon: Icons.delete,
+                  //     onTap: () => ctrl.deleteItem(i),
+                  //   ),
+                  // ],
                   child: SizedBox(
                     height: 60,
                     child: ListTile(

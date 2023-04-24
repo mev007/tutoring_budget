@@ -5,6 +5,7 @@ import 'package:tutoring_budget/screen/STUDENT/edit_student/edit_student_control
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class EditStudentScreen extends StatelessWidget {
   const EditStudentScreen({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class EditStudentScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(title: Text('Editing a student'.tr, maxLines: 2)),
+        appBar: CustomAppBar(title: 'Editing a student'.tr),
         body: GetBuilder<EditStudentController>(
           builder: (ctrl) {
             return SingleChildScrollView(

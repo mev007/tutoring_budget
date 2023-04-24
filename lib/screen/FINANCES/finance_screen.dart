@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/models/student_model.dart';
@@ -16,7 +17,6 @@ import 'finance_controll.dart';
 class FinanceScreen extends StatelessWidget {
   FinanceScreen({Key? key}) : super(key: key);
   final FinanceController ctrl = Get.put(FinanceController());
-  // final SlidableController ccc = SlidableController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,15 @@ class FinanceScreen extends StatelessWidget {
                 children: [
                   Expanded(child: _buildTitleParamFilter()),
                   _buildBoardFilter(context),
-                  Expanded(child: _buildFilterBtt(context)),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        // _BtnSort(),
+                        _BtnFilter(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -125,38 +133,6 @@ class FinanceScreen extends StatelessWidget {
     );
   }
 
-  /// Кнопка для фільтру
-  Widget _buildFilterBtt(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: SizedBox(
-        height: 40,
-        width: 40,
-        child: FloatingActionButton(
-          heroTag: null,
-          tooltip: 'Фільтр для фінансів'.tr,
-          backgroundColor: BTT_COLOR,
-          child: Icon(
-            ctrl.isEmptyParamInfo()
-                ? Icons.filter_alt_off_outlined
-                : Icons.filter_alt_outlined,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            if (Get.find<StudentController>().listStudent.isEmpty) {
-              Utils.messageErrorAddStudent();
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) => const FillterSearch(),
-              );
-            }
-          },
-        ),
-      ),
-    );
-  }
-
   /// Елемент списка СТУДЕНТІВ
   Widget _buildItem(int i, FinanceModel item) {
     final itemStudent = Get.find<StudentController>().listStudent.firstWhere(
@@ -170,19 +146,20 @@ class FinanceScreen extends StatelessWidget {
     );
 
     return Slidable(
-      actionPane: const SlidableStrechActionPane(),
-      actionExtentRatio: 0.25,
-      // controller: ccc,
-      secondaryActions: [
-        IconSlideAction(
-          color: DEL_FON_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.delete,
-          onTap: () => ctrl.deleteStudent(i),
-        ),
-      ],
+      endActionPane: ActionPane(
+        extentRatio: 0.25,
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) => ctrl.deleteStudent(i),
+            backgroundColor: DEL_FON_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.delete,
+          ),
+        ],
+      ),
       child: InkWell(
-        onTap: () => {}, //ctrl.gotoDetailStudent(item),
+        // onTap: () => ctrl.gotoDetailStudent(item),
         splashColor: MAIN_COLOR.withOpacity(0.1),
         child: SizedBox(
           height: 70,
@@ -195,7 +172,6 @@ class FinanceScreen extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.bold)),
             ),
-            // minVerticalPadding: 5,
             title: Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: AutoSizeText(
@@ -213,7 +189,75 @@ class FinanceScreen extends StatelessWidget {
           ),
         ),
       ),
-      // ),
+    );
+  }
+}
+
+class _BtnSort extends GetView<FinanceController> {
+  /// Кнопка для сортування
+  const _BtnSort();
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        height: 40,
+        width: 40,
+        child: FloatingActionButton(
+          heroTag: null,
+          tooltip: 'Сортування для фінансів'.tr,
+          backgroundColor: BTT_COLOR,
+          child: const Icon(Iconsax.sort, color: Colors.white),
+          onPressed: () {
+            if (Get.find<StudentController>().listStudent.isEmpty) {
+              Utils.messageErrorAddStudent();
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) => const FillterSearch(),
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _BtnFilter extends GetView<FinanceController> {
+  /// Кнопка для фільтру
+  const _BtnFilter();
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        height: 40,
+        width: 40,
+        child: FloatingActionButton(
+          heroTag: null,
+          tooltip: 'Фільтр для фінансів'.tr,
+          backgroundColor: BTT_COLOR,
+          child: GetBuilder<FinanceController>(
+            builder: (_) => Icon(
+              controller.isEmptyParamInfo()
+                  ? Icons.filter_alt_off_outlined
+                  : Icons.filter_alt_outlined,
+              color: Colors.white,
+            ),
+          ),
+          onPressed: () {
+            if (Get.find<StudentController>().listStudent.isEmpty) {
+              Utils.messageErrorAddStudent();
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) => const FillterSearch(),
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 }

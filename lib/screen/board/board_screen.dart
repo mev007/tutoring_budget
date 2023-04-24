@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/FINANCES/finance_screen.dart';
 import 'package:tutoring_budget/screen/lessons/lessons_screen.dart';
 import 'package:tutoring_budget/screen/setting/setting_screen.dart';
 import 'package:tutoring_budget/screen/student/student_screen.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 import 'board_controller.dart';
 
@@ -18,7 +19,8 @@ class BoardScreen extends StatelessWidget {
       init: BoardController(),
       builder: (ctrl) {
         return Scaffold(
-          appBar: AppBar(title: Text('Tutor budget'.tr, maxLines: 2)),
+          appBar: CustomAppBar(
+              title: 'Tutor budget'.tr, isVisibleLeadingBtn: false),
           body: SafeArea(
             child: IndexedStack(
               index: ctrl.tabIndex,

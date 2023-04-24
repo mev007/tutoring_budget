@@ -8,7 +8,7 @@ ThemeData lightTheme = ThemeData(
     titleTextStyle: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w700,
-      fontFamily: 'Comfortaa',
+      fontFamily: 'SofiaSans',
     ),
     // iconTheme: IconThemeData(color: Colors.white)
     // foregroundColor: MAIN_COLOR,
@@ -18,7 +18,7 @@ ThemeData lightTheme = ThemeData(
     margin: EdgeInsets.symmetric(horizontal: 25),
     showDuration: Duration(seconds: 5),
   ),
-  fontFamily: 'Comfortaa',
+  fontFamily: 'SofiaSans',
   scaffoldBackgroundColor: FON_COLOR,
   primaryColor: BTT_COLOR,
   // CUSTOMIZE showDatePicker Colors

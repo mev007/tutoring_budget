@@ -4,6 +4,7 @@ import 'package:tutoring_budget/screen/SETTING/support/support_controller.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
 import 'package:tutoring_budget/widgets/BuildTextFieldMultiline.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class SupportScreen extends StatelessWidget {
     return GetBuilder<SupportController>(
       builder: (ctrl) {
         return Scaffold(
-          appBar: AppBar(title: Text('Support'.tr)),
+          appBar: CustomAppBar(title: 'Support'.tr),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

@@ -4,6 +4,7 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'add_student_controller.dart';
@@ -16,7 +17,7 @@ class AddStudentScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(title: Text('Adding a student'.tr, maxLines: 2)),
+        appBar: CustomAppBar(title: 'Adding a student'.tr),
         body: GetBuilder<AddStudentController>(
           builder: (ctrl) {
             return SingleChildScrollView(

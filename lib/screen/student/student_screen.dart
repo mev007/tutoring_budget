@@ -45,26 +45,31 @@ class StudentScreen extends StatelessWidget {
   /// Елемент списка СТУДЕНТІВ
   Widget _buildItem(int i, StudentModel item) {
     return Slidable(
-      actionPane: const SlidableStrechActionPane(),
-      actionExtentRatio: 0.25,
-      actions: [
-        IconSlideAction(
-          color: EDIT_FON_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.edit,
-          onTap: () {
-            ctrl.gotoEditStudent(item);
-          },
-        ),
-      ],
-      secondaryActions: [
-        IconSlideAction(
-          color: DEL_FON_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.delete,
-          onTap: () => ctrl.deleteStudent(i),
-        ),
-      ],
+      startActionPane: ActionPane(
+        extentRatio: 0.25,
+        motion: const StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) => ctrl.gotoEditStudent(item),
+            backgroundColor: EDIT_FON_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.edit,
+            // label: 'Delete',
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        extentRatio: 0.25,
+        motion: const StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) => ctrl.deleteStudent(i),
+            backgroundColor: DEL_FON_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.delete,
+          ),
+        ],
+      ),
       child: InkWell(
         onTap: () => ctrl.gotoDetailStudent(item),
         splashColor: MAIN_COLOR.withOpacity(0.1),

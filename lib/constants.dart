@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-const String ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.tutoring.budget.mev';
-const String IPHONE_URL = 'https://apps.apple.com/us/app/itunes-connect/id376771144';
+const String ANDROID_URL =
+    'https://play.google.com/store/apps/details?id=com.tutoring.budget.mev';
+const String IPHONE_URL =
+    'https://apps.apple.com/us/app/itunes-connect/id376771144';
+const String EMAIL = 'mobile2021app@gmail.com';
 // List<String> listCategory = [
 //   'ZNO',
 //   '10th grade'
@@ -17,7 +20,7 @@ const String IPHONE_URL = 'https://apps.apple.com/us/app/itunes-connect/id376771
 // ];
 
 const Color MAIN_COLOR = Color(0xFF4a354f);
-const Color BTT_COLOR = Color(0xFFc06033); 
+const Color BTT_COLOR = Color(0xFFc06033);
 const Color ICON_COLOR = Color(0xFFddaf52);
 const Color ADD_COLOR = Color(0xFF8e96b0);
 const Color FON_COLOR = Color(0xFFFFF1E7);
@@ -49,8 +52,7 @@ final OUTLINED_BTT_STYLE = OutlinedButton.styleFrom(
   backgroundColor: const Color.fromRGBO(216, 216, 216, 0.25),
 );
 
-const STYLE_DATE =
-    TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
+const STYLE_DATE = TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
 
 final OUTLINED_DT = OutlinedButton.styleFrom(
   alignment: Alignment.centerLeft,

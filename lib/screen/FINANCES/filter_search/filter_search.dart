@@ -26,7 +26,11 @@ class FillterSearch extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Задайте параметри фільтрування'.tr, maxLines: 2),
+                Text(
+                  'Задайте параметри фільтрування'.tr,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 15),
                 _buildListStudent(),
                 const SizedBox(height: 10),
@@ -63,11 +67,8 @@ class FillterSearch extends StatelessWidget {
   /// Список із студентами
   Widget _buildListStudent() {
     final ctrl = Get.find<FillterSearchController>();
-    
-
     return Container(
-      height: 54,
-      // width: 250,
+      constraints: const BoxConstraints(minHeight: 54),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(216, 216, 216, 0.25),
         borderRadius: BorderRadius.circular(15),
@@ -79,9 +80,6 @@ class FillterSearch extends StatelessWidget {
             style: const TextStyle(color: GREY_COLOR)),
         decoration: InputDecoration(
           labelText: ctrl.selectStudent == null ? null : 'Student'.tr,
-          // hintText: 'Виберіть учня для фільтрування'.tr,
-          // hintMaxLines: 2,
-          // hintStyle: const TextStyle(color: GREY_COLOR),
           floatingLabelStyle: const TextStyle(color: BTT_COLOR),
           prefixIcon: const MyIcon(Icons.school),
           suffixIcon: IconButton(
@@ -126,42 +124,43 @@ class FillterSearch extends StatelessWidget {
   /// Список із категоріями
   Widget _buildCategory() {
     final ctrl = Get.find<FillterSearchController>();
-    
     return Container(
-      height: 54,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(216, 216, 216, 0.25),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: DropdownButtonFormField(
-        isDense: false,
-        isExpanded: true,
-        hint: Text('Категорія навчання'.tr,
-            style: const TextStyle(color: GREY_COLOR)),
-        decoration: InputDecoration(
-          labelText:
-              ctrl.selectCategory == null ? null : 'Категорія навчання'.tr,
-          // hintText: 'Категорія навчання'.tr,
-          // hintStyle: const TextStyle(color: GREY_COLOR),
-          floatingLabelStyle: const TextStyle(color: BTT_COLOR),
-          prefixIcon: const MyIcon(Icons.cast_for_education),
-          suffixIcon: IconButton(
-              onPressed: () => ctrl.onClearCategory(),
-              iconSize: 20,
-              splashRadius: 20,
-              icon: const Icon(Icons.close, color: DEL_FON_COLOR)),
-          border: BORDER_DROPDOWN,
-          focusedBorder: BORDER_DROPDOWN,
-          enabledBorder: BORDER_DROPDOWN,
-          errorBorder: BORDER_DROPDOWN,
-          disabledBorder: BORDER_DROPDOWN,
-          contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
+      constraints: const BoxConstraints(minHeight: 54),
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromRGBO(216, 216, 216, 0.25),
+          borderRadius: BorderRadius.circular(15),
         ),
-        items: SP.listCategory
-            .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 2)))
-            .toList(),
-        onChanged: (e) => ctrl.onChangeCategory(e.toString()),
-        value: ctrl.selectCategory,
+        child: DropdownButtonFormField(
+          isDense: false,
+          isExpanded: true,
+          hint: Text('Категорія навчання'.tr,
+              style: const TextStyle(color: GREY_COLOR)),
+          decoration: InputDecoration(
+            labelText:
+                ctrl.selectCategory == null ? null : 'Категорія навчання'.tr,
+            // hintText: 'Категорія навчання'.tr,
+            // hintStyle: const TextStyle(color: GREY_COLOR),
+            floatingLabelStyle: const TextStyle(color: BTT_COLOR),
+            prefixIcon: const MyIcon(Icons.cast_for_education),
+            suffixIcon: IconButton(
+                onPressed: () => ctrl.onClearCategory(),
+                iconSize: 20,
+                splashRadius: 20,
+                icon: const Icon(Icons.close, color: DEL_FON_COLOR)),
+            border: BORDER_DROPDOWN,
+            focusedBorder: BORDER_DROPDOWN,
+            enabledBorder: BORDER_DROPDOWN,
+            errorBorder: BORDER_DROPDOWN,
+            disabledBorder: BORDER_DROPDOWN,
+            contentPadding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
+          ),
+          items: SP.listCategory
+              .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 2)))
+              .toList(),
+          onChanged: (e) => ctrl.onChangeCategory(e.toString()),
+          value: ctrl.selectCategory,
+        ),
       ),
     );
   }
@@ -169,7 +168,7 @@ class FillterSearch extends StatelessWidget {
   /// Вибір месенджера
   Widget _buildVideo() {
     final ctrl = Get.find<FillterSearchController>();
-    
+
     return Container(
       height: 54,
       decoration: BoxDecoration(

@@ -64,6 +64,7 @@ class EnLanguage {
         'Фільтр для списку': 'Filtering of completed and paid classes',
         'Фільтр для фінансів':
             'Filtering of received payments according to the set criteria',
+        'Сортування для фінансів': 'The way records are sorted',
         'Виберіть учня для фільтрування': 'Select student\nfrom list',
         'Задайте параметри фільтрування': 'Set filtering parameters',
         'Месенджер': 'Messenger',

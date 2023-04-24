@@ -30,35 +30,40 @@ class ItemLesson extends StatelessWidget {
     );
 
     return Slidable(
-      actionPane: const SlidableStrechActionPane(),
-      actionExtentRatio: 0.25,
-      actions: [
-        IconSlideAction(
-          color: EDIT_FON_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.edit,
-          onTap: () => ctrlLesson.gotoEditLesson(item),
-        ),
-      ],
-      secondaryActions: [
-        IconSlideAction(
-          color: DEL_FON_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.delete,
-          onTap: () => ctrlLesson.deleteLesson(i),
-        ),
-        IconSlideAction(
-          color: BTT_COLOR,
-          foregroundColor: WHITE_COLOR,
-          icon: Icons.auto_delete,
-          onTap: () => ctrlLesson.deleteAllFromDate(
-              i, '${itemStudent.firstName} ${itemStudent.lastName}'),
-        ),
-      ],
-
-      //
+      startActionPane: ActionPane(
+        extentRatio: 0.25,
+        motion: const StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) => ctrlLesson.gotoEditLesson(item),
+            backgroundColor: EDIT_FON_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.edit,
+            // label: 'Delete',
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        extentRatio: 0.5,
+        motion: const StretchMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) => ctrlLesson.deleteLesson(i),
+            backgroundColor: DEL_FON_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.delete,
+          ),
+          SlidableAction(
+            onPressed: (_) => ctrlLesson.deleteAllFromDate(
+                i, '${itemStudent.firstName} ${itemStudent.lastName}'),
+            backgroundColor: BTT_COLOR,
+            foregroundColor: WHITE_COLOR,
+            icon: Icons.auto_delete,
+          ),
+        ],
+      ),
       child: InkWell(
-        onTap: () {}, //=> ctrl.gotoTeacherTestDetail(item),
+        // onTap: () => ctrl.gotoTeacherTestDetail(item),
         splashColor: MAIN_COLOR.withOpacity(0.1),
         child: SizedBox(
           height: 90,
@@ -87,7 +92,7 @@ class ItemLesson extends StatelessWidget {
                   ),
                 ),
                 AutoSizeText(
-                  '${item.cost.toStringAsFixed(2)}₴',
+                  item.cost.toStringAsFixed(2),
                   maxLines: 1,
                   minFontSize: 10,
                   overflow: TextOverflow.ellipsis,

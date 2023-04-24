@@ -29,7 +29,6 @@ class FinanceController extends GetxController {
 
   /// Отримання списку модельок проплат
   Future getListFinance() async {
-    // final response = await DB.query(FinanceModel.nameTable);
     final response = await DB.totalPayment(
       'Finances',
       listIdStudent: listStudentFilter,
@@ -40,7 +39,7 @@ class FinanceController extends GetxController {
       listFinance = [];
     } else {
       listFinance = response.map((e) => FinanceModel.fromMap(e)).toList();
-      // listFinance.sort((a, b) => -a.firstName.compareTo(b.firstName));
+      listFinance.sort((a, b) => -a.dateTime.compareTo(b.dateTime));
     }
     sum = 0.0;
     for (var item in listFinance) {

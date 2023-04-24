@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/STUDENT/detail_student/detail_student_controller.dart';
 import 'package:tutoring_budget/utils.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class DetailStudentScreen extends StatelessWidget {
   const DetailStudentScreen({Key? key}) : super(key: key);
@@ -13,9 +15,8 @@ class DetailStudentScreen extends StatelessWidget {
     return GetBuilder<DetailStudentController>(
       builder: (ctrl) {
         return Scaffold(
-          appBar: AppBar(
-              title: Text('Student info'.tr, maxLines: 2),
-              actions: [_buildFilter()]),
+          appBar: CustomAppBar(
+              title: 'Student info'.tr, actions: const [_BttFilter()]),
           body: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -61,26 +62,6 @@ class DetailStudentScreen extends StatelessWidget {
   }
 
   //#  ===============   ДОДАТКОВІ МЕТОДИ   =================
-  /// Кнопка фільтрування списку
-  Widget _buildFilter() {
-    final ctrl = Get.find<DetailStudentController>();
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: FloatingActionButton(
-        heroTag: 'filter_2',
-        tooltip: 'Фільтр для списку'.tr,
-        backgroundColor: ICON_COLOR,
-        child: Icon(
-          ctrl.isFilter
-              ? Icons.filter_alt_outlined
-              : Icons.filter_alt_off_outlined,
-          color: Colors.white,
-        ),
-        onPressed: () => ctrl.onPressFilter(),
-      ),
-    );
-  }
-
   /// Інформація про УЧНЯ
   Widget _buildInfoStudent() {
     final ctrl = Get.find<DetailStudentController>();
@@ -186,5 +167,25 @@ class DetailStudentScreen extends StatelessWidget {
             ),
           ],
         ));
+  }
+}
+
+class _BttFilter extends GetView<DetailStudentController> {
+  /// Кнопка фільтрування списку
+  const _BttFilter();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 15),
+      child: IconButton(
+        tooltip: 'Фільтр для списку'.tr,      
+        splashRadius: 24,
+        onPressed: () => controller.onPressFilter(),
+        icon: Obx(() => Icon(
+              controller.isFilter.value ? Iconsax.eye_slash : Iconsax.eye,
+              color: Colors.white,
+            )),
+      ),
+    );
   }
 }

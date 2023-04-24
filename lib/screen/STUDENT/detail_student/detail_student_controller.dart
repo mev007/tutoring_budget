@@ -17,7 +17,7 @@ class DetailStudentController extends GetxController {
   List<LessonsModel> listLessons = <LessonsModel>[];
   List<LessonsModel> listLessonsFilter = <LessonsModel>[];
 
-  var isFilter = false;
+  var isFilter = false.obs;
 
   @override
   Future<void> onInit() async {
@@ -56,8 +56,8 @@ class DetailStudentController extends GetxController {
   }
 
   onPressFilter() {
-    isFilter = !isFilter;
-    if (isFilter) {
+    isFilter.value = !isFilter.value;
+    if (isFilter.value) {
       listLessonsFilter = listLessons
           .where((element) =>
               Utils.integerFromDateTime(element.dateTime) >=

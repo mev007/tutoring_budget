@@ -6,6 +6,7 @@ import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/Btt.dart';
 import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 import 'edit_lesson_controller.dart';
 
@@ -17,7 +18,7 @@ class EditLessonScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(title: Text('Edit schedule'.tr, maxLines: 2)),
+        appBar: CustomAppBar(title: 'Edit schedule'.tr),
         body: GetBuilder<EditLessonController>(
           builder: (ctrl) {
             return SingleChildScrollView(
