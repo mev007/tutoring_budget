@@ -8,7 +8,7 @@ import 'lessons_controller.dart';
 import 'views/item_lesson.dart';
 
 class LessonsScreen extends StatelessWidget {
-  LessonsScreen({Key? key}) : super(key: key);
+  LessonsScreen({super.key});
   final LessonsController ctrl = Get.put(LessonsController());
 
   @override

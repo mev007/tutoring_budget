@@ -9,11 +9,11 @@ class BuildTextFieldMultiline extends StatelessWidget {
   final TextEditingController? controller;
 
   const BuildTextFieldMultiline({
-    Key? key,
+    super.key,
     this.height = 100,
     this.labelText,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

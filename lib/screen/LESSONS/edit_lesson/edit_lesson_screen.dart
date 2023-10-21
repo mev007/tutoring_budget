@@ -11,7 +11,7 @@ import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'edit_lesson_controller.dart';
 
 class EditLessonScreen extends StatelessWidget {
-  const EditLessonScreen({Key? key}) : super(key: key);
+  const EditLessonScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

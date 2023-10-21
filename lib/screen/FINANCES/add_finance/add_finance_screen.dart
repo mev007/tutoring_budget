@@ -12,7 +12,7 @@ import 'package:tutoring_budget/widgets/my_icon.dart';
 import 'add_finance_controller.dart';
 
 class AddFinanceScreen extends StatelessWidget {
-  const AddFinanceScreen({Key? key}) : super(key: key);
+  const AddFinanceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

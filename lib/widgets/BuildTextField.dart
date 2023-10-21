@@ -20,7 +20,7 @@ class BuildTextField extends StatelessWidget {
   final TextAlign textAlign;
 
   const BuildTextField({
-    Key? key,
+    super.key,
     this.labelText = '',
     this.autofocus = false,
     this.obscureText = false,
@@ -31,7 +31,7 @@ class BuildTextField extends StatelessWidget {
     this.height = 55,
     this.contentPadding,
     this.textAlign = TextAlign.left,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final prIcon =

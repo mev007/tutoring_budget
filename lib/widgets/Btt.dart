@@ -11,7 +11,7 @@ class Btt extends StatelessWidget {
   final double? minWidht;
   final double height;
   const Btt({
-    Key? key,
+    super.key,
     this.title = 'Ok',
     required this.onPress,
     this.isNegative = false,
@@ -19,7 +19,7 @@ class Btt extends StatelessWidget {
     this.sizeTitle,
     this.minWidht,
     this.height = 45,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

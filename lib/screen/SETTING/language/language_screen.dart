@@ -7,7 +7,7 @@ import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'language_controller.dart';
 
 class LanguageScreen extends StatelessWidget {
-  LanguageScreen({Key? key}) : super(key: key);
+  LanguageScreen({super.key});
   final LanguageController ctrl = Get.find<LanguageController>();
 
   @override

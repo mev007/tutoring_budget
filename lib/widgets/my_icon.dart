@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
 
 class MyIcon extends StatelessWidget {
-  const MyIcon(this.iconData, {Key? key}) : super(key: key);
+  const MyIcon(this.iconData, {super.key});
 
   final IconData iconData;
 

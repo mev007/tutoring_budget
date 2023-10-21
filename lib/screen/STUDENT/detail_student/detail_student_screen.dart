@@ -8,7 +8,7 @@ import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class DetailStudentScreen extends StatelessWidget {
-  const DetailStudentScreen({Key? key}) : super(key: key);
+  const DetailStudentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

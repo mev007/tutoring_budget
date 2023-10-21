@@ -8,7 +8,7 @@ import 'package:tutoring_budget/widgets/BuildTextField.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class EditStudentScreen extends StatelessWidget {
-  const EditStudentScreen({Key? key}) : super(key: key);
+  const EditStudentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

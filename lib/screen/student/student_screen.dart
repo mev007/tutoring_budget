@@ -8,7 +8,7 @@ import 'package:tutoring_budget/models/student_model.dart';
 import 'student_controll.dart';
 
 class StudentScreen extends StatelessWidget {
-  StudentScreen({Key? key}) : super(key: key);
+  StudentScreen({super.key});
   final StudentController ctrl = Get.put(StudentController());
 
   @override

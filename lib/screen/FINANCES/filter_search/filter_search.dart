@@ -11,7 +11,7 @@ import 'package:tutoring_budget/widgets/my_icon.dart';
 import 'filter_search_controller.dart';
 
 class FillterSearch extends StatelessWidget {
-  const FillterSearch({Key? key}) : super(key: key);
+  const FillterSearch({super.key});
 
   @override
   Widget build(BuildContext context) {

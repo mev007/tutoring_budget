@@ -12,7 +12,7 @@ import 'package:tutoring_budget/widgets/my_icon.dart';
 import 'add_lesson_controller.dart';
 
 class AddLessonScreen extends StatelessWidget {
-  const AddLessonScreen({Key? key}) : super(key: key);
+  const AddLessonScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

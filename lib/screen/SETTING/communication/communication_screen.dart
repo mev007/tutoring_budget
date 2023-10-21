@@ -7,7 +7,7 @@ import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'communication_controller.dart';
 
 class CommunicationScreen extends StatelessWidget {
-  const CommunicationScreen({Key? key}) : super(key: key);
+  const CommunicationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

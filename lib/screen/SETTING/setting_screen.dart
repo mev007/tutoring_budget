@@ -9,7 +9,7 @@ import 'package:tutoring_budget/routes/app_routes.dart';
 import 'setting_controller.dart';
 
 class SettingScreen extends StatelessWidget {
-  SettingScreen({Key? key}) : super(key: key);
+  SettingScreen({super.key});
   final SettingController ctrl = Get.put(SettingController());
 
   @override

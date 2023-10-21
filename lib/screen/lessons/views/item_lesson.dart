@@ -12,7 +12,7 @@ import 'package:tutoring_budget/utils.dart';
 import '../lessons_controller.dart';
 
 class ItemLesson extends StatelessWidget {
-  const ItemLesson({Key? key, required this.i}) : super(key: key);
+  const ItemLesson({super.key, required this.i});
   final int i;
 
   @override

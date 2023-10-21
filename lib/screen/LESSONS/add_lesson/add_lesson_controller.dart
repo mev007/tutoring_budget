@@ -149,7 +149,7 @@ class AddLessonController extends GetxController {
             print('>>> ${dateTime.toString()}');
             await DB.insert(LessonsModel.nameTable, lesson);
             countRecords++;
-            dateTime = dateTime.add(const Duration(days: 7));
+            dateTime = DateTime(dateTime.year, dateTime.month, dateTime.day + 7, dateTime.hour, dateTime.minute);
           }
           Get.back();
         },

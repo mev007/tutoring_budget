@@ -1,42 +1,41 @@
 name: tutoring_budget
 description: A new Flutter project.
 publish_to: 'none'
-version: 1.1.0+10
+version: 1.2.0+12
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  get: ^4.6.5
-  sqflite: ^2.0.2
-  shared_preferences: ^2.0.15 # збереження та читання пареметрів
-  intl: ^0.17.0
+  cupertino_icons: ^1.0.6
+  get: ^4.6.6
+  sqflite: ^2.3.0
+  shared_preferences: ^2.2.2 # збереження та читання пареметрів
+  intl: ^0.18.1
   auto_size_text: ^3.0.0  # зміна розміру тексту
-  convex_bottom_bar: ^3.0.0 # прикольне нижнє меню
+  convex_bottom_bar: ^3.2.0 # прикольне нижнє меню
   # json_annotation: ^4.4.0
   flutter_slidable: ^3.0.0 # Слайдер
-  uuid: ^3.0.5 # Генерація унікального id
-  table_calendar: ^3.0.3 # календар
+  uuid: ^3.0.7 # Генерація унікального id
+  table_calendar: ^3.0.9 # календар
   # flutter_launcher_icons: ^0.10.0 # іконка програми
-  flutter_native_splash:  # заставка при запуску програми
-  flutter_email_sender: ^5.1.0
+  flutter_email_sender: ^6.0.2
   store_redirect: ^2.0.1 # для оцінювання проекту
-  share_plus: ^6.3.2  # для розшарення чогось
+  share_plus: ^7.2.1  # для розшарення чогось
 
-  line_icons: ^2.0.1              # іконки
+  line_icons: ^2.0.3              # іконки
   iconsax: ^0.0.8                 # іконки
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
-  change_app_package_name: ^1.0.0
-  flutter_app_name: ^0.1.0
+  flutter_lints: ^3.0.0
+  flutter_native_splash: ^2.3.4
+  flutter_launcher_icons: ^0.13.1
 
 flutter_app_name:
   name: "Tutor budget"

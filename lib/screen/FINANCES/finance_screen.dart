@@ -15,7 +15,7 @@ import 'filter_search/filter_search.dart';
 import 'finance_controll.dart';
 
 class FinanceScreen extends StatelessWidget {
-  FinanceScreen({Key? key}) : super(key: key);
+  FinanceScreen({super.key});
   final FinanceController ctrl = Get.put(FinanceController());
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,10 @@ class FinanceScreen extends StatelessWidget {
                 children: [
                   Expanded(child: _buildTitleParamFilter()),
                   _buildBoardFilter(context),
-                  Expanded(
+                  const Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
+                      children: [
                         // _BtnSort(),
                         _BtnFilter(),
                       ],
