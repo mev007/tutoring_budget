@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.2.0+12
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
 
 dependencies:
   flutter:
@@ -19,8 +19,8 @@ dependencies:
   auto_size_text: ^3.0.0  # зміна розміру тексту
   convex_bottom_bar: ^3.2.0 # прикольне нижнє меню
   # json_annotation: ^4.4.0
-  flutter_slidable: ^3.0.0 # Слайдер
-  uuid: ^3.0.7 # Генерація унікального id
+  flutter_slidable: ^3.0.1 # Слайдер
+  uuid: ^4.2.1 # Генерація унікального id
   table_calendar: ^3.0.9 # календар
   # flutter_launcher_icons: ^0.10.0 # іконка програми
   flutter_email_sender: ^6.0.2
@@ -33,8 +33,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
-  flutter_native_splash: ^2.3.4
+  flutter_lints: ^3.0.1
+  flutter_native_splash: ^2.3.5
   flutter_launcher_icons: ^0.13.1
 
 flutter_app_name:
