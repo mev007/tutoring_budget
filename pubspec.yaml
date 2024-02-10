@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.2.0+12
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
   flutter:
@@ -13,19 +13,19 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   get: ^4.6.6
-  sqflite: ^2.3.0
+  sqflite: ^2.3.2
   shared_preferences: ^2.2.2 # збереження та читання пареметрів
   intl: ^0.18.1
   auto_size_text: ^3.0.0  # зміна розміру тексту
   convex_bottom_bar: ^3.2.0 # прикольне нижнє меню
   # json_annotation: ^4.4.0
   flutter_slidable: ^3.0.1 # Слайдер
-  uuid: ^4.2.1 # Генерація унікального id
+  uuid: ^4.3.3 # Генерація унікального id
   table_calendar: ^3.0.9 # календар
   # flutter_launcher_icons: ^0.10.0 # іконка програми
   flutter_email_sender: ^6.0.2
   store_redirect: ^2.0.1 # для оцінювання проекту
-  share_plus: ^7.2.1  # для розшарення чогось
+  share_plus: ^7.2.2  # для розшарення чогось
 
   line_icons: ^2.0.3              # іконки
   iconsax: ^0.0.8                 # іконки
@@ -34,7 +34,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  flutter_native_splash: ^2.3.5
+  flutter_native_splash: ^2.3.10
   flutter_launcher_icons: ^0.13.1
 
 flutter_app_name:
