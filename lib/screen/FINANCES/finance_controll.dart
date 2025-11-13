@@ -49,7 +49,7 @@ class FinanceController extends GetxController {
   }
 
   /// Перехід до AddFinanceScreen
-  gotoAddFinance() {
+  void gotoAddFinance() {
     if (Get.find<StudentController>().listStudent.isEmpty) {
       Utils.messageErrorAddStudent();
     } else {

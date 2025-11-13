@@ -10,7 +10,7 @@ class FillterSearchController extends GetxController {
   StudentModel? selectStudent;
 
   /// Подія вибору студента
-  onChangeStudent(StudentModel item) {
+  void onChangeStudent(StudentModel item) {
     selectStudent = item;
     selectCategory = null;
     selectVideo = null;
@@ -18,7 +18,7 @@ class FillterSearchController extends GetxController {
   }
 
   /// Подія вибору студента
-  onClearStudent() {
+  void onClearStudent() {
     selectStudent = null;
     update();
   }
@@ -27,24 +27,24 @@ class FillterSearchController extends GetxController {
 
   String? selectVideo;
 
-  onChangeCategory(String item) {
+  void onChangeCategory(String item) {
     selectCategory = item;
     selectStudent = null;
     update();
   }
 
-  onClearCategory() {
+  void onClearCategory() {
     selectCategory = null;
     update();
   }
 
-  onChangeVideo(String item) {
+  void onChangeVideo(String item) {
     selectVideo = item;
     selectStudent = null;
     update();
   }
 
-  onClearVideo() {
+  void onClearVideo() {
     selectVideo = null;
     update();
   }
@@ -53,27 +53,27 @@ class FillterSearchController extends GetxController {
   DateTime? selectFromDateTime;
   DateTime? selectToDateTime;
 
-  onChangeFromDate(DateTime? picked) {
+  void onChangeFromDate(DateTime? picked) {
     if (picked != null) selectFromDateTime = picked;
     update();
   }
 
-  onClearFromDate() {
+  void onClearFromDate() {
     selectFromDateTime = null;
     update();
   }
 
-  onChangeToDate(DateTime? picked) {
+  void onChangeToDate(DateTime? picked) {
     if (picked != null) selectToDateTime = picked;
     update();
   }
 
-  onClearToDate() {
+  void onClearToDate() {
     selectToDateTime = null;
     update();
   }
 
-  onApply() async {
+  Future<void> onApply() async {
     if (selectFromDateTime != null &&
         selectToDateTime != null &&
         selectFromDateTime!.isAfter(selectToDateTime!)) {

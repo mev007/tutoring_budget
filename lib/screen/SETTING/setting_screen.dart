@@ -75,6 +75,13 @@ class SettingScreen extends StatelessWidget {
             color: Colors.brown,
             // onTap: () => StoreRedirect.redirect(),
           ),
+          itemTitle(
+            icon: Icons.info,
+            title: 'About'.tr,
+            subtitle: 'Select the About'.tr,
+            color: Colors.green,
+            onTap: () => Get.toNamed(AppRoutes.ABOUT),
+          ),
         ],
       ),
     );
@@ -90,7 +97,7 @@ class SettingScreen extends StatelessWidget {
       VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
-      splashColor: (color ?? MAIN_COLOR).withOpacity(0.1),
+      splashColor: (color ?? MAIN_COLOR).withAlpha(25),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 80),
         child: ListTile(
@@ -124,7 +131,7 @@ class SettingScreen extends StatelessWidget {
       VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
-      splashColor: (color ?? MAIN_COLOR).withOpacity(0.1),
+      splashColor: (color ?? MAIN_COLOR).withAlpha(25),
       child: ListTile(
         isThreeLine: true,
         leading: Icon(icon, size: 25, color: color),
@@ -140,7 +147,7 @@ class SettingScreen extends StatelessWidget {
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),
         trailing: Obx(() => CupertinoSwitch(
-              activeColor: color,
+              activeTrackColor: color,
               value: ctrl.valSwitch.value,
               onChanged: ctrl.onChangeSwitch,
             )),

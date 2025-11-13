@@ -116,7 +116,7 @@ class FillterSearch extends StatelessWidget {
                 )))
             .toList(),
         onChanged: (e) => ctrl.onChangeStudent(e as StudentModel),
-        value: ctrl.selectStudent,
+        initialValue: ctrl.selectStudent,
       ),
     );
   }
@@ -159,7 +159,7 @@ class FillterSearch extends StatelessWidget {
               .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 2)))
               .toList(),
           onChanged: (e) => ctrl.onChangeCategory(e.toString()),
-          value: ctrl.selectCategory,
+          initialValue: ctrl.selectCategory,
         ),
       ),
     );
@@ -200,13 +200,13 @@ class FillterSearch extends StatelessWidget {
             .map((e) => DropdownMenuItem(value: e, child: Text(e, maxLines: 1)))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
-        value: ctrl.selectVideo,
+        initialValue: ctrl.selectVideo,
       ),
     );
   }
 
   /// Вибір дати "З"
-  _buildFromDate(BuildContext context) {
+  Row _buildFromDate(BuildContext context) {
     final ctrl = Get.find<FillterSearchController>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -255,7 +255,7 @@ class FillterSearch extends StatelessWidget {
   }
 
   /// Вибір дати "ПО"
-  _buildToDate(BuildContext context) {
+  Row _buildToDate(BuildContext context) {
     final ctrl = Get.find<FillterSearchController>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,

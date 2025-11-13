@@ -32,6 +32,7 @@ class AddStudentScreen extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       controller: ctrl.firstNameController,
                       prefixIcon: Icons.person,
+                      textCapitalization:  TextCapitalization.sentences,
                     ),
                     const SizedBox(height: 10),
                     BuildTextField(
@@ -39,6 +40,7 @@ class AddStudentScreen extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       controller: ctrl.lastNameController,
                       prefixIcon: Icons.person,
+                      textCapitalization:  TextCapitalization.sentences,
                     ),
                     const SizedBox(height: 10),
                     BuildTextField(
@@ -66,6 +68,7 @@ class AddStudentScreen extends StatelessWidget {
                       maxLines: 5,
                       height: 100,
                       prefixIcon: Icons.notes,
+                      textCapitalization:  TextCapitalization.sentences,
                     ),
                     const SizedBox(height: 10),
                     SafeArea(
@@ -108,7 +111,7 @@ class AddStudentScreen extends StatelessWidget {
             .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeCategory(e.toString()),
-        value: ctrl.selectCategory,
+        initialValue: ctrl.selectCategory,
       ),
     );
   }
@@ -136,7 +139,7 @@ class AddStudentScreen extends StatelessWidget {
             .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
-        value: ctrl.selectVideo,
+        initialValue: ctrl.selectVideo,
       ),
     );
   }

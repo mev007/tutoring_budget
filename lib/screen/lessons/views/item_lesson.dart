@@ -24,8 +24,9 @@ class ItemLesson extends StatelessWidget {
       orElse: () {
         log('>>> Error: No search STUDENT ${item.idStudent}');
         return StudentModel(
-            firstName: '!!! Інформація відсутня !!!',
-            adress: 'Запис про учня був видалений');
+          firstName: '!!! Інформація відсутня !!!',
+          adress: 'Запис про учня був видалений',
+        );
       },
     );
 
@@ -55,7 +56,9 @@ class ItemLesson extends StatelessWidget {
           ),
           SlidableAction(
             onPressed: (_) => ctrlLesson.deleteAllFromDate(
-                i, '${itemStudent.firstName} ${itemStudent.lastName}'),
+              i,
+              '${itemStudent.firstName} ${itemStudent.lastName}',
+            ),
             backgroundColor: BTT_COLOR,
             foregroundColor: WHITE_COLOR,
             icon: Icons.auto_delete,
@@ -64,67 +67,79 @@ class ItemLesson extends StatelessWidget {
       ),
       child: InkWell(
         // onTap: () => ctrl.gotoTeacherTestDetail(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
-        child: SizedBox(
-          height: 90,
-          child: ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-            leading: CircleAvatar(
-              backgroundColor: item.balance < 0 ? DEL_FON_COLOR : GREEN_COLOR,
-              foregroundColor: Colors.white,
-              radius: 25,
-              child: Text(Utils.getTime(item.dateTime),
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.bold)),
+        splashColor: MAIN_COLOR.withAlpha(25),
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+          leading: CircleAvatar(
+            backgroundColor: item.balance < 0 ? DEL_FON_COLOR : GREEN_COLOR,
+            foregroundColor: Colors.white,
+            radius: 25,
+            child: Text(
+              Utils.getTime(item.dateTime),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            minVerticalPadding: 10,
-            title: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: AutoSizeText(
-                      '${itemStudent.firstName} ${itemStudent.lastName}',
-                      maxLines: 1,
-                      minFontSize: 10,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+          ),
+          minVerticalPadding: 10,
+          title: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: AutoSizeText(
+                    '${itemStudent.firstName} ${itemStudent.lastName}',
+                    maxLines: 1,
+                    minFontSize: 14,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
+              ),
+              AutoSizeText(
+                item.cost.toStringAsFixed(2),
+                maxLines: 1,
+                minFontSize: 12,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (itemStudent.adress.isNotEmpty)
                 AutoSizeText(
-                  item.cost.toStringAsFixed(2),
-                  maxLines: 1,
+                  itemStudent.adress,
                   minFontSize: 10,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                AutoSizeText(itemStudent.adress,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AutoSizeText(
+                    itemStudent.category,
                     minFontSize: 10,
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AutoSizeText(itemStudent.category,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
-                    AutoSizeText(itemStudent.video,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
-                  ],
-                ),
-                AutoSizeText(itemStudent.note,
-                    minFontSize: 12,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  AutoSizeText(
+                    itemStudent.video,
+                    minFontSize: 10,
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
-              ],
-            ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+              if (itemStudent.note.isNotEmpty)
+                AutoSizeText(
+                  itemStudent.note,
+                  minFontSize: 12,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+            ],
           ),
         ),
       ),

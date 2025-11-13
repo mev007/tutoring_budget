@@ -63,14 +63,14 @@ class AddLessonController extends GetxController {
   // }
 
   /// Подія вибору студента
-  onChangeStudent(StudentModel item) {
+  void onChangeStudent(StudentModel item) {
     selectStudent = item;
     costNameController.text = item.cost.toStringAsFixed(0);
     update();
   }
 
   /// Визначення назви ДНЯ для [nameDay]
-  definitionNameDayUKR() {
+  void definitionNameDayUKR() {
     switch (selDate.value.weekday) {
       case 1:
         nameDay.value = 'Понеділок';
@@ -97,7 +97,7 @@ class AddLessonController extends GetxController {
   }
 
   /// Збереження
-  onSave() async {
+  Future<void> onSave() async {
     if (selectStudent == null) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;

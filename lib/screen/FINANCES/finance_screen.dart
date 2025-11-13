@@ -4,7 +4,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/models/finances_model.dart';
 import 'package:tutoring_budget/models/student_model.dart';
@@ -46,7 +45,7 @@ class FinanceScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 itemCount: ctrl.listFinance.length + 1,
-                separatorBuilder: (_, __) => const Divider(
+                separatorBuilder: (_, _) => const Divider(
                   color: MAIN_COLOR,
                   height: 1,
                 ),
@@ -160,7 +159,7 @@ class FinanceScreen extends StatelessWidget {
       ),
       child: InkWell(
         // onTap: () => ctrl.gotoDetailStudent(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
+        splashColor: MAIN_COLOR.withAlpha(25),
         child: SizedBox(
           height: 70,
           child: ListTile(
@@ -193,36 +192,36 @@ class FinanceScreen extends StatelessWidget {
   }
 }
 
-class _BtnSort extends GetView<FinanceController> {
-  /// Кнопка для сортування
-  const _BtnSort();
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: SizedBox(
-        height: 40,
-        width: 40,
-        child: FloatingActionButton(
-          heroTag: null,
-          tooltip: 'Сортування для фінансів'.tr,
-          backgroundColor: BTT_COLOR,
-          child: const Icon(Iconsax.sort, color: Colors.white),
-          onPressed: () {
-            if (Get.find<StudentController>().listStudent.isEmpty) {
-              Utils.messageErrorAddStudent();
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) => const FillterSearch(),
-              );
-            }
-          },
-        ),
-      ),
-    );
-  }
-}
+// class _BtnSort extends GetView<FinanceController> {
+//   /// Кнопка для сортування
+//   const _BtnSort();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Align(
+//       alignment: Alignment.centerRight,
+//       child: SizedBox(
+//         height: 40,
+//         width: 40,
+//         child: FloatingActionButton(
+//           heroTag: null,
+//           tooltip: 'Сортування для фінансів'.tr,
+//           backgroundColor: BTT_COLOR,
+//           child: const Icon(Iconsax.sort, color: Colors.white),
+//           onPressed: () {
+//             if (Get.find<StudentController>().listStudent.isEmpty) {
+//               Utils.messageErrorAddStudent();
+//             } else {
+//               showDialog(
+//                 context: context,
+//                 builder: (context) => const FillterSearch(),
+//               );
+//             }
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class _BtnFilter extends GetView<FinanceController> {
   /// Кнопка для фільтру

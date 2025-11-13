@@ -49,7 +49,7 @@ class StudentController extends GetxController {
   }
 
   ///Перехід до StudentDetailScreen
-  gotoEditStudent(StudentModel item) {
+  void gotoEditStudent(StudentModel item) {
     Get.toNamed(AppRoutes.EDIT_STUDENT, arguments: item)?.then((result) async {
       final isReloadStudent = result as bool?;
       if (isReloadStudent != null && isReloadStudent) {
@@ -59,13 +59,13 @@ class StudentController extends GetxController {
   }
 
   /// Перехід до AddStudentScreen
-  gotoAddStudent() {
+  void gotoAddStudent() {
     Get.toNamed(AppRoutes.ADD_STUDENT)
         ?.then((_) async => await getListStudent());
   }
 
   /// Детальніше про студента
-  gotoDetailStudent(item) {
+  void gotoDetailStudent(dynamic item) {
     Get.toNamed(AppRoutes.DETAIL_STUDENT, arguments: item);
   }
 

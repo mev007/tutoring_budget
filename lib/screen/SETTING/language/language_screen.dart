@@ -20,7 +20,7 @@ class LanguageScreen extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => ctrl.changeLocate(CurentLanguege.ukrainian),
-            splashColor: MAIN_COLOR.withOpacity(0.1),
+            splashColor: MAIN_COLOR.withAlpha(25),
             child: ListTile(
               title: const Text('Ukrainian'),
               subtitle: const Text(
@@ -32,7 +32,7 @@ class LanguageScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () => ctrl.changeLocate(CurentLanguege.english),
-            splashColor: MAIN_COLOR.withOpacity(0.1),
+            splashColor: MAIN_COLOR.withAlpha(25),
             child: ListTile(
               title: const Text('English'),
               subtitle: const Text(

@@ -6,6 +6,8 @@ import 'package:tutoring_budget/screen/LESSONS/add_lesson/add_lesson_controller.
 import 'package:tutoring_budget/screen/LESSONS/add_lesson/add_lesson_screen.dart';
 import 'package:tutoring_budget/screen/LESSONS/edit_lesson/edit_lesson_controller.dart';
 import 'package:tutoring_budget/screen/LESSONS/edit_lesson/edit_lesson_screen.dart';
+import 'package:tutoring_budget/screen/SETTING/about/about_controller.dart';
+import 'package:tutoring_budget/screen/SETTING/about/about_screen.dart';
 import 'package:tutoring_budget/screen/SETTING/category/category_controller.dart';
 import 'package:tutoring_budget/screen/SETTING/category/category_screen.dart';
 import 'package:tutoring_budget/screen/SETTING/communication/communication_controller.dart';
@@ -107,6 +109,13 @@ class AppPages {
       page: () => const SupportScreen(),
       binding: BindingsBuilder(() => Get.lazyPut<SupportController>(
           () => SupportController())),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: AppRoutes.ABOUT,
+      page: () => AboutScreen(),
+      binding: BindingsBuilder(() => Get.lazyPut<AboutController>(
+          () => AboutController())),
       transition: Transition.cupertino,
     ),
   ];

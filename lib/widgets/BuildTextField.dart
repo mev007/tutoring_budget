@@ -18,6 +18,7 @@ class BuildTextField extends StatelessWidget {
   final double? height;
   final EdgeInsetsGeometry? contentPadding;
   final TextAlign textAlign;
+  final TextCapitalization textCapitalization;
 
   const BuildTextField({
     super.key,
@@ -31,11 +32,11 @@ class BuildTextField extends StatelessWidget {
     this.height = 55,
     this.contentPadding,
     this.textAlign = TextAlign.left,
+    this.textCapitalization =  TextCapitalization.none,
   });
   @override
   Widget build(BuildContext context) {
-    final prIcon =
-        prefixIcon == null ? null : MyIcon(prefixIcon!);
+    final prIcon = prefixIcon == null ? null : MyIcon(prefixIcon!);
     // , color: MAIN_COLOR);
     return Container(
       height: height,
@@ -49,6 +50,7 @@ class BuildTextField extends StatelessWidget {
         obscureText: obscureText,
         controller: controller,
         keyboardType: keyboardType,
+        textCapitalization: textCapitalization,
         textAlign: textAlign,
         cursorColor: Get.isDarkMode ? Colors.white : MAIN_COLOR,
         decoration: InputDecoration(

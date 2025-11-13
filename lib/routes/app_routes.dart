@@ -12,4 +12,5 @@ class AppRoutes {
   static const String CATEGORY = '/Category';
   static const String COMMUNICATION = '/Communication';
   static const String SUPPORT = '/Support';
+  static const String ABOUT = '/About';
 }

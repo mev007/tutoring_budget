@@ -26,7 +26,7 @@ class DetailStudentScreen extends StatelessWidget {
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     itemCount: ctrl.listLessonsFilter.length,
-                    separatorBuilder: (_, __) =>
+                    separatorBuilder: (_, _) =>
                         const Divider(color: MAIN_COLOR, height: 1),
                     itemBuilder: (_, i) {
                       final item = ctrl.listLessonsFilter[i];

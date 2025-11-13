@@ -44,7 +44,7 @@ class LessonsController extends GetxController {
   }
 
   ///Перехід до EditLessonScreen
-  gotoEditLesson(LessonsModel item) {
+  void gotoEditLesson(LessonsModel item) {
     Get.toNamed(AppRoutes.EDIT_LESSON, arguments: item)?.then((result) async {
       final isReloadStudent = result as bool?;
       if (isReloadStudent != null && isReloadStudent) {
@@ -137,7 +137,7 @@ class LessonsController extends GetxController {
   }
 
   /// Перехід до AddLessonScreen
-  gotoAddLesson() {
+  void gotoAddLesson() {
     if (Get.find<StudentController>().listStudent.isEmpty) {
       Utils.messageErrorAddStudent();
     } else {
@@ -199,7 +199,7 @@ class LessonsController extends GetxController {
   CalendarFormat calendarFormat = CalendarFormat.twoWeeks;
 
   /// Вибрали дату
-  onDaySelected(DateTime selectedDay, DateTime focusedDay) {
+  void onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     if (!isSameDay(selDay, selectedDay)) {
       selDay = selectedDay;
       this.focusedDay = focusedDay;
@@ -208,7 +208,7 @@ class LessonsController extends GetxController {
   }
 
   /// Змінює формат відображення календаря
-  onFormatChanged(CalendarFormat format) {
+  void onFormatChanged(CalendarFormat format) {
     if (calendarFormat != format) {
       calendarFormat = format;
       update();
@@ -216,7 +216,7 @@ class LessonsController extends GetxController {
   }
 
   /// Змінює формат відображення календаря
-  onPageChanged(DateTime date) {
+  void onPageChanged(DateTime date) {
     focusedDay = date;
     builMarker();
   }

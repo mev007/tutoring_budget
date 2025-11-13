@@ -44,7 +44,7 @@ class CategoryScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(vertical: 10),
               itemCount: ctrl.listCategory.length + 1,
-              separatorBuilder: (_, __) => const Divider(
+              separatorBuilder: (_, _) => const Divider(
                 color: MAIN_COLOR,
                 height: 1,
               ),

@@ -35,7 +35,7 @@ class LessonsScreen extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: ctrl.listLessons.length,
-                separatorBuilder: (_, __) =>
+                separatorBuilder: (_, _) =>
                     const Divider(color: MAIN_COLOR, height: 1),
                 itemBuilder: (_, i) {
                   //Добавлення відсупу знизу
@@ -64,7 +64,7 @@ class LessonsScreen extends StatelessWidget {
     return TableCalendar(
       //% Налаштування ==========
       calendarBuilders: CalendarBuilders(
-        markerBuilder: (_, date, __) {
+        markerBuilder: (_, date, _) {
           final count = ctrl.mapMarket[Utils.withoutTime(date)];
           return count == null
               ? const SizedBox.shrink()

@@ -19,12 +19,12 @@ class LanguageController extends GetxController {
     super.onInit();
   }
 
-  initCheckLanguage() {
+  void initCheckLanguage() {
     isCheckViewUA.value = (Get.locale == const Locale('uk'));
     isCheckViewEN.value = (Get.locale == const Locale('en'));
   }
 
-  changeLocate(CurentLanguege locate) {
+  void changeLocate(CurentLanguege locate) {
     switch (locate) {
       case CurentLanguege.ukrainian:
         Get.updateLocale(const Locale('uk'));

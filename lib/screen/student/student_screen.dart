@@ -19,10 +19,8 @@ class StudentScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(vertical: 10),
           itemCount: ctrl.listStudent.length + 1,
-          separatorBuilder: (_, __) => const Divider(
-            color: MAIN_COLOR,
-            height: 1,
-          ),
+          separatorBuilder: (_, _) =>
+              const Divider(color: MAIN_COLOR, height: 1),
           itemBuilder: (_, i) {
             //Добавлення відсупу знизу
             if (i == ctrl.listStudent.length) {
@@ -72,7 +70,7 @@ class StudentScreen extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () => ctrl.gotoDetailStudent(item),
-        splashColor: MAIN_COLOR.withOpacity(0.1),
+        splashColor: MAIN_COLOR.withAlpha(25),
         child: SizedBox(
           height: 100,
           child: ListTile(
@@ -80,9 +78,13 @@ class StudentScreen extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: ICON_COLOR,
               foregroundColor: Colors.white,
-              child: Text(item.cost.toStringAsFixed(0),
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.bold)),
+              child: Text(
+                item.cost.toStringAsFixed(0),
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             minVerticalPadding: 10,
             title: Padding(
@@ -96,28 +98,38 @@ class StudentScreen extends StatelessWidget {
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                AutoSizeText(item.adress,
+                if (item.adress.isNotEmpty)
+                  AutoSizeText(
+                    item.adress,
                     minFontSize: 10,
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AutoSizeText(item.category,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
-                    AutoSizeText(item.video,
-                        minFontSize: 10,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis),
+                    AutoSizeText(
+                      item.category,
+                      minFontSize: 10,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    AutoSizeText(
+                      item.video,
+                      minFontSize: 10,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ],
                 ),
-                AutoSizeText(item.note,
-                    minFontSize: 12,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis),
+                AutoSizeText(
+                  item.note,
+                  minFontSize: 12,
+                  maxLines: 1 + (item.adress.isNotEmpty ? 0 : 1),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
             // trailing: Column(

@@ -45,17 +45,17 @@ class EditStudentController extends GetxController {
     super.onClose();
   }
 
-  onChangeCategory(String item) {
+  void onChangeCategory(String item) {
     selectCategory = item;
     update();
   }
 
-  onChangeVideo(String item) {
+  void onChangeVideo(String item) {
     selectVideo = item;
     update();
   }
 
-  onSave() async {
+  Future<void> onSave() async {
     if (firstNameController.text.trim().isEmpty) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;

@@ -21,14 +21,14 @@ class EditLessonController extends GetxController {
   final costNameController = TextEditingController();
 
   /// Подія вибору студента
-  onChangeStudent(StudentModel item) {
+  void onChangeStudent(StudentModel item) {
     selectStudent = item;
     costNameController.text = item.cost.toStringAsFixed(0);
     update();
   }
 
   /// Збереження
-  onSave() async {
+  Future<void> onSave() async {
     if (selectStudent == null) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;

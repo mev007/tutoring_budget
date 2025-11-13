@@ -9,7 +9,7 @@ class SupportController extends GetxController {
   final ctrlSubject = TextEditingController();
   final ctrlBody = TextEditingController();
 
-  sendMail() async {
+  Future<void> sendMail() async {
     if (ctrlSubject.text.isEmpty) {
       Utils.messageError('Заповніть тему листа'.tr);
       return;

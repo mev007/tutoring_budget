@@ -18,7 +18,7 @@ class CommunicationController extends GetxController {
   }
 
   /// Запобігання (перехват) виходу на попередній екран.
-  useWillPopScope() => isChangeData
+  Future<bool> Function()? useWillPopScope() => isChangeData
       ? () async {
           backScreen();
           return false;
@@ -26,7 +26,7 @@ class CommunicationController extends GetxController {
       : null;
 
   /// Перевірка, при поверненні назад, чи було збережено
-  backScreen() {
+  void backScreen() {
     if (isChangeData) {
       Get.defaultDialog(
         title: 'Save'.tr,
@@ -48,7 +48,7 @@ class CommunicationController extends GetxController {
     }
   }
 
-  deleteItem(int i) {
+  void deleteItem(int i) {
     if (listVideo.length == 1) {
       Utils.messageError('Не можна видалити. Залиште один запис'.tr);
       return;
@@ -72,7 +72,7 @@ class CommunicationController extends GetxController {
     );
   }
 
-  editItem(int i) {
+  void editItem(int i) {
     itemController.text = listVideo[i];
     Get.defaultDialog(
       content: BuildTextField(
@@ -98,7 +98,7 @@ class CommunicationController extends GetxController {
     );
   }
 
-  addItem() {
+  void addItem() {
     itemController.text = '';
     Get.defaultDialog(
       content: BuildTextField(
@@ -124,7 +124,7 @@ class CommunicationController extends GetxController {
     );
   }
 
-  save() {
+  void save() {
     SP.listVideo = List.from(listVideo);
     Get.back();
     Utils.snackbarCheck('Saved successfully'.tr);

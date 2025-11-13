@@ -9,12 +9,14 @@ class EnLanguage {
         'Student': 'Student',
         'Setting': 'Setting',
         'Language': 'Language',
+        'About': 'About the application',
         'Share': 'Share the application',
         'ShareSubtitle':
             'Share the link on social networks to download the program',
         'ShareText':
             'Use the tutor program, where you can schedule classes, mark payments, edit student balance and total tutor income for different periods of time',
         'Select the language': 'Select the language of the program interface',
+        'Select the About': 'Program information, changes and versions',
         'EvaluateTitle': 'Evaluate the application',
         'Support': 'Support',
         'EvaluateSubtitle': 'Give your rating in the software store',

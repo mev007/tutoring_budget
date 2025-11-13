@@ -103,7 +103,7 @@ class EditLessonScreen extends StatelessWidget {
             )
             .toList(),
         onChanged: (e) => ctrl.onChangeStudent(e as StudentModel),
-        value: ctrl.selectStudent,
+        initialValue: ctrl.selectStudent,
       ),
     );
   }

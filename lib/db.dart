@@ -25,28 +25,28 @@ abstract class DB {
           onCreate: (db, ver) async {
         await db.execute("""
         CREATE TABLE "Student" (
-	        "id"	TEXT PRIMARY KEY,
-	        "firstName"	TEXT,
-	        "lastName"	TEXT,
-	        "adress"	TEXT,
-	        "category"	TEXT,
-	        "video"	TEXT,
-	        "cost"	REAL,
-	        "note"	TEXT
+          "id"	TEXT PRIMARY KEY,
+          "firstName"	TEXT,
+          "lastName"	TEXT,
+          "adress"	TEXT,
+          "category"	TEXT,
+          "video"	TEXT,
+          "cost"	REAL,
+          "note"	TEXT
         )""");
         await db.execute("""
         CREATE TABLE "Lessons" (
-	        "id"	TEXT PRIMARY KEY,
-	        "dateTime"	INTEGER,
-	        "idStudent"	TEXT,
-	        "cost"	REAL
+          "id"	TEXT PRIMARY KEY,
+          "dateTime"	INTEGER,
+          "idStudent"	TEXT,
+          "cost"	REAL
         )""");
         await db.execute("""
         CREATE TABLE "Finances" (
-	        "id"	TEXT PRIMARY KEY,
-	        "idStudent"	TEXT,
-	        "dateTime"	INTEGER,
-	        "sum"	REAL
+          "id"	TEXT PRIMARY KEY,
+          "idStudent"	TEXT,
+          "dateTime"	INTEGER,
+          "sum"	REAL
         )""");
       });
     } catch (ex) {

@@ -106,7 +106,7 @@ class EditStudentScreen extends StatelessWidget {
             .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeCategory(e.toString()),
-        value: ctrl.selectCategory,
+        initialValue: ctrl.selectCategory,
       ),
     );
   }
@@ -134,7 +134,7 @@ class EditStudentScreen extends StatelessWidget {
             .map((e) => DropdownMenuItem(value: e, child: Text(e)))
             .toList(),
         onChanged: (e) => ctrl.onChangeVideo(e.toString()),
-        value: ctrl.selectVideo,
+        initialValue: ctrl.selectVideo,
       ),
     );
   }

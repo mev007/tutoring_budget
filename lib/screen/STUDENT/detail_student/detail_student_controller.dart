@@ -55,7 +55,7 @@ class DetailStudentController extends GetxController {
     update();
   }
 
-  onPressFilter() {
+  void onPressFilter() {
     isFilter.value = !isFilter.value;
     if (isFilter.value) {
       listLessonsFilter = listLessons

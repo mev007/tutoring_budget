@@ -24,14 +24,14 @@ class AddFinanceController extends GetxController {
   }
 
   /// Подія вибору студента
-  onChangeStudent(StudentModel item) {
+  void onChangeStudent(StudentModel item) {
     selectStudent = item;
     sumNameController.text = item.cost.toStringAsFixed(0);
     update();
   }
 
   /// Збереження
-  onSavesss()  async {
+  Future<void> onSavesss()  async {
     if (selectStudent == null) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;
