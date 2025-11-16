@@ -53,7 +53,9 @@ class LessonsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: null,
         child: const Icon(Icons.add, color: Colors.white),
-        onPressed: () => ctrl.gotoAddLesson(),
+        onPressed: () {
+          ctrl.gotoAddLesson();
+        },
       ),
     );
   }
@@ -77,9 +79,10 @@ class LessonsScreen extends StatelessWidget {
                     child: Text(
                       '$count',
                       style: const TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 10,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 );
@@ -102,9 +105,12 @@ class LessonsScreen extends StatelessWidget {
       headerStyle: const HeaderStyle(
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20.0),
         decoration: BoxDecoration(
-            color: MAIN_COLOR,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+          color: MAIN_COLOR,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
         formatButtonTextStyle: TextStyle(color: MAIN_COLOR, fontSize: 16.0),
         formatButtonDecoration: BoxDecoration(
           color: Colors.white,
@@ -116,10 +122,14 @@ class LessonsScreen extends StatelessWidget {
       //% Стилі календаря ==========
       calendarStyle: const CalendarStyle(
         weekendTextStyle: TextStyle(color: DEL_FON_COLOR),
-        todayDecoration:
-            BoxDecoration(color: ADD_COLOR, shape: BoxShape.circle),
-        selectedDecoration:
-            BoxDecoration(color: MAIN_COLOR, shape: BoxShape.circle),
+        todayDecoration: BoxDecoration(
+          color: ADD_COLOR,
+          shape: BoxShape.circle,
+        ),
+        selectedDecoration: BoxDecoration(
+          color: MAIN_COLOR,
+          shape: BoxShape.circle,
+        ),
       ),
       //% Події ==========
       selectedDayPredicate: (day) {

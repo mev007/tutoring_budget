@@ -228,7 +228,7 @@ class AddLessonScreen extends StatelessWidget {
                         context: context,
                         initialDate: ctrl.toDateTime.value,
                         firstDate: DateTime.now(),
-                        lastDate: DateTime(DateTime.now().year + 1),
+                        lastDate: DateTime(DateTime.now().year + 2),
                       );
                       if (picked != null) ctrl.toDateTime.value = picked;
                     },

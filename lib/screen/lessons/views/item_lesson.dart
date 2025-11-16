@@ -133,9 +133,8 @@ class ItemLesson extends StatelessWidget {
                 ],
               ),
               if (itemStudent.note.isNotEmpty)
-                AutoSizeText(
+                Text(
                   itemStudent.note,
-                  minFontSize: 12,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

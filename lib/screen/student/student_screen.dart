@@ -71,83 +71,77 @@ class StudentScreen extends StatelessWidget {
       child: InkWell(
         onTap: () => ctrl.gotoDetailStudent(item),
         splashColor: MAIN_COLOR.withAlpha(25),
-        child: SizedBox(
-          height: 100,
-          child: ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-            leading: CircleAvatar(
-              backgroundColor: ICON_COLOR,
-              foregroundColor: Colors.white,
-              child: Text(
-                item.cost.toStringAsFixed(0),
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+          leading: CircleAvatar(
+            backgroundColor: ICON_COLOR,
+            foregroundColor: Colors.white,
+            child: Text(
+              item.cost.toStringAsFixed(0),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+          ),
+          minVerticalPadding: 10,
+          title: Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: AutoSizeText(
+              '${item.firstName} ${item.lastName}',
+              maxLines: 1,
+              minFontSize: 10,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (item.adress.isNotEmpty)
+                AutoSizeText(
+                  item.adress,
+                  minFontSize: 10,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ),
-            minVerticalPadding: 10,
-            title: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
-              child: AutoSizeText(
-                '${item.firstName} ${item.lastName}',
-                maxLines: 1,
-                minFontSize: 10,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (item.adress.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   AutoSizeText(
-                    item.adress,
+                    item.category,
                     minFontSize: 10,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AutoSizeText(
-                      item.category,
-                      minFontSize: 10,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    AutoSizeText(
-                      item.video,
-                      minFontSize: 10,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-                AutoSizeText(
+                  AutoSizeText(
+                    item.video,
+                    minFontSize: 10,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+              if (item.note.isNotEmpty)
+                Text(
                   item.note,
-                  minFontSize: 12,
                   maxLines: 1 + (item.adress.isNotEmpty ? 0 : 1),
                   overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
-            // trailing: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   crossAxisAlignment: CrossAxisAlignment.end,
-            //   children: [
-            //     SizedBox(
-            //       width: 50,
-            //       child: Row(children: [
-            //         const Icon(Icons.timer, color: MAIN_COLOR, size: 20),
-            //         Text(item.time.toStringAsFixed(1))
-            //       ]),
-            //     ),
-            //     Icon(item.isRnd ? Icons.shuffle : Icons.double_arrow_rounded,
-            //         color: MAIN_COLOR),
-            //   ],
-            // ),
+            ],
           ),
+          // trailing: Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [
+          //     SizedBox(
+          //       width: 50,
+          //       child: Row(children: [
+          //         const Icon(Icons.timer, color: MAIN_COLOR, size: 20),
+          //         Text(item.time.toStringAsFixed(1))
+          //       ]),
+          //     ),
+          //     Icon(item.isRnd ? Icons.shuffle : Icons.double_arrow_rounded,
+          //         color: MAIN_COLOR),
+          //   ],
+          // ),
         ),
       ),
       // ),

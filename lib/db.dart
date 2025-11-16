@@ -43,7 +43,7 @@ abstract class DB {
         )""");
         await db.execute("""
         CREATE TABLE "Finances" (
-          "id"	TEXT PRIMARY KEY,
+          "id"	TEXT PRIMARY KEY, 
           "idStudent"	TEXT,
           "dateTime"	INTEGER,
           "sum"	REAL

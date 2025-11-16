@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -34,69 +32,52 @@ class Utils {
     return DateFormat('HH:mm').format(dateTime);
   }
 
-  /// 2021 Feb 01
-  static String getDate2(DateTime? dateTime) {
-    if (dateTime == null) return '';
-    return DateFormat('yyyy MMM dd').format(dateTime);
-  }
-
-  ///2022-02-03T13:25:10.324Z
-  static String getDateTimeReq(DateTime? dateTime) {
-    if (dateTime == null) return '';
-    return DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z").format(dateTime);
-  }
-
   static void messageError(String message) {
-    Get.defaultDialog(title: 'Error'.tr, middleText: message, actions: [
-      ElevatedButton(
-        style: ElevatedButton.styleFrom(
+    Get.defaultDialog(
+      title: 'Error'.tr,
+      middleText: message,
+      actions: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
             backgroundColor: Colors.red,
             elevation: 5,
             minimumSize: const Size(80, 40),
-            textStyle:
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        onPressed: () => Get.back(),
-        child: const Text('Ok'),
-      )
-    ]);
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          onPressed: () => Get.back(),
+          child: const Text('Ok', style: TextStyle(color: Colors.white)),
+        ),
+      ],
+    );
   }
 
   static void messageErrorAddStudent() {
     Get.defaultDialog(
-        title: 'Error'.tr,
-        middleText: 'Список студентів порожній'.tr,
-        actions: [
-          Btt(
-            onPress: () => Get.back(),
-            title: 'Cancel'.tr,
-            isNegative: true,
-          ),
-          Btt(
-            onPress: () {
-              Get.back();
-              Get.find<BoardController>().changeTabIndex(0);
-              Get.find<StudentController>().gotoAddStudent();
-              
-            },
-            title: 'Add'.tr,
-          )
-        ]);
-  }
-
-  static void snackbarError(String message) {
-    Get.snackbar(
-      'Error'.tr,
-      message,
-      backgroundColor: Colors.red,
-      colorText: Colors.white,
-      duration: const Duration(seconds: 5),
-      snackPosition: SnackPosition.BOTTOM,
+      title: 'Error'.tr,
+      middleText: 'Список студентів порожній'.tr,
+      actions: [
+        Btt(onPress: () => Get.back(), title: 'Cancel'.tr, isNegative: true),
+        Btt(
+          onPress: () {
+            Get.back();
+            Get.find<BoardController>().changeTabIndex(0);
+            Get.find<StudentController>().gotoAddStudent();
+          },
+          title: 'Add'.tr,
+        ),
+      ],
     );
   }
 
   static void snackbarCheck(String message) {
+    info(message);
+    Get.closeAllSnackbars();
     Get.snackbar(
       'Message'.tr,
       message,
@@ -108,11 +89,8 @@ class Utils {
     );
   }
 
-  ///Видає рандомний набір великих лат.літер і цифр заданої кількості [len]
-  static String rndString(int len) {
-    var r = Random.secure();
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    return List.generate(len, (index) => chars[r.nextInt(chars.length)]).join();
+  static void info(String message) {
+    debugPrint('🟢 \t$message');
   }
 
   static DateTime integerToDateTime(int number) =>
@@ -139,5 +117,10 @@ class Utils {
   static DateTime endWeek(DateTime dateTime) {
     final countDay = 7 - dateTime.weekday;
     return dateTime.add(Duration(days: countDay));
+  }
+
+  static void error(String message, {String? znak}) {
+    final time = DateTime.now();
+    debugPrint('${znak ?? '❌'} $time  $message');
   }
 }
