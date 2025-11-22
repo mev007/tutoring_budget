@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/sp.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
-import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
+import 'package:tutoring_budget/widgets/build_text_field.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'package:tutoring_budget/widgets/my_icon.dart';
 
@@ -72,7 +72,7 @@ class AddStudentScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     SafeArea(
-                      child: Btt(
+                      child: Btn(
                         title: 'Save'.tr,
                         onPress: ctrl.onSave,
                       ),

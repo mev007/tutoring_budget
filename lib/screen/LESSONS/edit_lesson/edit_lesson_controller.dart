@@ -28,7 +28,7 @@ class EditLessonController extends GetxController {
   }
 
   /// Збереження
-  Future<void> onSave() async {
+  Future<void> onSave(BuildContext context) async {
     if (selectStudent == null) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;
@@ -43,8 +43,13 @@ class EditLessonController extends GetxController {
       cost = double.tryParse(costNameController.text.trim())!;
     }
 
-    final dateTime = DateTime(selDate.value.year, selDate.value.month,
-        selDate.value.day, selTime.value.hour, selTime.value.minute);
+    final dateTime = DateTime(
+      selDate.value.year,
+      selDate.value.month,
+      selDate.value.day,
+      selTime.value.hour,
+      selTime.value.minute,
+    );
     final lesson = LessonsModel(
       id: id,
       dateTime: dateTime,
@@ -53,15 +58,18 @@ class EditLessonController extends GetxController {
     );
     await DB.update(LessonsModel.nameTable, lesson);
     Get.back(result: true);
-    Utils.snackbarCheck('Запис успішно оновлено'.tr);
+    if (context.mounted) {
+      Utils.showSnackBarCheck(context, 'Запис успішно оновлено'.tr);
+    }
   }
 
   @override
   onInit() async {
     lesson = Get.arguments as LessonsModel;
     id = lesson.id;
-    selectStudent =
-        Get.find<StudentController>().searchStudentModel(lesson.idStudent);
+    selectStudent = Get.find<StudentController>().searchStudentModel(
+      lesson.idStudent,
+    );
     costNameController.text = lesson.cost.toStringAsFixed(0);
     selDate.value = lesson.dateTime;
     selTime.value = TimeOfDay.fromDateTime(lesson.dateTime);

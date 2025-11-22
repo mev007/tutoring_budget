@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutoring_budget/constants.dart';
 
-class Btt extends StatelessWidget {
+class Btn extends StatelessWidget {
   final String title;
   final VoidCallback? onPress;
   final bool isNegative;
@@ -10,7 +10,7 @@ class Btt extends StatelessWidget {
   final double? sizeTitle;
   final double? minWidht;
   final double height;
-  const Btt({
+  const Btn({
     super.key,
     this.title = 'Ok',
     required this.onPress,
@@ -32,7 +32,7 @@ class Btt extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          elevation: 5,
+          elevation: 0,
           padding: const EdgeInsets.all(10),
           minimumSize:
               minWidht == null ? Size(50, height) : Size(minWidht!, height),

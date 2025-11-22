@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:tutoring_budget/screen/board/board_controller.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
 
 class Utils {
   ///01.01.2021 15:00
@@ -43,7 +43,7 @@ class Utils {
               borderRadius: BorderRadius.circular(10.0),
             ),
             backgroundColor: Colors.red,
-            elevation: 5,
+            elevation: 0,
             minimumSize: const Size(80, 40),
             textStyle: const TextStyle(
               fontSize: 16,
@@ -62,8 +62,8 @@ class Utils {
       title: 'Error'.tr,
       middleText: 'Список студентів порожній'.tr,
       actions: [
-        Btt(onPress: () => Get.back(), title: 'Cancel'.tr, isNegative: true),
-        Btt(
+        Btn(onPress: () => Get.back(), title: 'Cancel'.tr, isNegative: true),
+        Btn(
           onPress: () {
             Get.back();
             Get.find<BoardController>().changeTabIndex(0);
@@ -75,17 +75,27 @@ class Utils {
     );
   }
 
-  static void snackbarCheck(String message) {
-    info(message);
-    Get.closeAllSnackbars();
-    Get.snackbar(
-      'Message'.tr,
-      message,
-      icon: const Icon(Icons.task_alt, color: Colors.white),
-      backgroundColor: Colors.green,
-      colorText: Colors.white,
-      duration: const Duration(seconds: 5),
-      snackPosition: SnackPosition.TOP,
+  static void showSnackBarCheck(BuildContext context, String message) {
+    info('$message => showSnackBarCheck');
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.only(bottom: 30, left: 10, right: 10),
+        showCloseIcon: true,
+        elevation: 0,
+        duration: const Duration(seconds: 5),
+        content: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.task_alt, color: Colors.white),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(message, style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

@@ -114,7 +114,7 @@ class FinanceScreen extends StatelessWidget {
   /// Дошка для СУМИ фільтрування
   Widget _buildBoardFilter(BuildContext context) {
     return Card(
-      elevation: 5.0,
+      elevation: 0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         side: BorderSide(color: MAIN_COLOR, width: 2),

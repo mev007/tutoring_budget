@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
+import 'package:tutoring_budget/utils.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 import 'category_controller.dart';
@@ -13,41 +14,48 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CategoryController>(
       builder: (ctrl) {
-        return WillPopScope(
-          onWillPop: ctrl.useWillPopScope(),
+        return PopScope(
+          canPop: false, // блокуємо автоматичний pop
+          onPopInvokedWithResult: (didPop, result) async {
+            if (didPop) return;
+            ctrl.backScreen(context);
+          },
           child: Scaffold(
             appBar: CustomAppBar(
               title: 'Категорія навчання'.tr,
-              onBack: () => ctrl.backScreen(),
+              onBack: () => ctrl.backScreen(context),
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             floatingActionButton: Wrap(
               crossAxisAlignment: WrapCrossAlignment.end,
               spacing: 10,
-              direction: Axis.vertical,
+              direction: Axis.horizontal,
               children: [
+                FloatingActionButton.extended(
+                  heroTag: null,
+                  onPressed: () {
+                    ctrl.save();
+                    Utils.showSnackBarCheck(context, 'Saved successfully'.tr);
+                  },
+                  icon: const Icon(Icons.save, color: WHITE_COLOR),
+                  label: Text(
+                    'Save'.tr,
+                    style: const TextStyle(color: WHITE_COLOR),
+                  ),
+                ),
                 FloatingActionButton(
                   heroTag: null,
                   onPressed: () => ctrl.addItem(),
                   child: const Icon(Icons.add, color: WHITE_COLOR),
                 ),
-                FloatingActionButton.extended(
-                  heroTag: null,
-                  onPressed: () => ctrl.save(),
-                  icon: const Icon(Icons.save, color: WHITE_COLOR),
-                  label: Text('Save'.tr,
-                      style: const TextStyle(color: WHITE_COLOR)),
-                )
               ],
             ),
             body: ListView.separated(
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(vertical: 10),
               itemCount: ctrl.listCategory.length + 1,
-              separatorBuilder: (_, _) => const Divider(
-                color: MAIN_COLOR,
-                height: 1,
-              ),
+              separatorBuilder: (_, _) =>
+                  const Divider(color: MAIN_COLOR, height: 1),
               itemBuilder: (_, i) {
                 //Добавлення відсупу знизу
                 if (i == ctrl.listCategory.length) {
@@ -98,8 +106,9 @@ class CategoryScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 60,
                     child: ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 20),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
                       minVerticalPadding: 10,
                       title: Text(item, overflow: TextOverflow.ellipsis),
                     ),

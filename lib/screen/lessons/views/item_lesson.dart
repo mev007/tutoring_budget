@@ -56,6 +56,7 @@ class ItemLesson extends StatelessWidget {
           ),
           SlidableAction(
             onPressed: (_) => ctrlLesson.deleteAllFromDate(
+              context,
               i,
               '${itemStudent.firstName} ${itemStudent.lastName}',
             ),
@@ -76,10 +77,7 @@ class ItemLesson extends StatelessWidget {
             radius: 25,
             child: Text(
               Utils.getTime(item.dateTime),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ),
           minVerticalPadding: 10,

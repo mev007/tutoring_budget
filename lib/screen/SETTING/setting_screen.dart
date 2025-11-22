@@ -53,9 +53,13 @@ class SettingScreen extends StatelessWidget {
             color: Colors.red,
             onTap: () {
               if (GetPlatform.isAndroid) {
-                Share.share('${'ShareText'.tr}\n$ANDROID_URL');
+                SharePlus.instance.share(
+                  ShareParams(text: '${'ShareText'.tr}\n$ANDROID_URL'),
+                );
               } else if (GetPlatform.isIOS) {
-                Share.share('${'ShareText'.tr}\n$IPHONE_URL');
+                SharePlus.instance.share(
+                  ShareParams(text: '${'ShareText'.tr}\n$IPHONE_URL'),
+                );
               }
             },
           ),
@@ -65,8 +69,9 @@ class SettingScreen extends StatelessWidget {
             subtitle: 'EvaluateSubtitle'.tr,
             color: Colors.orange,
             onTap: () => StoreRedirect.redirect(
-                iOSAppId: '1660052554',
-                androidAppId: "com.tutoring.budget.mev"),
+              iOSAppId: '1660052554',
+              androidAppId: "com.tutoring.budget.mev",
+            ),
           ),
           itemTitleSwitch(
             icon: CupertinoIcons.moon_stars_fill,
@@ -88,13 +93,14 @@ class SettingScreen extends StatelessWidget {
   }
 
   //#  ===============   ДОДАТКОВІ МЕТОДИ   =================
-  Widget itemTitle(
-      {IconData? icon,
-      required String title,
-      String? subtitle,
-      Color? color,
-      TextDecoration? decoration,
-      VoidCallback? onTap}) {
+  Widget itemTitle({
+    IconData? icon,
+    required String title,
+    String? subtitle,
+    Color? color,
+    TextDecoration? decoration,
+    VoidCallback? onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       splashColor: (color ?? MAIN_COLOR).withAlpha(25),
@@ -102,19 +108,25 @@ class SettingScreen extends StatelessWidget {
         constraints: const BoxConstraints(minHeight: 80),
         child: ListTile(
           leading: Icon(icon, size: 25, color: color),
-          title: Text(title,
-              style: TextStyle(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                  decoration: decoration)),
+          title: Text(
+            title,
+            style: TextStyle(
+              color: color,
+              fontWeight: FontWeight.bold,
+              decoration: decoration,
+            ),
+          ),
           subtitle: subtitle == null
               ? null
               : Text(
                   subtitle,
                   style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
-          trailing:
-              const Icon(Icons.arrow_forward_ios, size: 15, color: MAIN_COLOR),
+          trailing: const Icon(
+            Icons.arrow_forward_ios,
+            size: 15,
+            color: MAIN_COLOR,
+          ),
           // minVerticalPadding: 2,
           minLeadingWidth: 0,
         ),
@@ -122,35 +134,41 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  Widget itemTitleSwitch(
-      {IconData? icon,
-      required String title,
-      String? subtitle,
-      Color? color,
-      TextDecoration? decoration,
-      VoidCallback? onTap}) {
+  Widget itemTitleSwitch({
+    IconData? icon,
+    required String title,
+    String? subtitle,
+    Color? color,
+    TextDecoration? decoration,
+    VoidCallback? onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       splashColor: (color ?? MAIN_COLOR).withAlpha(25),
       child: ListTile(
         isThreeLine: true,
         leading: Icon(icon, size: 25, color: color),
-        title: Text(title,
-            style: TextStyle(
-                color: color,
-                fontWeight: FontWeight.bold,
-                decoration: decoration)),
+        title: Text(
+          title,
+          style: TextStyle(
+            color: color,
+            fontWeight: FontWeight.bold,
+            decoration: decoration,
+          ),
+        ),
         subtitle: subtitle == null
             ? null
             : Text(
                 subtitle,
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),
-        trailing: Obx(() => CupertinoSwitch(
-              activeTrackColor: color,
-              value: ctrl.valSwitch.value,
-              onChanged: ctrl.onChangeSwitch,
-            )),
+        trailing: Obx(
+          () => CupertinoSwitch(
+            activeTrackColor: color,
+            value: ctrl.valSwitch.value,
+            onChanged: ctrl.onChangeSwitch,
+          ),
+        ),
         minVerticalPadding: 2,
         minLeadingWidth: 0,
       ),

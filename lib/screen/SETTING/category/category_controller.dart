@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
+import 'package:tutoring_budget/widgets/dialog_back.dart';
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/utils.dart';
-import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/build_text_field.dart';
 
 class CategoryController extends GetxController {
   late List<String> listCategory;
@@ -17,35 +18,27 @@ class CategoryController extends GetxController {
     super.onInit();
   }
 
-  /// Запобігання (перехват) виходу на попередній екран.
-  Future<bool> Function()? useWillPopScope() => isChangeData
-      ? () async {
-          backScreen();
-          return false;
-        }
-      : null;
-
   /// Перевірка, при поверненні назад, чи було збережено
-  void backScreen() {
-    if (isChangeData) {
-      Get.defaultDialog(
-        title: 'Save'.tr,
-        middleText: 'SaveExit'.tr,
-        textCancel: 'Do not save'.tr,
-        cancelTextColor: BTT_COLOR,
-        textConfirm: 'Save'.tr,
-        confirmTextColor: Colors.white,
-        buttonColor: BTT_COLOR,
-        onCancel: () => Get.back(),
+  void backScreen(BuildContext context) async {
+    if (!isChangeData) {
+      Get.back();
+      return;
+    }
+    showDialog(
+      context: context,
+      builder: (_) => DialogBack(
+        onCancel: () {
+          Get.back();
+          Get.back(closeOverlays: true);
+        },
         onConfirm: () {
           save();
+          Get.back();
           Get.back(closeOverlays: true);
-          Utils.snackbarCheck('Записано');
+          Utils.showSnackBarCheck(context, 'Saved successfully'.tr);
         },
-      );
-    } else {
-      Get.back();
-    }
+      ),
+    );
   }
 
   void deleteItem(int i) {
@@ -126,7 +119,6 @@ class CategoryController extends GetxController {
 
   void save() {
     SP.listCategory = List.from(listCategory);
-    Get.back();
-    Utils.snackbarCheck('Записано');
+    isChangeData = false;
   }
 }

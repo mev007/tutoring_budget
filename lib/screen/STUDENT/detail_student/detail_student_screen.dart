@@ -66,7 +66,7 @@ class DetailStudentScreen extends StatelessWidget {
   Widget _buildInfoStudent() {
     final ctrl = Get.find<DetailStudentController>();
     return Card(
-      elevation: 5.0,
+      elevation: 0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         side: BorderSide(color: MAIN_COLOR, width: 2.0),

@@ -31,7 +31,7 @@ class AddFinanceController extends GetxController {
   }
 
   /// Збереження
-  Future<void> onSavesss()  async {
+  Future<void> onSavesss(BuildContext context) async {
     if (selectStudent == null) {
       Utils.messageError('Імя учня не повинно бути пустим'.tr);
       return;
@@ -44,9 +44,9 @@ class AddFinanceController extends GetxController {
       sum = double.tryParse(sumNameController.text.trim())!;
       if (sum <= 0) {
         Utils.messageError('Сума повинна бути додатня'.tr);
-      return;
-      } 
-    } 
+        return;
+      }
+    }
     final lesson = FinanceModel(
       id: const Uuid().v1(),
       dateTime: selDate.value,
@@ -56,6 +56,8 @@ class AddFinanceController extends GetxController {
     await DB.insert(FinanceModel.nameTable, lesson);
     await Get.find<LessonsController>().getListLessons();
     Get.back();
-    Utils.snackbarCheck('Записи добавлено успішно'.tr);
+    if (context.mounted) {
+      Utils.showSnackBarCheck(context, 'Записи добавлено успішно'.tr);
+    }
   }
 }

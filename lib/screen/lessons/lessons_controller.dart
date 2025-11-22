@@ -59,8 +59,10 @@ class LessonsController extends GetxController {
     final lessonId = listLessons[index].id;
     Get.defaultDialog(
       title: 'Delete'.tr,
-      titleStyle:
-          const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
+      titleStyle: const TextStyle(
+        color: DEL_FON_COLOR,
+        fontWeight: FontWeight.bold,
+      ),
       middleText: 'DeleleRecord?'.tr,
       textCancel: 'Cancel'.tr,
       cancelTextColor: BTT_COLOR,
@@ -77,13 +79,19 @@ class LessonsController extends GetxController {
   }
 
   /// Видалення декілька записів
-  Future deleteAllFromDate(int index, String nameStudent) async {
+  Future deleteAllFromDate(
+    BuildContext context,
+    int index,
+    String nameStudent,
+  ) async {
     final idStudent = listLessons[index].idStudent;
     final lessonId = listLessons[index].dateTime;
     Get.defaultDialog(
       title: 'Delete'.tr,
-      titleStyle:
-          const TextStyle(color: DEL_FON_COLOR, fontWeight: FontWeight.bold),
+      titleStyle: const TextStyle(
+        color: DEL_FON_COLOR,
+        fontWeight: FontWeight.bold,
+      ),
       middleText:
           '${'DeleleManyRecord'.tr}\n$nameStudent\n${'after'.tr} ${Utils.getDateTime(lessonId)}',
       textCancel: 'Cancel'.tr,
@@ -96,15 +104,22 @@ class LessonsController extends GetxController {
         await getListLessons();
         builMarker();
         Get.back();
-        Utils.snackbarCheck(
-            '${'Видалено записів:'.tr} $countDelRecords ${'шт'.tr}');
+        if (context.mounted) {
+          Utils.showSnackBarCheck(
+            context,
+            '${'Видалено записів:'.tr} $countDelRecords ${'шт'.tr}',
+          );
+        }
       },
     );
   }
 
   /// Отримання запланованих занять по заданому idStudent за заданий період
-  Future<List<LessonsModel>?> totalPayment(
-      {String? idStudent, DateTime? fromDateTime, DateTime? toDateTime}) async {
+  Future<List<LessonsModel>?> totalPayment({
+    String? idStudent,
+    DateTime? fromDateTime,
+    DateTime? toDateTime,
+  }) async {
     final response = await DB.totalPayment(
       'Lessons',
       listIdStudent: idStudent == null ? null : [idStudent],
@@ -117,16 +132,19 @@ class LessonsController extends GetxController {
 
   /// Отримання суми проплат по заданому idStudent
   Future<double> sumPayment(String idStudent, DateTime toDateTime) async {
-    final listFinance =
-        await Get.find<FinanceController>().totalPayment(idStudent: idStudent);
+    final listFinance = await Get.find<FinanceController>().totalPayment(
+      idStudent: idStudent,
+    );
     double sumFinance = 0;
     if (listFinance != null) {
       for (var element in listFinance) {
         sumFinance += element.sum;
       }
     }
-    final listLessons =
-        await totalPayment(idStudent: idStudent, toDateTime: toDateTime);
+    final listLessons = await totalPayment(
+      idStudent: idStudent,
+      toDateTime: toDateTime,
+    );
     double sumLessons = 0;
     if (listLessons != null) {
       for (var element in listLessons) {
@@ -137,16 +155,18 @@ class LessonsController extends GetxController {
   }
 
   /// Перехід до AddLessonScreen
-  void gotoAddLesson() {
+  void gotoAddLesson(BuildContext context) {
     if (Get.find<StudentController>().listStudent.isEmpty) {
       Utils.messageErrorAddStudent();
     } else {
       Get.toNamed(AppRoutes.ADD_LESSON)?.then((countRecords) async {
         await getListLessons();
         builMarker();
-        if (countRecords != null) {
-          Utils.snackbarCheck(
-              '${'Успішно добавлено записи:'.tr} ${countRecords as int} ${'шт'.tr}');
+        if (countRecords != null && context.mounted) {
+          Utils.showSnackBarCheck(
+            context,
+            '${'Успішно добавлено записи:'.tr} ${countRecords as int} ${'шт'.tr}',
+          );
         }
       });
     }
@@ -155,12 +175,18 @@ class LessonsController extends GetxController {
   /// Побудова маркерів кількості занять на день
   Future<void> builMarker() async {
     final firstDayOfMonth = DateTime(focusedDay.year, focusedDay.month, 1);
-    final lastDayOfMonth = DateTime(focusedDay.year, focusedDay.month + 1, 1)
-        .subtract(const Duration(days: 1));
+    final lastDayOfMonth = DateTime(
+      focusedDay.year,
+      focusedDay.month + 1,
+      1,
+    ).subtract(const Duration(days: 1));
     final startDate = Utils.startWeek(firstDayOfMonth);
     final endDate = Utils.endWeek(lastDayOfMonth);
-    final tempList =
-        await DB.totalPayment('Lessons', fromDate: startDate, toDate: endDate);
+    final tempList = await DB.totalPayment(
+      'Lessons',
+      fromDate: startDate,
+      toDate: endDate,
+    );
     var currentDate = Utils.withoutTime(startDate);
     mapMarket = {};
     while (!currentDate.isAfter(endDate)) {
@@ -194,7 +220,10 @@ class LessonsController extends GetxController {
 
   /// Дата кінця діапазону
   final kLastDay = DateTime(
-      DateTime.now().year + 1, DateTime.now().month, DateTime.now().day);
+    DateTime.now().year + 1,
+    DateTime.now().month,
+    DateTime.now().day,
+  );
 
   CalendarFormat calendarFormat = CalendarFormat.twoWeeks;
 

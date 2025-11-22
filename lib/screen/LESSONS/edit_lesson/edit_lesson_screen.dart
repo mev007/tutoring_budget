@@ -4,8 +4,8 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
-import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
+import 'package:tutoring_budget/widgets/build_text_field.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 import 'edit_lesson_controller.dart';
@@ -49,9 +49,9 @@ class EditLessonScreen extends StatelessWidget {
                     SafeArea(
                       child: Column(
                         children: [
-                          Btt(
+                          Btn(
                             title: 'Refresh'.tr,
-                            onPress: ctrl.onSave,
+                            onPress: () => ctrl.onSave(context),
                           ),
                         ],
                       ),

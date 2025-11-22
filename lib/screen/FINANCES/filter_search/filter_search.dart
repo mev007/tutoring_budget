@@ -5,7 +5,7 @@ import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/sp.dart';
 import 'package:tutoring_budget/utils.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
 import 'package:tutoring_budget/widgets/my_icon.dart';
 
 import 'filter_search_controller.dart';
@@ -48,12 +48,12 @@ class FillterSearch extends StatelessWidget {
           ),
           actionsAlignment: MainAxisAlignment.center,
           actions: [
-            Btt(
+            Btn(
               onPress: () => Get.back(),
               title: 'Cancel'.tr,
               isNegative: true,
             ),
-            Btt(
+            Btn(
               onPress: () => ctrl.onApply(),
               title: 'Застосувати'.tr,
             )

@@ -45,6 +45,6 @@ ThemeData darkTheme = ThemeData(
   // bottomAppBarColor: Color(0xFFFD41B4),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: BTT_COLOR,
-    elevation: 10,
+    elevation: 0,
   ),
 );

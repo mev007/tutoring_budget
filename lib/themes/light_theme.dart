@@ -40,8 +40,9 @@ ThemeData lightTheme = ThemeData(
   //       color: Color(0xFF6A05FE),
   //       refreshBackgroundColor: Color(0xFFF37B46)),
   // bottomAppBarColor: Color(0xFFFD41B4),
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: BTT_COLOR,
-    elevation: 10,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    elevation: 0,
   ),
 );

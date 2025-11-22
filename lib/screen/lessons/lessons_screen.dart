@@ -21,7 +21,7 @@ class LessonsScreen extends StatelessWidget {
             children: [
               Card(
                 margin: const EdgeInsets.all(8.0),
-                elevation: 5.0,
+                elevation: 0,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   side: BorderSide(color: MAIN_COLOR, width: 2.0),
@@ -53,9 +53,7 @@ class LessonsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: null,
         child: const Icon(Icons.add, color: Colors.white),
-        onPressed: () {
-          ctrl.gotoAddLesson();
-        },
+        onPressed: () => ctrl.gotoAddLesson(context),
       ),
     );
   }

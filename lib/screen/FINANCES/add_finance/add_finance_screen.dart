@@ -4,8 +4,8 @@ import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/models/student_model.dart';
 import 'package:tutoring_budget/screen/student/student_controll.dart';
 import 'package:tutoring_budget/utils.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
-import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
+import 'package:tutoring_budget/widgets/build_text_field.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 import 'package:tutoring_budget/widgets/my_icon.dart';
 
@@ -47,9 +47,9 @@ class AddFinanceScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     SafeArea(
-                      child: Btt(
+                      child: Btn(
                         title: 'Save'.tr,
-                        onPress: () => ctrl.onSavesss(),
+                        onPress: () => ctrl.onSavesss(context),
                       ),
                     ),
                   ],

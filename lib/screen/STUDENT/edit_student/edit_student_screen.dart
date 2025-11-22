@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:tutoring_budget/constants.dart';
 import 'package:tutoring_budget/screen/STUDENT/edit_student/edit_student_controller.dart';
 import 'package:tutoring_budget/sp.dart';
-import 'package:tutoring_budget/widgets/Btt.dart';
-import 'package:tutoring_budget/widgets/BuildTextField.dart';
+import 'package:tutoring_budget/widgets/btn.dart';
+import 'package:tutoring_budget/widgets/build_text_field.dart';
 import 'package:tutoring_budget/widgets/custom_appbar.dart';
 
 class EditStudentScreen extends StatelessWidget {
@@ -67,7 +67,7 @@ class EditStudentScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     SafeArea(
-                      child: Btt(
+                      child: Btn(
                         title: 'Save'.tr,
                         onPress: ctrl.onSave,
                       ),
