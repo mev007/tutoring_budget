@@ -11,10 +11,7 @@ class SP {
   static List<String> get listCategory {
     List<String>? lC = prefs.getStringList('listCategory');
     if (lC == null) {
-      lC = [
-        '10th grade',
-        'ZNO',
-      ];
+      lC = ['10th grade', 'ZNO'];
       listCategory = lC;
     }
     return lC;
@@ -26,12 +23,7 @@ class SP {
   static List<String> get listVideo {
     List<String>? lV = prefs.getStringList('listVideo');
     if (lV == null) {
-      lV = [
-        'Google Meet',
-        'Microsoft Teams',
-        'Skype',
-        'Zoom',
-      ];
+      lV = ['Zoom', 'Google Meet', 'Microsoft Teams'];
       listVideo = lV;
     }
     return lV;
@@ -59,9 +51,5 @@ class SP {
   static set curentLanguage(String val) =>
       prefs.setString('curentLanguage', val);
 
-
-
-  static bool findItemVideo(String itemVideo) =>
-      listVideo.contains(itemVideo);
-
+  static bool findItemVideo(String itemVideo) => listVideo.contains(itemVideo);
 }

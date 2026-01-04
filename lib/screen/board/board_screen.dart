@@ -42,7 +42,9 @@ class BoardScreen extends StatelessWidget {
     final BoardController ctrl = Get.find<BoardController>();
     return ConvexAppBar(
       key: ctrl.appBarKey,
-      height: 60,
+      height: 50,
+      top: -15,
+      curveSize: 60,
       activeColor: Colors.white,
       backgroundColor: MAIN_COLOR,
       style: TabStyle.reactCircle,

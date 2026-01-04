@@ -84,7 +84,7 @@ class Utils {
         margin: const EdgeInsets.only(bottom: 30, left: 10, right: 10),
         showCloseIcon: true,
         elevation: 0,
-        duration: const Duration(seconds: 5),
+        duration: const Duration(seconds: 3),
         content: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

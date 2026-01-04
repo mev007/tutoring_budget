@@ -38,6 +38,8 @@ const BoxShadow SHADOW = BoxShadow(
 );
 
 const STYLE_PARAM = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+const STYLE_QUESTION = TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+const STYLE_ANSWER = TextStyle(fontSize: 14, fontStyle: FontStyle.italic);
 
 const BORDER_DROPDOWN = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(15)),
